@@ -1,0 +1,8 @@
+/rankit-dominio/target/
+/rankit-dominio/.classpath
+/rankit-dominio/.project
+/rankit-dominio/.settings/
+*generated-sources
+/rankit-dominio/bin
+/rankit-dominio/xtend-gen
+
