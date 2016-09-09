@@ -5,7 +5,6 @@ import java.util.List
 import model.Usuario
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-import java.util.Date
 
 @Accessors
 @Observable
@@ -17,10 +16,11 @@ class AdministracionUsuario {
 		usuarios = new ArrayList<Usuario>()
 	}
 	
-	def void crearNuevoUsuario(String nombre, String pass, Date fecha) {
-		/*	Crea un nuevo usuario y lo guarda en la lista de usuario registrados 
+	def void crearNuevoUsuario() {
+		/*	Crea un nuevo usuario con nombre "NN", password "123" y lo guarda en la 
+		 * 	lista de usuario registrados 
 		 */
-		var Usuario nuevoUsuario = new Usuario(nombre, pass, fecha) 
+		var Usuario nuevoUsuario = new Usuario("NN", "123") 
 		agregarUsuario(nuevoUsuario)
 	}
 	
