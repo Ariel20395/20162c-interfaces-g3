@@ -6,3 +6,10 @@
 /rankit-dominio/bin
 /rankit-dominio/xtend-gen
 
+/rankit_administrador-desktop/target/
+/rankit_administrador-desktop/.classpath
+/rankit_administrador-desktop/.project
+/rankit_administrador-desktop/.settings/
+*generated-sources
+/rankit_administrador-desktop/bin
+/rankit_administrador-desktop/xtend-gen
