@@ -8,12 +8,17 @@ import java.util.List
 
 class UsuarioTest {
 	
-	private Usuario usuario
+	private Usuario  usuario
+	private Servicio netflix
+	private Servicio speedy
 	
 	@Before
 	def void init() {
 		
 		usuario = new Usuario("Ariel", "asd1234")
+		
+		usuario.crearCalificacion(speedy, 2, "mala conexion")
+		usuario.crearCalificacion(netflix, 4, "muy bueno")
 	}
 
 	@Test
@@ -73,18 +78,7 @@ class UsuarioTest {
 	}
 	
 	@Test
-	def void testHacerCalificacion() {
-
-		usuario.crearCalificacion("Servicio", 5, "detalle")
-		
-		Assert.assertEquals(1, usuario.calificaciones.size)
-	}
-
-	@Test
-	def void testEliminarCalificacion() {
-		/*	Creo dos calificaciones y testeo que se crearon las dos	*/
-		usuario.crearCalificacion("Speedy", 2, "mala conexion")
-		usuario.crearCalificacion("Netflix", 4, "muy bueno")
+	def void testCreacionDeCalificacion() {
 		
 		var Calificacion calificacion1 = usuario.calificaciones.get(0)
 		var Calificacion calificacion2 = usuario.calificaciones.get(1)
@@ -92,12 +86,20 @@ class UsuarioTest {
 		var List<Calificacion> calificacionesEsperadas = #[calificacion1,calificacion2]
 		
 		Assert.assertEquals(calificacionesEsperadas, usuario.calificaciones)
+	}
+
+	@Test
+	def void testEliminarCalificacion() {
+
+		var Calificacion calificacion1 = usuario.calificaciones.get(0)
+		var Calificacion calificacion2 = usuario.calificaciones.get(1)
+		
+		var List<Calificacion> calificacionesEsperadas = #[calificacion2]
+		
 		/*	Elimino una calificacion y testeo que se elimino correctamente */
 		
 		usuario.eliminarCalificacion(calificacion1)
-		
-		calificacionesEsperadas = #[calificacion2]
-		
+				
 		Assert.assertEquals(calificacionesEsperadas, usuario.calificaciones)			
 	}	
 	
