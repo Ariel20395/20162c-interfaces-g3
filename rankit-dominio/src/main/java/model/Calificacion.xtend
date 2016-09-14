@@ -12,15 +12,20 @@ class Calificacion {
 	DateTime fechaRegistro
 	String detalle
 	Boolean esOfensiva
+	Usuario usuario
+	Servivio servicio
 	
 	new() {
 		esOfensiva = false
+		fechaRegistro = DateTime.now
 	}
 	
-	new(Integer unosPuntos, DateTime unaFechaRegistro, String unDetalle) {
+	new(Integer unosPuntos, String unDetalle, Usuario usuario, Servicio servicio) {
 		this.puntos = puntos
-		this.fechaRegistro = unaFechaRegistro
+		this.fechaRegistro = DateTime.now
 		this.detalle = unDetalle
 		this.esOfensiva = false
+		this.usuario = usuario
+		this.servicio = servicio
 	}
 }
