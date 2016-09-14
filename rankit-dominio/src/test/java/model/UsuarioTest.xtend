@@ -5,6 +5,7 @@ import org.junit.Test
 import org.junit.Assert
 import excepciones.ExceptionUsuario
 
+
 class UsuarioTest {
 	
 	private Usuario usuario
