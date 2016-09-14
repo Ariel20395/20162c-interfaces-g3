@@ -13,7 +13,7 @@ class Calificacion {
 	String detalle
 	Boolean esOfensiva
 	Usuario usuario
-	Servivio servicio
+	Servicio servicio
 	
 	new() {
 		esOfensiva = false

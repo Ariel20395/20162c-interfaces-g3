@@ -63,8 +63,7 @@ class Usuario {
 	def crearCalificacion(String servicio, Integer puntos, String detalle) {
 		/*	El usuario crea una calificación y esta se guarda en su lista de 
 		 * 	calificaciones en el primer lugar	 */
-		 var DateTime fecha = DateTime.now
-		 var Calificacion nuevaCalificacion = new Calificacion(puntos, fecha, detalle)
+		 var Calificacion nuevaCalificacion = new Calificacion(puntos, detalle, this, servicio)
 		 this.agregarCalificacion(nuevaCalificacion)
 	}
 	
