@@ -112,7 +112,6 @@ class UsuarioTest {
 		usuario.sumarPublicacionOfensiva	
 		
 		Assert.assertTrue(usuario.baneado)
-		/*	La cantidad de publicaciones ofensivas vuelven a 0 en este momento
-		 * 	o cuando se activa nuevamente el usuario?	*/
+		Assert.assertEquals(0, usuario.cantidadCalificacionesOfensivas, 0)
 	}
 }

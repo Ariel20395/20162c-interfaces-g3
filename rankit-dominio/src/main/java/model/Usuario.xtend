@@ -73,19 +73,19 @@ class Usuario {
 	}
 	
 	def eliminarCalificacion(Calificacion calificacion) {
-		/*	Elimina una calificación de la lista de calificaciones */
+		/*	Elimina una calificación de la lista de calificaciones 		*/
 		this.calificaciones.remove(calificacion)
 	}
 	
 	def sumarPublicacionOfensiva() {
 		/*	Se actualiza en +1 la cantidad de publicaciones ofensivas. 
-		 * 	Si el usuario llega al maximo(5), este se banea				*/
+		 * 	Si el usuario llega al maximo(5), este se banea	y la cantidad
+		 *	de publicaciones ofensivas vuelve a 0						*/
 		if(this.cantidadCalificacionesOfensivas == 5) {
 			this.banear
+			this.cantidadCalificacionesOfensivas = 0
 		} else {
 			this.cantidadCalificacionesOfensivas ++
-			/*	En este punto la cantidad de calicaciones ofensivas 
-			 * 	deberia volver a 0 o cuando se activa el usuario 		 */
 		}
 	}
 	
