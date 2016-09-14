@@ -9,13 +9,15 @@ import java.util.List
 class UsuarioTest {
 	
 	private Usuario  usuario
-	private Servicio netflix
-	private Servicio speedy
+	private Ofrecido netflix
+	private Ofrecido speedy
 	
 	@Before
 	def void init() {
 		
 		usuario = new Usuario("Ariel", "asd1234")
+		netflix = new Ofrecido("Netflix")
+		speedy	= new Ofrecido("Speedy")
 		
 		usuario.crearCalificacion(speedy, 2, "mala conexion")
 		usuario.crearCalificacion(netflix, 4, "muy bueno")
