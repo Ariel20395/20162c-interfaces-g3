@@ -60,16 +60,22 @@ class Usuario {
 		this.baneado = false
 	}
 	
-	def crearCalificacion(String string, String string2, String string3) {
+	def crearCalificacion(String servicio, Integer puntos, String detalle) {
 		/*	El usuario crea una calificación y esta se guarda en su lista de 
 		 * 	calificaciones en el primer lugar	 */
-		 var Calificacion nuevaCalificacion = new Calificacion
+		 var DateTime fecha = DateTime.now
+		 var Calificacion nuevaCalificacion = new Calificacion(puntos, fecha, detalle)
 		 this.agregarCalificacion(nuevaCalificacion)
 	}
 	
 	def agregarCalificacion(Calificacion calificacion) {
 		/*	Se guarda la calificación en el primer lugar de la lista 	*/
 		this.calificaciones.add(0, calificacion)
+	}
+	
+	def eliminarCalificacion(Calificacion calificacion) {
+		/*	Elimina una calificación de la lista de calificaciones */
+		this.calificaciones.remove(calificacion)
 	}
 	
 	def sumarPublicacionOfensiva() {

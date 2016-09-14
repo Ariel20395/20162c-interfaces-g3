@@ -4,7 +4,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.Assert
 import excepciones.ExceptionUsuario
-
+import java.util.List
 
 class UsuarioTest {
 	
@@ -74,13 +74,32 @@ class UsuarioTest {
 	
 	@Test
 	def void testHacerCalificacion() {
-		/*	Por ahora al crear calificación solo voy a crear una calificación vacia
-		 * 	y testear que se haya guardado en su lista de calificaciones
-		 */
-		usuario.crearCalificacion("Servicio", "puntos", "detalle")
+
+		usuario.crearCalificacion("Servicio", 5, "detalle")
 		
 		Assert.assertEquals(1, usuario.calificaciones.size)
 	}
+
+	@Test
+	def void testEliminarCalificacion() {
+		/*	Creo dos calificaciones y testeo que se crearon las dos	*/
+		usuario.crearCalificacion("Speedy", 2, "mala conexion")
+		usuario.crearCalificacion("Netflix", 4, "muy bueno")
+		
+		var Calificacion calificacion1 = usuario.calificaciones.get(0)
+		var Calificacion calificacion2 = usuario.calificaciones.get(1)
+		
+		var List<Calificacion> calificacionesEsperadas = #[calificacion1,calificacion2]
+		
+		Assert.assertEquals(calificacionesEsperadas, usuario.calificaciones)
+		/*	Elimino una calificacion y testeo que se elimino correctamente */
+		
+		usuario.eliminarCalificacion(calificacion1)
+		
+		calificacionesEsperadas = #[calificacion2]
+		
+		Assert.assertEquals(calificacionesEsperadas, usuario.calificaciones)			
+	}	
 	
 	@Test
 	def void testLlegarAlMaximoDePublicacionesOfensivas() {
