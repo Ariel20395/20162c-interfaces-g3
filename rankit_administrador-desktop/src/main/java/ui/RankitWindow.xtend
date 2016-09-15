@@ -1,30 +1,24 @@
 package ui
 
-import org.uqbar.arena.windows.SimpleWindow
 import appModel.RankitAppModel
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.windows.Window
+import org.uqbar.arena.layout.ColumnLayout
 
-class RankitWindow extends SimpleWindow<RankitAppModel>{
+class RankitWindow extends Window<RankitAppModel>{
 	
 	new(WindowOwner parent, RankitAppModel model) {
 		super(parent, model)
 	}
-	
-	override protected createFormPanel(Panel mainPanel) {
-		// No lo voy a usar
-	}
-	
-	override protected addActions(Panel actionsPanel) {
-		// No lo voy a usar
-	}
-	
+
 	
 	override createContents(Panel mainPanel) {
 		this.title = "Rank-IT"
+		mainPanel.layout = new ColumnLayout(1)
 		
 		new Label(mainPanel) => [
 			text = "Rank-It! Modulo de administración"

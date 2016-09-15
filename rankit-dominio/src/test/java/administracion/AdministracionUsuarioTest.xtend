@@ -28,6 +28,8 @@ class AdministracionUsuarioTest {
 		usuariosPredeterminados.add(eze)
 		
 		admin.usuarios = usuariosPredeterminados
+		admin.activarUsuario(ariel)
+		admin.banearUsuario(franco)
 	}
 	
 	@Test
@@ -61,5 +63,15 @@ class AdministracionUsuarioTest {
 		
 		Assert.assertEquals(usuariosEsperados, admin.usuarios)
 	}
+	
+	@Test
+	def void testResumenDeUsuarios() {
+		
+		Assert.assertEquals(3, admin.cantidadDeUsuarios)
+		Assert.assertEquals(1, admin.cantidadDeUsuariosActivos)
+		Assert.assertEquals(2, admin.cantidadDeUsuariosInactivos)
+		Assert.assertEquals(1, admin.cantidadDeUsuariosBaneados)
+	}
+	
 	
 }

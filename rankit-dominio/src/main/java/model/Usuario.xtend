@@ -65,6 +65,7 @@ class Usuario {
 		 * 	calificaciones en el primer lugar	 */
 		 var Calificacion nuevaCalificacion = new Calificacion(puntos, detalle, this, ofrecido)
 		 this.agregarCalificacion(nuevaCalificacion)
+		 
 	}
 	
 	def agregarCalificacion(Calificacion calificacion) {
@@ -88,5 +89,4 @@ class Usuario {
 			this.cantidadCalificacionesOfensivas ++
 		}
 	}
-	
 }

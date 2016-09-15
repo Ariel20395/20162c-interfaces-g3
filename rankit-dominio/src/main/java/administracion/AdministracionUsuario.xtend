@@ -48,5 +48,42 @@ class AdministracionUsuario {
 		this.usuarios.remove(usuario)
 	}
 	
+	def activarUsuario(Usuario usuario) {
+		usuario.activar
+	}
+	
+	def banearUsuario(model.Usuario usuario) {
+		usuario.banear
+	}
+	
+	def cantidadDeUsuarios() {
+		this.usuarios.size
+	}
+	
+	def cantidadDeUsuariosActivos() {
+		usuarioActivos.size
+	}
+	
+	def usuarioActivos() {
+		this.usuarios.filter[usuario | usuario.activo == true].toList
+	}
+	
+	def cantidadDeUsuariosInactivos() {
+		usuariosInactivos.size
+	}
+	
+	def usuariosInactivos() {
+		this.usuarios.filter[usuario | usuario.activo == false].toList
+	}
+	
+	def cantidadDeUsuariosBaneados() {
+		usuariosBaneados.size
+	}
+	
+	def usuariosBaneados() {
+		this.usuarios.filter[usuario | usuario.baneado].toList
+	}
+	
+	
 	
 }
