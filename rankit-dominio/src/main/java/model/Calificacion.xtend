@@ -13,7 +13,7 @@ class Calificacion {
 	String detalle
 	Boolean esOfensiva
 	Usuario usuario
-	Ofrecido servicio
+	Ofrecido ofrecido
 	
 	new() {
 		esOfensiva = false
@@ -26,6 +26,11 @@ class Calificacion {
 		this.detalle = unDetalle
 		this.esOfensiva = false
 		this.usuario = usuario
-		this.servicio = servicio
+		this.ofrecido = ofrecido
+	}
+	
+	def cambiarEsOfensiva() {
+		this.esOfensiva = ! esOfensiva
+		
 	}
 }
