@@ -27,4 +27,26 @@ class AdministracionUsuario {
 	def void agregarUsuario(Usuario usuario) {
 		this.usuarios.add(usuario)
 	}
+	
+	def buscarUsuario(String nombre) {
+		/*	Filtra la lista de usuarios por nombre	*/
+		this.usuarios.filter[usuario | this.match(nombre, usuario.nombre)].toList
+	}
+	
+	def match(Object expectedValue, Object realValue) {
+		if (expectedValue == null) {
+			return true
+		}
+		if (realValue == null) {
+			return false
+		}
+		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
+	}
+	
+	def eliminarUsuario(Usuario usuario) {
+		/*	Elimina a un usuario de la lista de usuarios */
+		this.usuarios.remove(usuario)
+	}
+	
+	
 }
