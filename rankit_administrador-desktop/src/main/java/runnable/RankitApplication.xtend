@@ -8,7 +8,8 @@ class RankitApplication extends Application {
 	
 	override protected createMainWindow() {
 		val model = new RankitAppModel => [
-			//adminUsuario.usuarios = new DummyDataAdminUsuario().crearAdminUsuarioDummy
+			// adminUsuario.admin = new DummyData.crearAdminUsuarioDummy
+			// adminCalificaciones.calificaciones = new DummyDataAdmin.crearAdminCalificacionesDummy()
 		]
 		new RankitWindow(this, model) 
 	}
