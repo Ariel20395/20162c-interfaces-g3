@@ -28,4 +28,9 @@ class AdminUsuarioAppModel {
 		firePropertyChanged(this,"usuarios")
 	}
 	
+	def void setCrearNuevoUsuario() {
+		admin.crearNuevoUsuario
+	}
+	
+	
 }

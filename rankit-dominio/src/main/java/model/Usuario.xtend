@@ -42,7 +42,7 @@ class Usuario {
 		if(! baneado) {
 			this.activo = true	
 		} else {
-			new ExceptionUsuario("El usuario no debe estar baneado")
+			throw new ExceptionUsuario("El usuario no debe estar baneado")
 		}
 	}
 	
@@ -88,5 +88,25 @@ class Usuario {
 		} else {
 			this.cantidadCalificacionesOfensivas ++
 		}
+	}
+	
+	def getFechaUltimaCalificacion() {
+		try {
+			this.getUltimaCalificacion.fechaRegistro.toString("dd/MM/YYYY HH:mm")
+		} catch (ExceptionUsuario e){
+			new RuntimeException(e)
+		}
+	}
+	
+	def Calificacion getUltimaCalificacion() {
+		if(calificaciones.size == 0) {
+			throw new ExceptionUsuario("El usuario no tiene publicaciones")
+		} else {
+			this.calificaciones.get(0)
+		}
+	}
+	
+	def getFechaDeIngreso() {
+		this.fechaIngreso.toString("dd/MM/YYYY HH:mm")
 	}
 }

@@ -1,14 +1,15 @@
 package runnable
 
-import org.uqbar.arena.Application
+import DataDummy.RankitDummy
 import appModel.RankitAppModel
+import org.uqbar.arena.Application
 import ui.RankitWindow
 
 class RankitApplication extends Application {
 	
 	override protected createMainWindow() {
 		val model = new RankitAppModel => [
-			// adminUsuario.admin = new DummyData.crearAdminUsuarioDummy
+			adminUsuario.admin = new RankitDummy().crearAdminUsuarioDummy
 			// adminCalificaciones.calificaciones = new DummyDataAdmin.crearAdminCalificacionesDummy()
 		]
 		new RankitWindow(this, model) 

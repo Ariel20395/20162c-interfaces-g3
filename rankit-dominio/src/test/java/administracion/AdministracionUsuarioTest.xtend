@@ -28,8 +28,8 @@ class AdministracionUsuarioTest {
 		usuariosPredeterminados.add(eze)
 		
 		admin.usuarios = usuariosPredeterminados
-		admin.activarUsuario(ariel)
-		admin.banearUsuario(franco)
+		ariel.activar
+		franco.banear
 	}
 	
 	@Test

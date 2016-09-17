@@ -33,4 +33,5 @@ class Calificacion {
 		this.esOfensiva = ! esOfensiva
 		
 	}
+	
 }

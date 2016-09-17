@@ -48,14 +48,6 @@ class AdministracionUsuario {
 		this.usuarios.remove(usuario)
 	}
 	
-	def activarUsuario(Usuario usuario) {
-		usuario.activar
-	}
-	
-	def banearUsuario(model.Usuario usuario) {
-		usuario.banear
-	}
-	
 	def cantidadDeUsuarios() {
 		this.usuarios.size
 	}
