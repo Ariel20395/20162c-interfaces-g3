@@ -48,6 +48,7 @@ class RankitWindow extends Window<RankitAppModel>{
 		
 		new Button(actionPanel) => [
 			caption = "Adm. Calificaciones"
+			onClick([| this.administracionDeCalificacion])
 			width = 150
 		]
 		
@@ -64,6 +65,10 @@ class RankitWindow extends Window<RankitAppModel>{
 	
 	def administracionDeUsuario() {
 		(new AdministracionDeUsuarioWindow(this, modelObject.adminUsuario)).open
+	}
+	
+	def administracionDeCalificacion() {
+		(new AdministracionDeCalificacionWindow(this, modelObject.adminCalificacion)).open
 	}
   	
 }

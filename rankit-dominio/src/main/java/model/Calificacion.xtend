@@ -30,8 +30,15 @@ class Calificacion {
 	}
 	
 	def cambiarEsOfensiva() {
-		this.esOfensiva = ! esOfensiva
-		
+		this.esOfensiva = ! esOfensiva	
+	}
+	
+	def nombreUsuario() {
+		this.usuario.nombre
+	}
+	
+	def nombreEvaluado() {
+		this.ofrecido.nombre
 	}
 	
 }

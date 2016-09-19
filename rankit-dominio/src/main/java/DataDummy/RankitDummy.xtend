@@ -5,6 +5,7 @@ import java.util.List
 import model.Calificacion
 import model.Ofrecido
 import model.Usuario
+import administracion.AdministracionCalificacion
 
 class RankitDummy {
 			
@@ -54,7 +55,10 @@ class RankitDummy {
 	}
 	
 	def crearDummyDataCalificacion() {
-		calificaciones
+		var AdministracionCalificacion administracion = new AdministracionCalificacion()
+		
+		administracion.setCalificaciones(calificaciones)
+		administracion
 	}
 	
 	def crearAdminUsuarioDummy() {

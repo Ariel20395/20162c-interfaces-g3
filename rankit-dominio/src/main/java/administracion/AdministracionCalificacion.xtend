@@ -12,6 +12,15 @@ class AdministracionCalificacion {
 	
 	
 	new() {
+	}
+	
+	
+	def getCalificaciones() {
+		calificaciones
+	}
+	
+	def setCalificaciones(List<Calificacion> unasCalificaciones) {
+		this.calificaciones = unasCalificaciones
 	}		
 	
 	
@@ -53,6 +62,15 @@ class AdministracionCalificacion {
 	
 	def eliminarCalificacion(Calificacion calificacion) {
 		this.calificaciones.remove(calificacion)
+	}
+	
+	def Integer totalCalificacionesRegistradas() {
+		this.calificaciones.size
+	}
+	
+	def Integer totalCalificacionesOfensivas() {
+		var List<Calificacion> ofensivas =	this.calificaciones.filter [calificacion | calificacion.esOfensiva == true].toList
+		ofensivas.size
 	}
 	
 }
