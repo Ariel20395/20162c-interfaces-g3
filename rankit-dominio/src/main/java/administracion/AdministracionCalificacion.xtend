@@ -5,6 +5,11 @@ import java.util.List
 import java.util.ArrayList
 import model.Ofrecido
 import model.Calificacion
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
+
+@Accessors
+@Observable
 
 class AdministracionCalificacion {
 	

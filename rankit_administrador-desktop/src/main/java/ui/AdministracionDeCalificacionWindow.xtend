@@ -10,12 +10,21 @@ import org.uqbar.arena.layout.HorizontalLayout
 import model.Calificacion
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.tables.Column
-
+import java.awt.Color
 
 class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionAppModel> {
 	
+	
 	new(WindowOwner parent, AdminCalificacionAppModel model) {
 		super(parent, model)
+	}
+	
+	override protected addActions(Panel actionsPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	override protected createFormPanel(Panel mainPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	
@@ -39,17 +48,20 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 							   ]
 	}
 	
-	def contarCalificaciones(Panel miPanel, String titulo, String binding ) {
+	def contarCalificaciones(Panel miPanel, String titulo, String binding, Color unColor ) {
 		new Panel(miPanel) => [
+		layout = new HorizontalLayout
 		new Label(it) => [text = titulo]
-		new Label(it).value <=> binding
+		new Label(it) => [value <=> binding
+			foreground = unColor]
 							  ]
 	}
 	
 	def panelTablaDeCalificaciones(Panel miPanel) {
 			val table = new Table<Calificacion>(miPanel, typeof(Calificacion)) => [
-				items <=> "calificaciones"
+				items <=> "administracion.calificaciones"
 				value <=> "calificacionSeleccionada"
+				numberVisibleRows = 10
 			]
 		this.descripcionDeLaTabla(table)
 	}
@@ -98,8 +110,8 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 		]
 		new Panel(miPanel) => [
 		layout = new HorizontalLayout
-		contarCalificaciones(it,"Calificaciones Registradas: ", "administracion.totalCalificacionesRegistradas")
-		contarCalificaciones(it, "Ofensivas: ", "administracion.totalCalificacionesOfensivas")
+		contarCalificaciones(it,"Calificaciones Registradas: ", "administracion.totalCalificacionesRegistradas", Color.BLUE)
+		contarCalificaciones(it, "Ofensivas: ", "administracion.totalCalificacionesOfensivas", Color.RED)
 							  
 							  ]
 	}
@@ -115,15 +127,6 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 			
 			
 		]
-	}
-	
-	
-	override protected addActions(Panel actionsPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
-	override protected createFormPanel(Panel mainPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 }
