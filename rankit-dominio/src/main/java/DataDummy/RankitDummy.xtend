@@ -6,6 +6,7 @@ import model.Calificacion
 import model.Ofrecido
 import model.Usuario
 import administracion.AdministracionCalificacion
+import administracion.AdministracionOfrecidos
 
 class RankitDummy {
 			
@@ -76,5 +77,16 @@ class RankitDummy {
 		admin.usuarios.add(usuario4)
 		admin.usuarios.add(usuario5)
 
+	}
+	def crearAdminOfrecidosDummy(){
+		var AdministracionOfrecidos administrador = new AdministracionOfrecidos
+		agregarServicios(administrador)
+		administrador
+	}
+	
+	def agregarServicios(AdministracionOfrecidos ad){
+		ad.agregarServicio(netflix)
+		ad.agregarServicio(cablevision)
+		ad.agregarServicio(telecentro)
 	}
 }

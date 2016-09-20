@@ -9,9 +9,11 @@ class RankitAppModel {
 	
 	AdminUsuarioAppModel adminUsuario
 	AdminCalificacionAppModel adminCalificacion
+	AdminOfrecidosAppModel adminOfrecidos
 	
 	new() {
 		adminUsuario = new AdminUsuarioAppModel
 		adminCalificacion = new AdminCalificacionAppModel
+		adminOfrecidos = new AdminOfrecidosAppModel
 	}
 }

@@ -27,8 +27,45 @@ class AdministracionOfrecidos {
 	}
 	
 	def void agregarServicio(Ofrecido servicio){
-		this.getServicios.add(servicio)
+		this.servicios.add(servicio)
 		
+	}
+	
+	def eliminarServicio(Ofrecido servicio){
+		this.servicios.remove(servicio)
+	}
+
+	def buscaServicio(String nombre) {
+		/*	Filtra la lista de servicios por nombre	*/
+		this.servicios.filter[ofrecido | this.match(nombre, ofrecido.nombre)].toList
+	}
+	
+	def match(Object expectedValue, Object realValue) {
+		if (expectedValue == null) {
+			return true
+		}
+		if (realValue == null) {
+			return false
+		}
+		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
+	}
+	
+	def cantidadDeServicios(){
+		this.servicios.length
+	}	
+
+	def cantServiciosHabilitados(){
+		serviciosHabilitados.length
+	}
+	
+	def serviciosHabilitados() {
+		this.servicios.filter[
+			ofrecido| ofrecido.habilitado==true
+		].toList
+	}
+	
+	def cantServiciosDeshabilitados(){
+		cantidadDeServicios - cantServiciosHabilitados 
 	}
 	
 	def void altaDeLugar(String nombre){
@@ -41,6 +78,34 @@ class AdministracionOfrecidos {
 		this.getLugares.add(lugar)
 	}
 	
+	def eliminarLugar(Ofrecido lugar){
+		this.lugares.remove(lugar)
+	}
 	
+	def buscarLugar(String nombre) {
+		/*	Filtra la lista de lugares por nombre	*/
+		this.lugares.filter[ofrecido | this.match(nombre, ofrecido.nombre)].toList
+	}
 	
+	def cantidadDeLugares(){
+		this.lugares.size
+	}
+	
+	def cantLugaresHabilitados(){
+		lugaresHabilitados.size
+	}
+	
+	def lugaresHabilitados() {
+		this.lugares.filter[
+			ofrecido| ofrecido.habilitado==true
+		].toList
+	}
+	
+	def cantLugaresDeshabilitados(){
+		cantidadDeLugares - cantLugaresHabilitados
+	}
+	
+	def habilitar(Ofrecido of){
+		of.habilitar
+	}
 }
