@@ -99,7 +99,7 @@ class Usuario {
 	}
 	
 	def Calificacion getUltimaCalificacion() {
-		if(calificaciones.size == 0) {
+		if(calificaciones.empty) {
 			throw new ExceptionUsuario("El usuario no tiene publicaciones")
 		} else {
 			this.calificaciones.get(0)

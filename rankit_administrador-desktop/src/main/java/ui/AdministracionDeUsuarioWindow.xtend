@@ -1,9 +1,7 @@
 package ui
 
 import appModel.AdminUsuarioAppModel
-import java.text.SimpleDateFormat
 import model.Usuario
-import org.joda.time.DateTime
 import org.uqbar.arena.bindings.NotNullObservable
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
@@ -15,12 +13,12 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
-import org.uqbar.arena.windows.Dialog
-import org.uqbar.arena.windows.Window
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.windows.SimpleWindow
+import java.awt.Color
+import org.uqbar.ui.view.ErrorViewer
 
 class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 	
@@ -66,7 +64,7 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		panelHorizontal.layout = new HorizontalLayout
 		
 		
-		crearResumenDeInformacion(panelHorizontal, "Nombre:", "usuarioSeleccionado.nombre").width = 300
+		crearResumenDeInformacion(panelHorizontal, "Nombre:", "usuarioSeleccionado.nombre", Color.BLACK).width = 300
 		
 		new Button(panelVertical) => [
 			val elementoSeleccionado = new NotNullObservable("usuarioSeleccionado")
@@ -77,9 +75,12 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 			width = 250
 		]
 		
+				
 		new Label(panelVertical).text = "Fecha de Registro:"
 		
-		new Label(panelVertical).bindValueToProperty("usuarioSeleccionado.fechaDeIngreso") 
+		new Label(panelVertical) => [
+			value <=> "usuarioSeleccionado.fechaDeIngreso"
+			] 
 		
 		this.usuarioActivo(panelVertical)
 		
@@ -113,10 +114,14 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 			val elementoSeleccionado = new NotNullObservable("usuarioSeleccionado")
 			
 			caption = "Eliminar"
-			onClick([| modelObject.admin.eliminarUsuario(modelObject.usuarioSeleccionado)])
+			onClick([| this.eliminarUsuario])
 			bindEnabled(elementoSeleccionado)
 			width = 250
 		]
+	}
+	
+	def eliminarUsuario() {
+		(new EliminarWindow(this, modelObject)).open
 	}
 	
 	def resetPassword() {
@@ -226,13 +231,13 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		val Panel panelHorizontal = new Panel(panel)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		crearResumenDeInformacion(panelHorizontal, "Usuarios Registrados:", "admin.cantidadDeUsuarios")
-		crearResumenDeInformacion(panelHorizontal, "Activos:", "admin.cantidadDeUsuariosActivos")
-		crearResumenDeInformacion(panelHorizontal, "Inactivos:", "admin.cantidadDeUsuariosInactivos")
-		crearResumenDeInformacion(panelHorizontal, "Baneados:", "admin.cantidadDeUsuariosBaneados")
+		crearResumenDeInformacion(panelHorizontal, "Usuarios Registrados:", "admin.cantidadDeUsuarios", Color.BLUE)
+		crearResumenDeInformacion(panelHorizontal, "Activos:", "admin.cantidadDeUsuariosActivos", Color.BLUE)
+		crearResumenDeInformacion(panelHorizontal, "Inactivos:", "admin.cantidadDeUsuariosInactivos", Color.RED)
+		crearResumenDeInformacion(panelHorizontal, "Baneados:", "admin.cantidadDeUsuariosBaneados", Color.RED)
 	}
 	
-	def crearResumenDeInformacion(Panel panel, String nombreCampo, String cantidadDeCampo) {
+	def crearResumenDeInformacion(Panel panel, String nombreCampo, String cantidadDeCampo, Color color) {
 		
 		new Label(panel) => [
 						
@@ -241,6 +246,7 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		
 		new Label(panel) => [
 			value <=> cantidadDeCampo
+			foreground = color
 		]
 	}
 	
