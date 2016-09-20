@@ -8,8 +8,10 @@ import org.uqbar.commons.utils.Observable
 class RankitAppModel {
 	
 	AdminUsuarioAppModel adminUsuario
+	AdminCalificacionAppModel adminCalificacion
 	
 	new() {
 		adminUsuario = new AdminUsuarioAppModel
+		adminCalificacion = new AdminCalificacionAppModel
 	}
 }

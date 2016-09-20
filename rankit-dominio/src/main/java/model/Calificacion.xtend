@@ -20,18 +20,25 @@ class Calificacion {
 		fechaRegistro = DateTime.now
 	}
 	
-	new(Integer unosPuntos, String unDetalle, Usuario usuario, Ofrecido servicio) {
-		this.puntos = puntos
+	new(Integer unosPuntos, String unDetalle, Usuario unUsuario, Ofrecido unOfrecido) {
+		this.puntos = unosPuntos
 		this.fechaRegistro = DateTime.now
 		this.detalle = unDetalle
 		this.esOfensiva = false
-		this.usuario = usuario
-		this.ofrecido = ofrecido
+		this.usuario = unUsuario
+		this.ofrecido = unOfrecido
 	}
 	
 	def cambiarEsOfensiva() {
-		this.esOfensiva = ! esOfensiva
-		
+		this.esOfensiva = true	
+	}
+	
+	def getNombreUsuario() {
+		this.usuario.nombre
+	}
+	
+	def getNombreEvaluado() {
+		this.ofrecido.nombre
 	}
 	
 }

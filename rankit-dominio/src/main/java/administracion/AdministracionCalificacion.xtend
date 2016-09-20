@@ -5,6 +5,11 @@ import java.util.List
 import java.util.ArrayList
 import model.Ofrecido
 import model.Calificacion
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
+
+@Accessors
+@Observable
 
 class AdministracionCalificacion {
 	
@@ -12,6 +17,15 @@ class AdministracionCalificacion {
 	
 	
 	new() {
+	}
+	
+	
+	def getCalificaciones() {
+		calificaciones
+	}
+	
+	def setCalificaciones(List<Calificacion> unasCalificaciones) {
+		this.calificaciones = unasCalificaciones
 	}		
 	
 	
@@ -53,6 +67,15 @@ class AdministracionCalificacion {
 	
 	def eliminarCalificacion(Calificacion calificacion) {
 		this.calificaciones.remove(calificacion)
+	}
+	
+	def Integer totalCalificacionesRegistradas() {
+		this.calificaciones.size
+	}
+	
+	def Integer totalCalificacionesOfensivas() {
+		var List<Calificacion> ofensivas =	this.calificaciones.filter [calificacion | calificacion.esOfensiva == true].toList
+		ofensivas.size
 	}
 	
 }
