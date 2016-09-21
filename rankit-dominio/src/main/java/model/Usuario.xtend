@@ -91,11 +91,7 @@ class Usuario {
 	}
 	
 	def getFechaUltimaCalificacion() {
-		try {
 			this.getUltimaCalificacion.fechaRegistro.toString("dd/MM/YYYY HH:mm")
-		} catch (ExceptionUsuario e){
-			new RuntimeException(e)
-		}
 	}
 	
 	def Calificacion getUltimaCalificacion() {

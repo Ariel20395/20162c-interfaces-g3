@@ -19,6 +19,8 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.windows.SimpleWindow
 import java.awt.Color
 import org.uqbar.ui.view.ErrorViewer
+import org.uqbar.arena.windows.ErrorsPanel
+import org.uqbar.commons.model.UserException
 
 class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 	
@@ -66,14 +68,7 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		
 		crearResumenDeInformacion(panelHorizontal, "Nombre:", "usuarioSeleccionado.nombre", Color.BLACK).width = 300
 		
-		new Button(panelVertical) => [
-			val elementoSeleccionado = new NotNullObservable("usuarioSeleccionado")
-			
-			caption = "Edita la información"
-			onClick([| this.editarInformacion])
-			bindEnabled(elementoSeleccionado)
-			width = 250
-		]
+		new ErrorsPanel(panelVertical, "Edita la Información")
 		
 				
 		new Label(panelVertical).text = "Fecha de Registro:"
@@ -90,7 +85,6 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		
 		new Label(panelVertical) => [
 			value <=> "usuarioSeleccionado.fechaUltimaCalificacion"
-			
 		]
 		
 		new Button(panelVertical) => [
@@ -148,10 +142,6 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		new CheckBox(panelHorizontal).bindValueToProperty("usuarioSeleccionado.activo")
 		
 		new Label(panelHorizontal).text = "Activo" 
-	}
-	
-	def editarInformacion() {
-		(new EditarWindow(this, modelObject.usuarioSeleccionado)).open
 	}
 	
 	
