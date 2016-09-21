@@ -42,18 +42,24 @@ class RankitDummy {
 	def setCalificacionesAUsuarios() {
 		usuario1.calificaciones.add(calificacion1)
 		usuario1.calificaciones.add(calificacion6)
-		
 		usuario2.calificaciones.add(calificacion2)
 		usuario2.calificaciones.add(calificacion7)
-		
 		usuario3.calificaciones.add(calificacion3)
 		usuario3.calificaciones.add(calificacion8)
 		usuario3.calificaciones.add(calificacion9)
-		
 		usuario4.calificaciones.add(calificacion4)
-		
 		usuario5.calificaciones.add(calificacion5)
 	}
+	
+	def setCalifAOfrecidos(){
+		netflix.agregarCalificacion(calificacion1)
+		netflix.agregarCalificacion(calificacion2)
+		cablevision.agregarCalificacion(calificacion2)
+		telecentro.agregarCalificacion(calificacion8)
+		telecentro.agregarCalificacion(calificacion5)
+		telecentro.agregarCalificacion(calificacion9)
+	}
+	
 	
 	def crearDummyDataCalificacion() {
 		var AdministracionCalificacion administracion = new AdministracionCalificacion()

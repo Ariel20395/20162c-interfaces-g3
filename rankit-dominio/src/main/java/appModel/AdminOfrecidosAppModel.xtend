@@ -23,17 +23,16 @@ class AdminOfrecidosAppModel {
 		administrador.buscaServicio(nombreOfrecido)
 	}
 	
-	def List<Ofrecido> getLugares(){
+	/*def List<Ofrecido> getLugares(){
 		administrador.buscarLugar(nombreOfrecido)
-	}
+	}*/
 	
-	def void setNombreServicioBuscado(String nombre){
+	def void setNombreOfrecido(String nombre){
 		this.nombreOfrecido = nombre
 		firePropertyChanged(this,"servicios")
 	}
-	
-	def void setNombreLugarBuscado(String nombre){
+	/*def void setNombreLugarBuscado(String nombre){
 		this.nombreOfrecido = nombre
 		firePropertyChanged(this,"lugares")
-	}
+	} */
 }

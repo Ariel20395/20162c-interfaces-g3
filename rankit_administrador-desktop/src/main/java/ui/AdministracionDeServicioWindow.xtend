@@ -15,6 +15,8 @@ import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.tables.Table
 import model.Ofrecido
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import java.awt.Color
 
 class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel>{
 	
@@ -27,6 +29,7 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		mainPanel.layout  = new ColumnLayout(1)
 		
 		this.armarResumenSit(mainPanel)
+		this.armarBusqueda(mainPanel)
 		this.armarContenido(mainPanel)
 	}
 	
@@ -38,20 +41,23 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		this.crearResumenDeSituacion(mainPanel)
 	}
 	
-	def generarCampoDeDatos(Panel panel, String nombreAmostrar, String valorDevuelto){
+	def generarCampoDeDatos(Panel panel, String nombreAmostrar, String valorDevuelto, Color color){
 		
 		new Label(panel) => [text = nombreAmostrar]
 		
-		new Label(panel) => [value.bindToProperty(valorDevuelto)]
+		new Label(panel) => [
+			value <=> valorDevuelto
+			foreground = color
+		]
 	}
 	
 	def void crearResumenDeSituacion(Panel panel){
 		val Panel panelHorizontal = new Panel(panel)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		generarCampoDeDatos(panelHorizontal, "Servicios inscriptos:", "administrador.cantidadDeServicios")
-		generarCampoDeDatos(panelHorizontal, "Habilitados:", "administrador.cantServiciosHabilitados")
-		generarCampoDeDatos(panelHorizontal, "Desahabilitados:", "administrador.cantServiciosDeshabilitados")
+		generarCampoDeDatos(panelHorizontal, "Servicios inscriptos:", "administrador.cantidadDeServicios", Color.BLUE)
+		generarCampoDeDatos(panelHorizontal, "  Habilitados:", "administrador.cantServiciosHabilitados",Color.BLUE)
+		generarCampoDeDatos(panelHorizontal, "  Desahabilitados:", "administrador.cantServiciosDeshabilitados", Color.RED)
 	}
 
 	def armarBusqueda(Panel panel) {
@@ -66,12 +72,12 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 				
 		new Label(busqueda)=> [
 			text = "Buscar por nombre de servicio"
-			fontSize = 12
+			fontSize = 10
 		] 
 		
 		new TextBox(busqueda) => [
-			value.bindToProperty("nombreOfrecido")
-			width = 250
+			value <=> "nombreOfrecido"
+			width = 200
 		]
 	}
 
@@ -97,15 +103,27 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		this.composicionDeTabla(table)
 		new Button(panelVertical)=>[
 			caption = "Nuevo"
-			onClick([| modelObject.administrador.altaDeServicio("nombreProvisorio")])
-			width = 200
+			onClick([| modelObject.administrador.altaDeServicio("nombreProvisorio")
+			])
+			width = 50
 		]
 	}
 	def composicionDeTabla(Table<Ofrecido> table){
 		new Column<Ofrecido>(table)=>[
 			title = "Fecha de Registro"
-			fixedSize = 200 
+			fixedSize = 150 
 			bindContentsToProperty("fechaRegistro")
+		]
+		new Column<Ofrecido>(table)=>[
+			title = "Nombre"
+			fixedSize = 120
+			bindContentsToProperty("nombre")
+		]
+		new Column<Ofrecido>(table)=>[
+			title = "Habilitado"
+			fixedSize = 100 
+			bindContentsToProperty("habilitado").transformer = 
+				[Boolean habilitado | if (habilitado) "Si" else "No"]
 		]
 	}
 	def crearInteraccionDeContenido(Panel panel){
@@ -115,25 +133,32 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		val Panel panelHorizontal = new Panel(panelVertical)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		generarCampoDeDatos(panelHorizontal, "Nombre:", "ofrecidoSeleccionado.nombre").width = 300
+		generarCampoDeDatos(panelHorizontal, "Nombre:", "ofrecidoSeleccionado.nombre", Color.BLACK).width = 200
 		
 		new Button(panelVertical)=>[
 			val elemSeleccionado = new NotNullObservable("ofrecidoSeleccionado")
 			caption = "Edita la información"
 			bindEnabled(elemSeleccionado)
-			width = 250 
+			width = 200 
 		]
 		
 		new Label (panelVertical).text = "Nombre"
-		new Label (panelVertical).bindValueToProperty("ofrecidoSeleccionado.nombre")
+		new TextBox (panelVertical)=>[
+			bindValueToProperty("ofrecidoSeleccionado.nombre")
+			width = 200
+			]
 		
 		this.ofrecidoHabilitado(panelVertical)
 		
 		new Label(panelVertical).text = "Rating promedio:"
-		new Label(panelVertical).bindValueToProperty("ofrecidoSeleccionado.puntajePromedio")
-		
+		new Label(panelVertical)=>[
+				value <=> "ofrecidoSeleccionado.puntajePromedio"
+				]
 		new Label(panelVertical).text = "Calificaciones"
-		new Label(panelVertical).bindValueToProperty("ofrecidoSeleccionado.totalCalificaciones")
+		new Label(panelVertical)=>[
+				value <=>"ofrecidoSeleccionado.totalCalificaciones"
+	
+				]
 		
 		new Button(panelVertical)=>[
 			val elemSeleccionado = new NotNullObservable("ofrecidoSeleccionado")
@@ -145,12 +170,12 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		new Button(panelVertical)=>[
 			val elemSeleccionado = new NotNullObservable("ofrecidoSeleccionado")
 			caption = "Eliminar"
-			//onClick([| modelObject.
+			//onClick([| this.eliminarOfrecido])
 			bindEnabled(elemSeleccionado)
 			width = 250
 		]
-		
 	}
+	
 	
 		def ofrecidoHabilitado(Panel panel) {
 		
@@ -161,6 +186,8 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		
 		new Label(panelHorizontal).text = "Habilitado" 
 	}
+	
+	
 	override protected addActions(Panel arg0) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}

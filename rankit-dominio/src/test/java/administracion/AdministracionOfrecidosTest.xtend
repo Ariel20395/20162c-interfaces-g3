@@ -59,6 +59,7 @@ class AdministracionOfrecidosTest {
 		
 		Assert.assertEquals(1, administradorCon2LugaresY1Servicio.cantServiciosDeshabilitados, 0)
 		Assert.assertEquals(1, administradorCon2LugaresY1Servicio.cantServiciosHabilitados,0)
+		Assert.assertEquals(2, administradorCon2LugaresY1Servicio.cantidadDeServicios, 0)
 		Assert.assertTrue(servSpeedy.habilitado)
 		Assert.assertFalse(servAysa.habilitado)
 		Assert.assertEquals(1, administradorCon2LugaresY1Servicio.cantLugaresDeshabilitados, 0)

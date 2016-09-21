@@ -51,11 +51,11 @@ class AdministracionOfrecidos {
 	}
 	
 	def cantidadDeServicios(){
-		this.servicios.length
+		this.servicios.size
 	}	
 
 	def cantServiciosHabilitados(){
-		serviciosHabilitados.length
+		serviciosHabilitados.size
 	}
 	
 	def serviciosHabilitados() {
