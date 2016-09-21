@@ -18,9 +18,8 @@ import org.uqbar.arena.windows.WindowOwner
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.windows.SimpleWindow
 import java.awt.Color
-import org.uqbar.ui.view.ErrorViewer
 import org.uqbar.arena.windows.ErrorsPanel
-import org.uqbar.commons.model.UserException
+import appModel.AdminCalificacionAppModel
 
 class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 	
@@ -91,6 +90,7 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 			val elementoSeleccionado = new NotNullObservable("usuarioSeleccionado")
 			
 			caption = "Revisar Calificaciones"
+			onClick([| this.revisarPublicaciones])
 			bindEnabled(elementoSeleccionado)
 			width = 250
 		]
@@ -112,6 +112,10 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 			bindEnabled(elementoSeleccionado)
 			width = 250
 		]
+	}
+	
+	def revisarPublicaciones() {
+		(new AdministracionDeCalificacionWindow(this, new AdminCalificacionAppModel)).open
 	}
 	
 	def eliminarUsuario() {
@@ -139,7 +143,9 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		val Panel panelHorizontal = new Panel(panel)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		new CheckBox(panelHorizontal).bindValueToProperty("usuarioSeleccionado.activo")
+		new CheckBox(panelHorizontal) => [
+			value <=> ("usuarioSeleccionado.activo")
+		]
 		
 		new Label(panelHorizontal).text = "Activo" 
 	}

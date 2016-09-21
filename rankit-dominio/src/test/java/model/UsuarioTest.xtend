@@ -3,8 +3,8 @@ package model
 import org.junit.Before
 import org.junit.Test
 import org.junit.Assert
-import excepciones.ExceptionUsuario
 import java.util.List
+import org.uqbar.commons.model.UserException
 
 class UsuarioTest {
 	
@@ -73,7 +73,7 @@ class UsuarioTest {
 		usuario.banear
 		try {
 			usuario.activar	
-		} catch (ExceptionUsuario e) {
+		} catch (UserException e) {
 			
 		}
 		Assert.assertFalse(usuario.activo)

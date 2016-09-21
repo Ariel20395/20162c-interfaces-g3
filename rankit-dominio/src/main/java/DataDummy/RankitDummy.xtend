@@ -7,37 +7,68 @@ import model.Ofrecido
 import model.Usuario
 import administracion.AdministracionCalificacion
 import administracion.AdministracionOfrecidos
+import org.joda.time.DateTime
 
 class RankitDummy {
+	
+	Usuario usuario1 
+	Usuario usuario2
+	Usuario usuario3
+	Usuario usuario4
+	Usuario usuario5
+	
+	Ofrecido netflix 	 
+	Ofrecido cablevision 
+	Ofrecido telecentro  
+	Ofrecido carpinteria 
+	Ofrecido correoARG   
+	Ofrecido cineHoyts	 
+	
+	Calificacion calificacion1 
+	Calificacion calificacion2 
+	Calificacion calificacion3 
+	Calificacion calificacion4 
+	Calificacion calificacion5 
+	Calificacion calificacion6 
+	Calificacion calificacion7 
+	Calificacion calificacion8 
+	Calificacion calificacion9 
+	
+	List<Calificacion> calificaciones
 			
-	var Usuario usuario1 = new Usuario("Miguel", "123456")
-	var Usuario usuario2 = new Usuario("Juan", "67584")
-	var Usuario usuario3 = new Usuario("Paula", "339465")
-	var Usuario usuario4 = new Usuario("Ariel", "289925")
-	var Usuario usuario5 = new Usuario("German", "457249")
+	new() {
+	usuario1 = new Usuario("Miguel", "123456") 
+	usuario2 = new Usuario("Juan", "67584")
+	usuario3 = new Usuario("Paula", "339465")
+	usuario4 = new Usuario("Ariel", "289925")
+	usuario5 = new Usuario("German", "457249")
 	
+	usuario1.fechaIngreso = new DateTime(2016, 9, 1, 12, 50)
+	usuario2.fechaIngreso = new DateTime(2016, 6, 10, 15, 00)
+	usuario3.fechaIngreso = new DateTime(2016, 7, 4, 17, 50)
+	usuario4.fechaIngreso = new DateTime(2016, 8, 29, 18, 34)
+	usuario5.fechaIngreso = new DateTime(2016, 3, 9, 22, 00)
+		
+	netflix 	= new Ofrecido("Netflix")
+	cablevision = new Ofrecido("Cablevisión")
+	telecentro  = new Ofrecido("TeleCentro")
+	carpinteria = new Ofrecido("Carpintería")
+	correoARG   = new Ofrecido("CorreoArgentino")
+	cineHoyts	= new Ofrecido("Hoyts General Cinema")
 	
-	var Ofrecido netflix 	 = new Ofrecido("Netflix")
-	var Ofrecido cablevision = new Ofrecido("Cablevisión")
-	var Ofrecido telecentro  = new Ofrecido("TeleCentro")
-	var Ofrecido carpinteria = new Ofrecido("Carpintería")
-	var Ofrecido correoARG   = new Ofrecido("CorreoArgentino")
-	var Ofrecido cineHoyts	 = new Ofrecido("Hoyts General Cinema")
+	calificacion1 = new Calificacion(8,"esto anda bien",usuario1, netflix)
+	calificacion2 = new Calificacion(8,"muy caro",usuario2, cablevision)
+	calificacion3 = new Calificacion(8,"ben costo, problemas con internet",usuario3, telecentro)
+	calificacion4 = new Calificacion(8,"buenos precios",usuario4, carpinteria)
+	calificacion5 = new Calificacion(8,"no llega a tiempo establecido",usuario5, correoARG)
+	calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1, netflix)
+	calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2, cineHoyts)
+	calificacion8 = new Calificacion(6, "Se corta a veces", usuario3, netflix)
+	calificacion9 = new Calificacion(9, "Atención muy buena", usuario3, cineHoyts)
 	
-	var Calificacion calificacion1 = new Calificacion(8,"esto anda bien",usuario1, netflix)
-	var Calificacion calificacion2 = new Calificacion(8,"muy caro",usuario2, cablevision)
-	var Calificacion calificacion3 = new Calificacion(8,"ben costo, problemas con internet",usuario3, telecentro)
-	var Calificacion calificacion4 = new Calificacion(8,"buenos precios",usuario4, carpinteria)
-	var Calificacion calificacion5 = new Calificacion(8,"no llega a tiempo establecido",usuario5, correoARG)
-	var Calificacion calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1, netflix)
-	var Calificacion calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2, cineHoyts)
-	var Calificacion calificacion8 = new Calificacion(6, "Se corta a veces", usuario3, netflix)
-	var Calificacion calificacion9 = new Calificacion(9, "Atención muy buena", usuario3, cineHoyts)
-	
-	var List<Calificacion> calificaciones = #[
-		calificacion1, calificacion2, calificacion3, calificacion4, calificacion5,
-		calificacion6, calificacion7, calificacion8, calificacion9
-	]
+	calificaciones = #[	calificacion1, calificacion2, calificacion3, calificacion4, calificacion5,
+		calificacion6, calificacion7, calificacion8, calificacion9 ]
+	}
 
 	def setCalificacionesAUsuarios() {
 		usuario1.calificaciones.add(calificacion1)

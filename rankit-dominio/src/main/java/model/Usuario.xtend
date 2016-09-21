@@ -3,9 +3,9 @@ package model
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import org.joda.time.DateTime
-import excepciones.ExceptionUsuario
 import java.util.ArrayList
 import java.util.List
+import org.uqbar.commons.model.UserException
 
 @Accessors
 @Observable
@@ -36,13 +36,13 @@ class Usuario {
 		// Se pone el password por default
 		this.password = "123"
 	}
-	
+
 	def void activar() {
 		/*	EL usuario solo puede estar activo si no esta baneado	*/
 		if(! baneado) {
 			this.activo = true	
 		} else {
-			throw new ExceptionUsuario("El usuario no debe estar baneado")
+			throw new UserException("El usuario no debe estar baneado")
 		}
 	}
 	
@@ -96,7 +96,7 @@ class Usuario {
 	
 	def Calificacion getUltimaCalificacion() {
 		if(calificaciones.empty) {
-			throw new ExceptionUsuario("El usuario no tiene publicaciones")
+			throw new UserException("El usuario no tiene publicaciones")
 		} else {
 			this.calificaciones.get(0)
 		}
