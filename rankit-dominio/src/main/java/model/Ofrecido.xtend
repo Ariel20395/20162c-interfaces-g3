@@ -50,7 +50,7 @@ class Ofrecido {
 	}
 	
 	def totalCalificaciones(){
-		this.calificaciones.length
+		this.calificaciones.size
 	
 	}
 	
