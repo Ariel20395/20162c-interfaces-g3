@@ -3,30 +3,26 @@ package ui
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.widgets.Label
+import appModel.AdminCalificacionAppModel
 import org.uqbar.arena.widgets.Button
-import appModel.AdminUsuarioAppModel
 
-class EliminarWindow extends TransactionalDialog<AdminUsuarioAppModel>  {
+class confirmacionDeEliminacionCalificacion extends TransactionalDialog<AdminCalificacionAppModel> {
 	
-	new(WindowOwner owner, AdminUsuarioAppModel model) {
+	new(WindowOwner owner, AdminCalificacionAppModel model) {
 		super(owner, model)
+		taskDescription = "¿Esta seguro que desea eliminar calificacion?"
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
 		
-		this.title = "Eliminar Usuario"
-		mainPanel.layout  = new ColumnLayout(1)
-		new Label(mainPanel).text = "¿Desea eliminar Usuario?"
-			
+		this.title = "Eliminar"
 	}
 		
 	override protected void addActions(Panel actions) {
 		
 		new Button(actions) => [
 			caption = "Aceptar"
-			onClick [| this.modelObject.admin.eliminarUsuario(modelObject.usuarioSeleccionado); this.accept]
+			onClick [| this.modelObject.administracion.eliminarCalificacion(modelObject.calificacionSeleccionada); this.accept]
 			setAsDefault
 			disableOnError	
 		]

@@ -20,6 +20,7 @@ class Calificacion {
 		fechaRegistro = DateTime.now
 	}
 	
+	//Constructor 
 	new(Integer unosPuntos, String unDetalle, Usuario unUsuario, Ofrecido unOfrecido) {
 		this.puntos = unosPuntos
 		this.fechaRegistro = DateTime.now
@@ -29,18 +30,22 @@ class Calificacion {
 		this.ofrecido = unOfrecido
 	}
 	
+	//Cambia la calificacion a el not de esOfensiva.
 	def cambiarEsOfensiva() {
 		this.esOfensiva = ! esOfensiva	
 	}
 	
+	//Retorna el nombre del usuario.
 	def getNombreUsuario() {
 		this.usuario.nombre
 	}
 	
+	//Retorna el nombre del evaluado.
 	def getNombreEvaluado() {
 		this.ofrecido.nombre
 	}
 	
+	//Retorna la fecha de registro de la calificacion.
 	def getFechaRegistro() {
 		this.fechaRegistro.toString("dd/MM/YYYY HH:mm")
 	}

@@ -25,8 +25,7 @@ class RankitDummy {
 	var Ofrecido cineHoyts	 = new Ofrecido("Hoyts General Cinema")
 	
 	var Calificacion calificacion1 = new Calificacion(8,"Anda muy bien,
-   pero tendrian que poner mas temporadas de las series
-   y tambien hacer la app compatible con linux",usuario1, netflix)
+   pero tendrian que poner mas temporadas de las series",usuario1, netflix)
 	var Calificacion calificacion2 = new Calificacion(8,"muy caro",usuario2, cablevision)
 	var Calificacion calificacion3 = new Calificacion(8,"ben costo, problemas con internet",usuario3, telecentro)
 	var Calificacion calificacion4 = new Calificacion(8,"buenos precios",usuario4, carpinteria)

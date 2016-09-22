@@ -49,10 +49,10 @@ class AdministracionCalificacion {
 	}
 	
 	
-	def nuevaCalificacion() {
+	def void nuevaCalificacion() {
 		var Usuario usuario = new Usuario("ADMIN", "123")
 		var Ofrecido ofrecido = new Ofrecido("prueba")
-		var Calificacion calificacion = new  Calificacion(7, "prueba", usuario, ofrecido)
+		var Calificacion calificacion = new Calificacion(7, "prueba", usuario, ofrecido)
 		
 		agregarCalificacion(calificacion)
 	}

@@ -15,14 +15,17 @@ class AdminCalificacionAppModel {
 	String usuarioBuscado
 	String evaluadoBuscado
 	
+	//Constructor
 	new() {
 		administracion = new AdministracionCalificacion()	
 	}
 	
+	//Retorna la lista de calificaciones del 
 	def List<Calificacion> getCalificacionesEvaluado() {
 		administracion.buscarOfrecido(evaluadoBuscado)
 	}
 	
+	//
 	def List<Calificacion> getCalificacionesUsuarios() {
 		administracion.buscarUsuario(usuarioBuscado)
 	}
