@@ -55,6 +55,10 @@ class Ofrecido {
 	}
 	
 	def puntajePromedio(){
-		return this.puntajeTotal / this.totalCalificaciones
+		var res =  0
+		if (this.totalCalificaciones < 1){
+			return res
+		}
+		return this.puntajeTotal / this.totalCalificaciones 
 	}
 }

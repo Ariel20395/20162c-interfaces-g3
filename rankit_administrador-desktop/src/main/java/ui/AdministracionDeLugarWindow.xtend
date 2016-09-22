@@ -16,6 +16,7 @@ import org.uqbar.arena.widgets.tables.Table
 import model.Ofrecido
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import java.awt.Color
+import appModel.AdminCalificacionAppModel
 
 class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 	
@@ -134,12 +135,13 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		
 		generarCampoDeDatos(panelHorizontal, "Nombre:", "ofrecidoSeleccionado.nombre", Color.BLACK).width = 200
 		
-		new Button(panelVertical)=>[
-			val elemSeleccionado = new NotNullObservable("ofrecidoSeleccionado")
-			caption = "Edita la información"
-			bindEnabled(elemSeleccionado)
-			width = 200 
-		]
+		new Label (panelVertical)=>[
+			text = "Edita la información"
+			fontSize = 11
+			background = Color.WHITE
+			width = 200
+			height = 25
+			]
 		
 		new Label (panelVertical).text = "Nombre"
 		new TextBox (panelVertical)=>[
@@ -156,6 +158,7 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		new Button(panelVertical)=>[
 			val elemSeleccionado = new NotNullObservable("ofrecidoSeleccionado")
 			caption = "Revisar Calificaciones"
+			onClick([|this.verCalificaciones])
 			bindEnabled(elemSeleccionado)
 			width = 250
 		]
@@ -163,14 +166,20 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		new Button(panelVertical)=>[
 			val elemSeleccionado = new NotNullObservable("ofrecidoSeleccionado")
 			caption = "Eliminar"
-			//onClick([| this.eliminarOfrecido])
+			onClick([| this.eliminarLugar()])
 			bindEnabled(elemSeleccionado)
 			width = 250
 		]
 	}
-	
-	
-		def ofrecidoHabilitado(Panel panel) {
+	def eliminarLugar() {
+		(new ConfirmEliminarLugarWindow (this, modelObject)).open
+	}
+
+	def verCalificaciones() {
+		 (new AdministracionDeCalificacionWindow(this, new AdminCalificacionAppModel)).open	
+	}
+
+	def ofrecidoHabilitado(Panel panel) {
 		
 		val Panel panelHorizontal = new Panel(panel)
 		panelHorizontal.layout = new HorizontalLayout

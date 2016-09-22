@@ -91,7 +91,7 @@ class Usuario {
 	}
 	
 	def getFechaUltimaCalificacion() {
-			this.getUltimaCalificacion.fechaRegistro.toString("dd/MM/YYYY HH:mm")
+		this.getUltimaCalificacion.fechaRegistro
 	}
 	
 	def Calificacion getUltimaCalificacion() {
