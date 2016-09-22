@@ -115,11 +115,15 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 	}
 	
 	def revisarPublicaciones() {
-		(new AdministracionDeCalificacionWindow(this, new AdminCalificacionAppModel)).open
+		(new AdministracionDeCalificacionWindow(this, new AdminCalificacionAppModel => [
+			administracion.calificaciones = modelObject.usuarioSeleccionado.calificaciones
+			nombreUsuarioBuscado = modelObject.usuarioSeleccionado.nombre
+		])).open
 	}
 	
 	def eliminarUsuario() {
-		(new EliminarWindow(this, modelObject)).open
+		var AdminUsuarioAppModel model = this.modelObject;
+		(new EliminarWindow(this, model)).open
 	}
 	
 	def resetPassword() {
@@ -236,7 +240,6 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 	def crearResumenDeInformacion(Panel panel, String nombreCampo, String cantidadDeCampo, Color color) {
 		
 		new Label(panel) => [
-						
 			text = nombreCampo
 		]
 		

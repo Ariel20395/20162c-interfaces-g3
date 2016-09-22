@@ -17,6 +17,7 @@ import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.KeyWordTextArea
 import org.uqbar.arena.widgets.NumericField
 import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.bindings.NotNullObservable
 
 class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionAppModel> {
 	
@@ -75,10 +76,25 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 			subtitulo(it, "Detalle")
 			new KeyWordTextArea(it) => [
 				value <=> "calificacionSeleccionada.detalle"
+				width = 250
+				height = 50
+				multiLine = true
 			]
 			
 			habilitado(it)
+			
+			new Button(it)=>[
+				val elemSeleccionado = new NotNullObservable("calificacionSeleccionada")
+				caption = "Eliminar"
+				onClick([| this.eliminarCalificacion])
+				bindEnabled(elemSeleccionado)
+				width = 250
+			]
 		]
+	}
+	
+	def eliminarCalificacion() {
+		(new EliminarCalificacionWindow (this, modelObject)).open
 	}
 	
 	
@@ -117,9 +133,9 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 		new Panel(miPanel) => [
 			layout = new HorizontalLayout
 			subtitulo(it, "Usuario")
-			busqueda(it, "usuarioBuscado")
+			busqueda(it, "nombreUsuarioBuscado")
 			subtitulo(it, "Evaluado")
-			busqueda(it, "evaluadoBuscado")
+			busqueda(it, "nombreOfrecidoBuscado")
 		]
 	}
 	
@@ -135,11 +151,9 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 	}
 	
 	
-	
-	
 	def panelTablaDeCalificaciones(Panel miPanel) {
 			val table = new Table<Calificacion>(miPanel, typeof(Calificacion)) => [
-				items <=> "administracion.calificaciones"
+				items <=> "calificaciones"
 				value <=> "calificacionSeleccionada"
 				numberVisibleRows = 10
 			]
@@ -156,13 +170,13 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 	def descripcionDeLaTabla(Table<Calificacion> table){
 		new Column<Calificacion>(table) => [
 			title = "Evaluado"
-			fixedSize = 100
+			fixedSize = 150
 			bindContentsToProperty("nombreEvaluado")
 		]
 		
 		new Column<Calificacion>(table) => [
 			title = "Ptos"
-			fixedSize = 20
+			fixedSize = 50
 			bindContentsToProperty("puntos")
 		]
 		
@@ -180,7 +194,7 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 		
 		new Column<Calificacion>(table) => [
 			title = "Es Ofensiva"
-			fixedSize = 20
+			fixedSize = 90
 			bindContentsToProperty("esOfensiva").transformer = 
 			 [ Boolean esOfensiva | 
 			 	if (esOfensiva) "Si" else "No"]	

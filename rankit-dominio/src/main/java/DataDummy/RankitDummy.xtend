@@ -37,37 +37,37 @@ class RankitDummy {
 	List<Calificacion> calificaciones
 			
 	new() {
-	usuario1 = new Usuario("Miguel", "123456") 
-	usuario2 = new Usuario("Juan", "67584")
-	usuario3 = new Usuario("Paula", "339465")
-	usuario4 = new Usuario("Ariel", "289925")
-	usuario5 = new Usuario("German", "457249")
-	
-	usuario1.fechaIngreso = new DateTime(2016, 9, 1, 12, 50)
-	usuario2.fechaIngreso = new DateTime(2016, 6, 10, 15, 00)
-	usuario3.fechaIngreso = new DateTime(2016, 7, 4, 17, 50)
-	usuario4.fechaIngreso = new DateTime(2016, 8, 29, 18, 34)
-	usuario5.fechaIngreso = new DateTime(2016, 3, 9, 22, 00)
+		usuario1 = new Usuario("Miguel", "123456") 
+		usuario2 = new Usuario("Juan", "67584")
+		usuario3 = new Usuario("Paula", "339465")
+		usuario4 = new Usuario("Ariel", "289925")
+		usuario5 = new Usuario("German", "457249")
 		
-	netflix 	= new Ofrecido("Netflix")
-	cablevision = new Ofrecido("Cablevisión")
-	telecentro  = new Ofrecido("TeleCentro")
-	carpinteria = new Ofrecido("Carpintería")
-	correoARG   = new Ofrecido("CorreoArgentino")
-	cineHoyts	= new Ofrecido("Hoyts General Cinema")
-	
-	calificacion1 = new Calificacion(8,"esto anda bien",usuario1, netflix)
-	calificacion2 = new Calificacion(8,"muy caro",usuario2, cablevision)
-	calificacion3 = new Calificacion(8,"ben costo, problemas con internet",usuario3, telecentro)
-	calificacion4 = new Calificacion(8,"buenos precios",usuario4, carpinteria)
-	calificacion5 = new Calificacion(8,"no llega a tiempo establecido",usuario5, correoARG)
-	calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1, netflix)
-	calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2, cineHoyts)
-	calificacion8 = new Calificacion(6, "Se corta a veces", usuario3, netflix)
-	calificacion9 = new Calificacion(9, "Atención muy buena", usuario3, cineHoyts)
-	
-	calificaciones = #[	calificacion1, calificacion2, calificacion3, calificacion4, calificacion5,
-		calificacion6, calificacion7, calificacion8, calificacion9 ]
+		usuario1.fechaIngreso = new DateTime(2016, 9, 1, 12, 50)
+		usuario2.fechaIngreso = new DateTime(2016, 6, 10, 15, 00)
+		usuario3.fechaIngreso = new DateTime(2016, 7, 4, 17, 50)
+		usuario4.fechaIngreso = new DateTime(2016, 8, 29, 18, 34)
+		usuario5.fechaIngreso = new DateTime(2016, 3, 9, 22, 00)
+			
+		netflix 	= new Ofrecido("Netflix")
+		cablevision = new Ofrecido("Cablevisión")
+		telecentro  = new Ofrecido("TeleCentro")
+		carpinteria = new Ofrecido("Carpintería")
+		correoARG   = new Ofrecido("CorreoArgentino")
+		cineHoyts	= new Ofrecido("Hoyts General Cinema")
+		
+		calificacion1 = new Calificacion(8,"esto anda bien",usuario1, netflix)
+		calificacion2 = new Calificacion(8,"muy caro",usuario2, cablevision)
+		calificacion3 = new Calificacion(8,"ben costo, problemas con internet",usuario3, telecentro)
+		calificacion4 = new Calificacion(8,"buenos precios",usuario4, carpinteria)
+		calificacion5 = new Calificacion(8,"no llega a tiempo establecido",usuario5, correoARG)
+		calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1, netflix)
+		calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2, cineHoyts)
+		calificacion8 = new Calificacion(6, "Se corta a veces", usuario3, netflix)
+		calificacion9 = new Calificacion(9, "Atención muy buena", usuario3, cineHoyts)
+		
+		calificaciones = #[	calificacion1, calificacion2, calificacion3, calificacion4, calificacion5,
+			calificacion6, calificacion7, calificacion8, calificacion9 ]
 	}
 
 	def setCalificacionesAUsuarios() {

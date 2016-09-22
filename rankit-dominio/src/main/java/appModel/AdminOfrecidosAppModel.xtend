@@ -13,26 +13,27 @@ class AdminOfrecidosAppModel {
 	
 	AdministracionOfrecidos administrador
 	Ofrecido ofrecidoSeleccionado
-	String nombreOfrecido
+	String nombreServicio
+	String nombreLugar
 	
 	new(){
 		administrador = new AdministracionOfrecidos
 	}
 	
 	def List<Ofrecido> getServicios(){
-		administrador.buscaServicio(nombreOfrecido)
+		administrador.buscaServicio(nombreServicio)
 	}
 	
 	def List<Ofrecido> getLugares(){
-		administrador.buscarLugar(nombreOfrecido)
+		administrador.buscarLugar(nombreLugar)
 	}
 	
-	def void setNombreOfrecido(String nombre){
-		this.nombreOfrecido = nombre
+	def void setNombreServicio(String nombre){
+		this.nombreServicio = nombre
 		firePropertyChanged(this,"servicios")
 	}
-	def void setNombreLugarBuscado(String nombre){
-		this.nombreOfrecido = nombre
+	def void setNombreLugar(String nombre){
+		this.nombreLugar = nombre
 		firePropertyChanged(this,"lugares")
 	} 
 }

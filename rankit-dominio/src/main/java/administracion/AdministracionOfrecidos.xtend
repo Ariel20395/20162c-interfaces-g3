@@ -108,4 +108,15 @@ class AdministracionOfrecidos {
 	def habilitar(Ofrecido of){
 		of.habilitar
 	}
+	
+	def eliminarOfrecido(Ofrecido ofrecido) {
+		if (this.lugares.contains(ofrecido)) {
+			this.eliminarLugar(ofrecido)	
+		}
+		if (this.servicios.contains(ofrecido)) {
+			this.eliminarServicio(ofrecido)	
+		}
+		
+	}
+	
 }

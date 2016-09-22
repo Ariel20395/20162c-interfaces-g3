@@ -76,7 +76,7 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		] 
 		
 		new TextBox(busqueda) => [
-			value <=> "nombreOfrecido"
+			value <=> "nombreLugar"
 			width = 200
 		]
 	}
@@ -98,7 +98,7 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		val table = new Table<Ofrecido>(panelVertical, typeof (Ofrecido))=>[
 			items.bindToProperty("lugares")
 			value.bindToProperty("ofrecidoSeleccionado")
-			numberVisibleRows = 5
+			numberVisibleRows = 10
 		]
 		this.composicionDeTabla(table)
 		new Button(panelVertical)=>[
@@ -176,7 +176,10 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 	}
 
 	def verCalificaciones() {
-		 (new AdministracionDeCalificacionWindow(this, new AdminCalificacionAppModel)).open	
+		 (new AdministracionDeCalificacionWindow(this, new AdminCalificacionAppModel => [
+			administracion.calificaciones = modelObject.ofrecidoSeleccionado.getCalificaciones
+			nombreOfrecidoBuscado = modelObject.ofrecidoSeleccionado.nombre
+		])).open		
 	}
 
 	def ofrecidoHabilitado(Panel panel) {

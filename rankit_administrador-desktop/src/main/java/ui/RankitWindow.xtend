@@ -10,7 +10,6 @@ import org.uqbar.arena.windows.Window
 import org.uqbar.arena.layout.ColumnLayout
 
 
-
 class RankitWindow extends Window<RankitAppModel>{
 	
 	new(WindowOwner parent, RankitAppModel model) {
@@ -65,6 +64,7 @@ class RankitWindow extends Window<RankitAppModel>{
 			onClick([| this.administracionDeLugar])
 			width = 150
 		]
+		
 	}
 	
 	def administracionDeUsuario() {

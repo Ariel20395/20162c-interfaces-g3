@@ -12,24 +12,25 @@ import static org.uqbar.commons.model.ObservableUtils.*
 class AdminCalificacionAppModel {
 	AdministracionCalificacion administracion
 	Calificacion calificacionSeleccionada
-	String usuarioBuscado
-	String evaluadoBuscado
+	String nombreUsuarioBuscado
+	String nombreOfrecidoBuscado
 	
 	new() {
 		administracion = new AdministracionCalificacion()	
 	}
 	
-	def List<Calificacion> getCalificacionesEvaluado() {
-		administracion.buscarOfrecido(evaluadoBuscado)
-	}
-	
-	def List<Calificacion> getCalificacionesUsuarios() {
-		administracion.buscarUsuario(usuarioBuscado)
+	def List<Calificacion> getCalificaciones() {
+		administracion.buscarCalificacion(nombreUsuarioBuscado, nombreOfrecidoBuscado)
 	}
 	
 	def void setNombreUsuarioBuscado(String nombre){
-		this.usuarioBuscado = nombre
-		firePropertyChanged(this,"administracion.calificaciones")
+		this.nombreUsuarioBuscado = nombre
+		firePropertyChanged(this,"calificaciones")
+	}
+	
+	def void setNombreOfrecidoBuscado(String nombre){
+		this.nombreOfrecidoBuscado = nombre
+		firePropertyChanged(this,"calificaciones")
 	}
 	
 }
