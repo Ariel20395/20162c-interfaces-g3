@@ -30,7 +30,7 @@ class Calificacion {
 	}
 	
 	def cambiarEsOfensiva() {
-		this.esOfensiva = true	
+		this.esOfensiva = ! esOfensiva	
 	}
 	
 	def getNombreUsuario() {
@@ -39,6 +39,10 @@ class Calificacion {
 	
 	def getNombreEvaluado() {
 		this.ofrecido.nombre
+	}
+	
+	def getFechaRegistro() {
+		this.fechaRegistro.toString("dd/MM/YYYY HH:mm")
 	}
 	
 }

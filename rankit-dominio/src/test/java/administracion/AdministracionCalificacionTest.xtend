@@ -6,6 +6,7 @@ import org.junit.Test
 import model.Calificacion
 import model.Usuario
 import model.Ofrecido
+import java.util.List
 
 class AdministracionCalificacionTest {
 	AdministracionCalificacion administracionCalificacion
@@ -26,10 +27,43 @@ class AdministracionCalificacionTest {
 		ofrecido2 = new Ofrecido("Personal")
 		calificacion2 = new Calificacion(8, "Buena señal",usuario2 , ofrecido2)
 		
+		administracionCalificacion.agregarCalificacion(calificacion1)
+		administracionCalificacion.agregarCalificacion(calificacion2)
 	}
 
-	@Test def void test() {
+	//Dada una lista de caificaciones con dos calificaciones, le pido su total de calificaiones registradas y responde 2.
+	@Test def void testAgregarCalificacion() {
 		
-		fail("Not yet implemented")
+		assertEquals(2, administracionCalificacion.totalCalificacionesRegistradas)
+	}
+	
+	//Elimino la calificacion1 y verifico su cantidad de calificaiones sea 1 y que no contenga la lista a calificacion1
+	@Test def void testEliminarCalificacion() {
+		administracionCalificacion.eliminarCalificacion(calificacion1)
+		
+		
+		assertEquals(1, administracionCalificacion.totalCalificacionesRegistradas)
+		assertTrue(administracionCalificacion.calificaciones.contains(calificacion2))
+		assertFalse(administracionCalificacion.calificaciones.contains(calificacion1))	
+	}
+	
+	//Cambio la calificacion1 a esOfensiva = true y cuando le pregunto la cantidad de calificaciones ofensiva responde 1
+	@Test def void testTotalCalificacionesOfensivas() {
+		calificacion1.cambiarEsOfensiva
+		
+		assertEquals(1, administracionCalificacion.totalCalificacionesOfensivas)
+	}
+	
+	//Agrego una nueva calificacion, entonces su cantidad de calificaiones se incrementan en 1
+	@Test def void testNuevaCalificacion() {
+		administracionCalificacion.nuevaCalificacion
+		
+		assertEquals(3, administracionCalificacion.totalCalificacionesRegistradas)
+	}
+	
+	@Test def void BuscarUsuario() {
+		var List<Calificacion> calificacion = #[calificacion2]
+		
+		assertEquals(calificacion, administracionCalificacion.buscarUsuario("Marcos"))
 	}
 }

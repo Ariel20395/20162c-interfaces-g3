@@ -20,11 +20,9 @@ class AdministracionCalificacion {
 	}
 	
 	
-	def getCalificaciones() {
-		calificaciones
-	}
 	
-	def setCalificaciones(List<Calificacion> unasCalificaciones) {
+	
+	def void setCalificaciones(List<Calificacion> unasCalificaciones) {
 		this.calificaciones = unasCalificaciones
 	}		
 	
@@ -53,19 +51,19 @@ class AdministracionCalificacion {
 	
 	def nuevaCalificacion() {
 		var Usuario usuario = new Usuario("ADMIN", "123")
-		var Ofrecido ofrecido = new Ofrecido("netflix")
+		var Ofrecido ofrecido = new Ofrecido("prueba")
 		var Calificacion calificacion = new  Calificacion(7, "prueba", usuario, ofrecido)
 		
 		agregarCalificacion(calificacion)
 	}
 	
 	
-	def agregarCalificacion(Calificacion calificacion) {
+	def  void agregarCalificacion(Calificacion calificacion) {
 		this.calificaciones.add(calificacion) 
 	}
 	
 	
-	def eliminarCalificacion(Calificacion calificacion) {
+	def  void eliminarCalificacion(Calificacion calificacion) {
 		this.calificaciones.remove(calificacion)
 	}
 	
