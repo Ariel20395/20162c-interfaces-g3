@@ -16,8 +16,13 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.KeyWordTextArea
 import org.uqbar.arena.widgets.NumericField
+<<<<<<< HEAD
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.bindings.NotNullObservable
+=======
+import org.uqbar.arena.bindings.NotNullObservable
+import org.uqbar.arena.layout.VerticalLayout
+>>>>>>> d1aba0c40a2a24588b48afdfbd6b0e4c6c487641
 
 class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionAppModel> {
 	
@@ -49,14 +54,17 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 	
 	def panelTablaEInformacion(Panel miPanel) {
 		new Panel(miPanel) => [
-		layout = new ColumnLayout(2)
-		
-		val panelIzquierdo = new Panel(it) => [
-		panelTablaDeCalificaciones(it)
-		]
-		val panelDerecho = new Panel(it) => [
-		panelDeInformacion(it)
-		]
+			layout = new HorizontalLayout
+			
+			val panelIzquierdo = new Panel(it) => [
+			layout = new VerticalLayout
+			panelTablaDeCalificaciones(it)
+			]
+			
+			val panelDerecho = new Panel(it) => [
+			layout = new VerticalLayout
+			panelDeInformacion(it)
+			]
 		]
 		
 	}
@@ -87,8 +95,12 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 			subtitulo(it, "Detalle")
 			new KeyWordTextArea(it) => [
 				value <=> "calificacionSeleccionada.detalle"
+				width = 250
+				height = 50
+				multiLine = true
 			]
 			
+<<<<<<< HEAD
 			calificaionOfensiva(it)
 			
 			new Button(it) => [
@@ -102,6 +114,27 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 	}
 	
 	def calificaionOfensiva(Panel miPanel) {
+=======
+			habilitado(it)
+			
+			new Button(it)=>[
+				val elemSeleccionado = new NotNullObservable("calificacionSeleccionada")
+				caption = "Eliminar"
+				onClick([| this.eliminarCalificacion])
+				bindEnabled(elemSeleccionado)
+				width = 250
+			]
+		]
+	}
+	
+	def eliminarCalificacion() {
+		(new EliminarCalificacionWindow (this, modelObject)).open
+	}
+	
+	
+	
+	def habilitado(Panel miPanel) {
+>>>>>>> d1aba0c40a2a24588b48afdfbd6b0e4c6c487641
 		new Panel(miPanel) => [
 			layout = new HorizontalLayout
 			new CheckBox(it) => [
@@ -135,9 +168,9 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 		new Panel(miPanel) => [
 			layout = new HorizontalLayout
 			subtitulo(it, "Usuario")
-			busqueda(it, "usuarioBuscado")
+			busqueda(it, "nombreUsuarioBuscado")
 			subtitulo(it, "Evaluado")
-			busqueda(it, "evaluadoBuscado")
+			busqueda(it, "nombreOfrecidoBuscado")
 		]
 	}
 	
@@ -155,7 +188,7 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 	
 	def panelTablaDeCalificaciones(Panel miPanel) {
 			val table = new Table<Calificacion>(miPanel, typeof(Calificacion)) => [
-				items <=> "administracion.calificaciones"
+				items <=> "calificaciones"
 				value <=> "calificacionSeleccionada"
 				numberVisibleRows = 10
 			]
@@ -172,13 +205,13 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 	def descripcionDeLaTabla(Table<Calificacion> table){
 		new Column<Calificacion>(table) => [
 			title = "Evaluado"
-			fixedSize = 100
+			fixedSize = 150
 			bindContentsToProperty("nombreEvaluado")
 		]
 		
 		new Column<Calificacion>(table) => [
 			title = "Ptos"
-			fixedSize = 20
+			fixedSize = 50
 			bindContentsToProperty("puntos")
 		]
 		
@@ -196,7 +229,7 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 		
 		new Column<Calificacion>(table) => [
 			title = "Es Ofensiva"
-			fixedSize = 20
+			fixedSize = 90
 			bindContentsToProperty("esOfensiva").transformer = 
 			 [ Boolean esOfensiva | 
 			 	if (esOfensiva) "Si" else "No"]	

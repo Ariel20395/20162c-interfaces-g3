@@ -2,11 +2,11 @@ package ui
 
 import appModel.AdminOfrecidosAppModel
 import org.uqbar.arena.aop.windows.TransactionalDialog
-import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.windows.WindowOwner
 
 class ConfirmEliminarServWindow extends TransactionalDialog<AdminOfrecidosAppModel> {
 	
@@ -15,18 +15,26 @@ class ConfirmEliminarServWindow extends TransactionalDialog<AdminOfrecidosAppMod
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		this.title = "Eliminar Servicio"
+		this.title = this.titulo
 		
 		mainPanel.layout = new ColumnLayout(1)
 		
-		new Label(mainPanel).text = "¿Desea eliminar el Servicio?"
+		new Label(mainPanel).text = mensajeDeAlerta()
+	}
+	
+	def mensajeDeAlerta() {
+		"¿Desea eliminar el Servicio?"
+	}
+	
+	def titulo() {
+		"Eliminar Servicio"
 	}
 	
 	override protected void addActions(Panel actions) {
 		
 		new Button(actions) => [
 			caption = "Aceptar"
-			onClick [| this.modelObject.administrador.eliminarServicio(modelObject.ofrecidoSeleccionado); this.accept]
+			onClick [| this.modelObject.administrador.eliminarOfrecido(modelObject.ofrecidoSeleccionado); this.accept]
 			setAsDefault
 			disableOnError	
 			width = 100
@@ -40,5 +48,5 @@ class ConfirmEliminarServWindow extends TransactionalDialog<AdminOfrecidosAppMod
 			width = 100	
 		]
 	}
-	
+
 }

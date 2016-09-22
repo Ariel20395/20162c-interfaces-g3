@@ -61,4 +61,8 @@ class Ofrecido {
 		}
 		return this.puntajeTotal / this.totalCalificaciones 
 	}
+	
+	def getFechaRegistro() {
+		this.fechaRegistro.toString("dd/MM/YYYY hh:mm")
+	}
 }

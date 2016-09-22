@@ -43,7 +43,7 @@ class AdministracionUsuario {
 		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
 	}
 	
-	def eliminarUsuario(Usuario usuario) {
+	def void eliminarUsuario(Usuario usuario) {
 		/*	Elimina a un usuario de la lista de usuarios */
 		this.usuarios.remove(usuario)
 	}

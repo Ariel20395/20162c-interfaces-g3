@@ -6,6 +6,7 @@ import model.Usuario
 import static org.uqbar.commons.model.ObservableUtils.*
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import org.uqbar.commons.model.UserException
 
 @Accessors
 @Observable
@@ -20,6 +21,9 @@ class AdminUsuarioAppModel {
 	}
 	
 	def List<Usuario> getUsuarios() {
+		if(admin.buscarUsuario(nombreUsuarioBuscado).isEmpty) {
+			throw new UserException("No hay usuarios con ese nombre")
+		}
 		admin.buscarUsuario(nombreUsuarioBuscado)
 	}
 	

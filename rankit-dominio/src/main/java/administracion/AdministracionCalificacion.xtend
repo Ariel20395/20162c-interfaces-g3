@@ -18,26 +18,12 @@ class AdministracionCalificacion {
 	
 	new() {
 	}
-	
-	
-	
-	
-	def void setCalificaciones(List<Calificacion> unasCalificaciones) {
-		this.calificaciones = unasCalificaciones
-	}		
-	
-	
-	def buscarUsuario(String nombre) {
-		
-		this.calificaciones.filter[calificacion | this.match(nombre, calificacion.usuario.nombre)].toList
+
+	def buscarCalificacion(String nombreUsuario, String nombreOfrecido) {
+		this.calificaciones.filter[calificacion | this.match(nombreUsuario, calificacion.usuario.nombre) &&
+			this.match(nombreOfrecido, calificacion.ofrecido.nombre)].toList
 	}
-	
-	
-	def buscarOfrecido(String nombre) {
-		
-		this.calificaciones.filter[calificacion | this.match(nombre, calificacion.ofrecido.nombre)].toList
-	}
-	
+
 	def match(Object expectedValue, Object realValue) {
 		if (expectedValue == null) {
 			return true
@@ -74,6 +60,10 @@ class AdministracionCalificacion {
 	def Integer totalCalificacionesOfensivas() {
 		var List<Calificacion> ofensivas =	this.calificaciones.filter [calificacion | calificacion.esOfensiva == true].toList
 		ofensivas.size
+	}
+	
+	def Integer totalCalificacionesNoOfensivas() {
+		totalCalificacionesRegistradas - totalCalificacionesOfensivas
 	}
 	
 }

@@ -64,6 +64,6 @@ class AdministracionCalificacionTest {
 	@Test def void BuscarUsuario() {
 		var List<Calificacion> calificacion = #[calificacion2]
 		
-		assertEquals(calificacion, administracionCalificacion.buscarUsuario("Marcos"))
+		assertEquals(calificacion, administracionCalificacion.buscarCalificacion("Marcos", null))
 	}
 }
