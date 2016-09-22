@@ -48,6 +48,10 @@ class RankitDummy {
 		usuario3.fechaIngreso = new DateTime(2016, 7, 4, 17, 50)
 		usuario4.fechaIngreso = new DateTime(2016, 8, 29, 18, 34)
 		usuario5.fechaIngreso = new DateTime(2016, 3, 9, 22, 00)
+		
+		usuario1.banear
+		usuario2.activar
+		usuario3.activar
 			
 		netflix 	= new Ofrecido("Netflix")
 		cablevision = new Ofrecido("Cablevisión")
@@ -55,6 +59,13 @@ class RankitDummy {
 		carpinteria = new Ofrecido("Carpintería")
 		correoARG   = new Ofrecido("CorreoArgentino")
 		cineHoyts	= new Ofrecido("Hoyts General Cinema")
+		
+		netflix.fechaRegistro = new DateTime(2016, 9, 5, 12, 00)
+		cablevision.fechaRegistro 	= new DateTime(2015, 10, 2, 15, 00)
+		telecentro.fechaRegistro 	= new DateTime(2016, 1, 20, 10, 00)
+		carpinteria.fechaRegistro 	= new DateTime(2016, 6, 10, 9, 00)
+		correoARG.fechaRegistro		= new DateTime(2015, 9, 9, 19, 00)
+		cineHoyts.fechaRegistro		= new DateTime(2015, 11, 12, 9, 00)
 		
 		calificacion1 = new Calificacion(8,"esto anda bien",usuario1, netflix)
 		calificacion2 = new Calificacion(8,"muy caro",usuario2, cablevision)

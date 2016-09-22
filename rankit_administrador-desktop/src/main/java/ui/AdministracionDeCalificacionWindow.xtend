@@ -16,8 +16,8 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.KeyWordTextArea
 import org.uqbar.arena.widgets.NumericField
-import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.bindings.NotNullObservable
+import org.uqbar.arena.layout.VerticalLayout
 
 class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionAppModel> {
 	
@@ -49,14 +49,17 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 	
 	def panelColumna2(Panel miPanel) {
 		new Panel(miPanel) => [
-		layout = new ColumnLayout(2)
-		
-		val panelIzquierdo = new Panel(it) => [
-		panelTablaDeCalificaciones(it)
-		]
-		val panelDerecho = new Panel(it) => [
-		panelDeInformacion(it)
-		]
+			layout = new HorizontalLayout
+			
+			val panelIzquierdo = new Panel(it) => [
+			layout = new VerticalLayout
+			panelTablaDeCalificaciones(it)
+			]
+			
+			val panelDerecho = new Panel(it) => [
+			layout = new VerticalLayout
+			panelDeInformacion(it)
+			]
 		]
 		
 	}

@@ -116,7 +116,7 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		]
 		new Column<Ofrecido>(table)=>[
 			title = "Nombre"
-			fixedSize = 120
+			fixedSize = 150
 			bindContentsToProperty("nombre")
 		]
 		new Column<Ofrecido>(table)=>[

@@ -59,16 +59,15 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 	def crearInteraccionDeContenido(Panel panel) {
 		
 		val Panel panelVertical = new Panel(panel)
-		panelVertical.layout = new ColumnLayout(1)
+		panelVertical.layout = new VerticalLayout
 		
 		val Panel panelHorizontal = new Panel(panelVertical)
 		panelHorizontal.layout = new HorizontalLayout
 		
 		
-		crearResumenDeInformacion(panelHorizontal, "Nombre:", "usuarioSeleccionado.nombre", Color.BLACK).width = 300
+		crearResumenDeInformacion(panelHorizontal, "Nombre:", "usuarioSeleccionado.nombre", Color.BLACK).width = 200
 		
 		new ErrorsPanel(panelVertical, "Edita la Información")
-		
 				
 		new Label(panelVertical).text = "Fecha de Registro:"
 		
@@ -122,8 +121,7 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 	}
 	
 	def eliminarUsuario() {
-		var AdminUsuarioAppModel model = this.modelObject;
-		(new EliminarWindow(this, model)).open
+		(new EliminarWindow(this, modelObject)).open
 	}
 	
 	def resetPassword() {
@@ -177,7 +175,7 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		
 		new Column<Usuario>(table) => [
 			title = "Fecha de Registro"
-			fixedSize = 200
+			fixedSize = 175
 			bindContentsToProperty("fechaDeIngreso")
 		]
 		
