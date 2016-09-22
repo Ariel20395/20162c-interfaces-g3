@@ -52,13 +52,16 @@ class RankitDummy {
 	}
 	
 	def setCalifAOfrecidos(){
+		netflix.habilitar
 		netflix.agregarCalificacion(calificacion1)
 		netflix.agregarCalificacion(calificacion2)
 		cablevision.agregarCalificacion(calificacion2)
+		telecentro.habilitar
 		telecentro.agregarCalificacion(calificacion8)
 		telecentro.agregarCalificacion(calificacion5)
 		telecentro.agregarCalificacion(calificacion9)
 		carpinteria.agregarCalificacion(calificacion8)
+		correoARG.habilitar
 		correoARG.agregarCalificacion(calificacion6)
 		correoARG.agregarCalificacion(calificacion9)
 		correoARG.agregarCalificacion(calificacion9)
