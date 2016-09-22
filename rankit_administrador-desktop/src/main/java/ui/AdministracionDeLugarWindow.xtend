@@ -1,5 +1,4 @@
 package ui
-
 import org.uqbar.arena.windows.SimpleWindow
 import appModel.AdminOfrecidosAppModel
 import org.uqbar.arena.windows.WindowOwner
@@ -18,14 +17,14 @@ import model.Ofrecido
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import java.awt.Color
 
-class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel>{
+class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 	
-	new(WindowOwner parent, AdminOfrecidosAppModel model) {
+		new(WindowOwner parent, AdminOfrecidosAppModel model) {
 		super(parent, model)
 	}
 	
 	override createContents(Panel mainPanel){
-		this.title = "Rank-It --> Adm Servicios"
+		this.title = "Rank-It --> Adm Lugares"
 		mainPanel.layout  = new ColumnLayout(1)
 		
 		this.armarResumenSit(mainPanel)
@@ -55,15 +54,15 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		val Panel panelHorizontal = new Panel(panel)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		generarCampoDeDatos(panelHorizontal, "Servicios inscriptos:", "administrador.cantidadDeServicios", Color.BLUE)
-		generarCampoDeDatos(panelHorizontal, "  Habilitados:", "administrador.cantServiciosHabilitados",Color.BLUE)
-		generarCampoDeDatos(panelHorizontal, "  Desahabilitados:", "administrador.cantServiciosDeshabilitados", Color.RED)
+		generarCampoDeDatos(panelHorizontal, "Lugares inscriptos:", "administrador.cantidadDeLugares", Color.BLUE)
+		generarCampoDeDatos(panelHorizontal, "  Habilitados:", "administrador.cantLugaresHabilitados",Color.BLUE)
+		generarCampoDeDatos(panelHorizontal, "  Desahabilitados:", "administrador.cantLugaresDeshabilitados", Color.RED)
 	}
 
 	def armarBusqueda(Panel panel) {
 		
 		new Label(panel) => [
-			text = "Servicios"
+			text = "Lugares"
 			fontSize = 14	
 		]
 		
@@ -71,7 +70,7 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		busqueda.layout = new HorizontalLayout
 				
 		new Label(busqueda)=> [
-			text = "Buscar por nombre de servicio"
+			text = "Buscar por nombre de lugar"
 			fontSize = 10
 		] 
 		
@@ -96,14 +95,14 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		panelVertical.layout = new VerticalLayout
 		
 		val table = new Table<Ofrecido>(panelVertical, typeof (Ofrecido))=>[
-			items.bindToProperty("servicios")
+			items.bindToProperty("lugares")
 			value.bindToProperty("ofrecidoSeleccionado")
 			numberVisibleRows = 5
 		]
 		this.composicionDeTabla(table)
 		new Button(panelVertical)=>[
 			caption = "Nuevo"
-			onClick([| modelObject.administrador.altaDeServicio("nombreProvisorio")
+			onClick([| modelObject.administrador.altaDeLugar("nombreProvisorio")
 			])
 			width = 50
 		]
@@ -189,6 +188,5 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 	override protected createFormPanel(Panel arg0) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
-	
 	
 }

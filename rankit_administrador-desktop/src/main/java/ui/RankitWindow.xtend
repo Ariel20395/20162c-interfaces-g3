@@ -9,6 +9,8 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.windows.Window
 import org.uqbar.arena.layout.ColumnLayout
 
+
+
 class RankitWindow extends Window<RankitAppModel>{
 	
 	new(WindowOwner parent, RankitAppModel model) {
@@ -60,6 +62,7 @@ class RankitWindow extends Window<RankitAppModel>{
 		
 		new Button(actionPanel) => [
 			caption = "Adm. Lugares"
+			onClick([| this.administracionDeLugar])
 			width = 150
 		]
 	}
@@ -74,6 +77,10 @@ class RankitWindow extends Window<RankitAppModel>{
 	
 	def administracionDeServicio() {
 		(new AdministracionDeServicioWindow(this, modelObject.adminOfrecidos)).open
+	}
+	
+	def administracionDeLugar(){
+		(new AdministracionDeLugarWindow(this, modelObject.adminOfrecidos)).open
 	}
   	
 }

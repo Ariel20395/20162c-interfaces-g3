@@ -89,6 +89,14 @@ class RankitDummy {
 		telecentro.agregarCalificacion(calificacion8)
 		telecentro.agregarCalificacion(calificacion5)
 		telecentro.agregarCalificacion(calificacion9)
+		carpinteria.agregarCalificacion(calificacion8)
+		correoARG.agregarCalificacion(calificacion6)
+		correoARG.agregarCalificacion(calificacion9)
+		correoARG.agregarCalificacion(calificacion9)
+		cineHoyts.agregarCalificacion(calificacion1)
+		cineHoyts.agregarCalificacion(calificacion2)
+		cineHoyts.agregarCalificacion(calificacion3)
+		cineHoyts.agregarCalificacion(calificacion4)
 	}
 	
 	
@@ -117,7 +125,9 @@ class RankitDummy {
 	}
 	def crearAdminOfrecidosDummy(){
 		var AdministracionOfrecidos administrador = new AdministracionOfrecidos
+		setCalifAOfrecidos
 		agregarServicios(administrador)
+		agregarLugares(administrador)
 		administrador
 	}
 	
@@ -125,5 +135,10 @@ class RankitDummy {
 		ad.agregarServicio(netflix)
 		ad.agregarServicio(cablevision)
 		ad.agregarServicio(telecentro)
+	}
+	def agregarLugares(AdministracionOfrecidos adLug){
+		adLug.agregarLugar(carpinteria)
+		adLug.agregarLugar(correoARG)
+		adLug.agregarLugar(cineHoyts)
 	}
 }
