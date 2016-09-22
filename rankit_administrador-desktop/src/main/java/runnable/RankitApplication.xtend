@@ -11,6 +11,7 @@ class RankitApplication extends Application {
 		val model = new RankitAppModel => [
 			adminUsuario.admin = new RankitDummy().crearAdminUsuarioDummy
 			adminCalificacion.administracion = new RankitDummy().crearDummyDataCalificacion
+			adminOfrecidos.administrador = new RankitDummy().crearAdminOfrecidosDummy 
 			]
 		new RankitWindow(this, model) 
 	}

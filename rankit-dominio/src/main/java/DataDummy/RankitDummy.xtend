@@ -6,6 +6,7 @@ import model.Calificacion
 import model.Ofrecido
 import model.Usuario
 import administracion.AdministracionCalificacion
+import administracion.AdministracionOfrecidos
 
 class RankitDummy {
 			
@@ -43,18 +44,35 @@ class RankitDummy {
 	def setCalificacionesAUsuarios() {
 		usuario1.calificaciones.add(calificacion1)
 		usuario1.calificaciones.add(calificacion6)
-		
 		usuario2.calificaciones.add(calificacion2)
 		usuario2.calificaciones.add(calificacion7)
-		
 		usuario3.calificaciones.add(calificacion3)
 		usuario3.calificaciones.add(calificacion8)
 		usuario3.calificaciones.add(calificacion9)
-		
 		usuario4.calificaciones.add(calificacion4)
-		
 		usuario5.calificaciones.add(calificacion5)
 	}
+	
+	def setCalifAOfrecidos(){
+		netflix.habilitar
+		netflix.agregarCalificacion(calificacion1)
+		netflix.agregarCalificacion(calificacion2)
+		cablevision.agregarCalificacion(calificacion2)
+		telecentro.habilitar
+		telecentro.agregarCalificacion(calificacion8)
+		telecentro.agregarCalificacion(calificacion5)
+		telecentro.agregarCalificacion(calificacion9)
+		carpinteria.agregarCalificacion(calificacion8)
+		correoARG.habilitar
+		correoARG.agregarCalificacion(calificacion6)
+		correoARG.agregarCalificacion(calificacion9)
+		correoARG.agregarCalificacion(calificacion9)
+		cineHoyts.agregarCalificacion(calificacion1)
+		cineHoyts.agregarCalificacion(calificacion2)
+		cineHoyts.agregarCalificacion(calificacion3)
+		cineHoyts.agregarCalificacion(calificacion4)
+	}
+	
 	
 	def crearDummyDataCalificacion() {
 		var AdministracionCalificacion administracion = new AdministracionCalificacion()
@@ -78,5 +96,23 @@ class RankitDummy {
 		admin.usuarios.add(usuario4)
 		admin.usuarios.add(usuario5)
 
+	}
+	def crearAdminOfrecidosDummy(){
+		var AdministracionOfrecidos administrador = new AdministracionOfrecidos
+		setCalifAOfrecidos
+		agregarServicios(administrador)
+		agregarLugares(administrador)
+		administrador
+	}
+	
+	def agregarServicios(AdministracionOfrecidos ad){
+		ad.agregarServicio(netflix)
+		ad.agregarServicio(cablevision)
+		ad.agregarServicio(telecentro)
+	}
+	def agregarLugares(AdministracionOfrecidos adLug){
+		adLug.agregarLugar(carpinteria)
+		adLug.agregarLugar(correoARG)
+		adLug.agregarLugar(cineHoyts)
 	}
 }
