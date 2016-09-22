@@ -27,10 +27,9 @@ class AdminUsuarioAppModel {
 		this.nombreUsuarioBuscado = nombre
 		firePropertyChanged(this,"usuarios")
 	}
-	
+
 	def void setCrearNuevoUsuario() {
-		admin.crearNuevoUsuario
+		this.admin.crearNuevoUsuario
 	}
-	
 	
 }

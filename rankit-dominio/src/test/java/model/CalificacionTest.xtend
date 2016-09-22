@@ -21,7 +21,7 @@ class CalificacionTest {
 	@Test def void testFechaRegistro() {
 		calificacion.fechaRegistro = fecha
 		
-		Assert.assertEquals(fecha, calificacion.fechaRegistro)
+		Assert.assertEquals(fecha.toString("dd/MM/YYYY HH:mm"), calificacion.fechaRegistro)
 	}
 	
 	//Testea que cuando se crea una calificacion esOfensiva es igual a false.
