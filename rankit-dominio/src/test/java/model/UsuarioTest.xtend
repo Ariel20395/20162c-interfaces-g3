@@ -1,9 +1,9 @@
 package model
 
+import java.util.List
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import org.junit.Assert
-import java.util.List
 import org.uqbar.commons.model.UserException
 
 class UsuarioTest {
@@ -16,6 +16,7 @@ class UsuarioTest {
 	def void init() {
 		
 		usuario = new Usuario("Ariel", "asd1234")
+		
 		netflix = new Ofrecido("Netflix")
 		speedy	= new Ofrecido("Speedy")
 		
@@ -24,14 +25,21 @@ class UsuarioTest {
 	}
 
 	@Test
-	def void testConstructor() {
+	def void crearUsuarioConNombreEsCorrecto() {
+		val nombreUsuario = "Jose"
+		val password = "asd"
 		
-		Assert.assertEquals("Ariel", usuario.nombre)
-		Assert.assertEquals("asd1234", usuario.password)
+		var usuario = new Usuario(nombreUsuario, password)
+		
+		verificarUsuarioCorrecto(nombreUsuario, usuario, password)
+	}
+	
+	protected def void verificarUsuarioCorrecto(String nombreUsuario, Usuario usuario, String password) {
+		Assert.assertEquals(nombreUsuario, usuario.nombre)
+		Assert.assertEquals(password, usuario.password)
 		Assert.assertFalse(usuario.activo)
 		Assert.assertFalse(usuario.baneado)
 		Assert.assertEquals(0, usuario.cantidadCalificacionesOfensivas)
-		//	No testeo la fecha ya que por milisegundos no aserta
 	}
 	
 	@Test
@@ -46,7 +54,7 @@ class UsuarioTest {
 		
 		usuario.activar
 		Assert.assertTrue(usuario.activo)
-		
+			
 		usuario.desactivar
 		Assert.assertFalse(usuario.activo)
 	}
@@ -72,16 +80,15 @@ class UsuarioTest {
 		 */
 		usuario.banear
 		try {
-			usuario.activar	
+			usuario.activar
+			Assert.fail("debia tirar error porque esta baneado")	
 		} catch (UserException e) {
-			
+			Assert.assertFalse(usuario.activo)
 		}
-		Assert.assertFalse(usuario.activo)
 	}
 	
 	@Test
 	def void testCreacionDeCalificacion() {
-		
 		var Calificacion calificacion1 = usuario.calificaciones.get(0)
 		var Calificacion calificacion2 = usuario.calificaciones.get(1)
 		
@@ -92,26 +99,31 @@ class UsuarioTest {
 
 	@Test
 	def void testEliminarCalificacion() {
-
-		var Calificacion calificacion1 = usuario.calificaciones.get(0)
-		var Calificacion calificacion2 = usuario.calificaciones.get(1)
+		val agregada = new Calificacion()
+		var usuario = crearUsuarioCon(agregada)
 		
-		var List<Calificacion> calificacionesEsperadas = #[calificacion2]
-		
-		/*	Elimino una calificacion y testeo que se elimino correctamente */
-		
-		usuario.eliminarCalificacion(calificacion1)
+		usuario.eliminarCalificacion(agregada)
 				
-		Assert.assertEquals(calificacionesEsperadas, usuario.calificaciones)			
-	}	
+		Assert.assertFalse(usuario.calificaciones.contains(agregada))			
+	}
+	
+	def crearUsuarioCon(Calificacion agregada) {
+		var usuario = new Usuario("","")
+		usuario.agregarCalificacion(agregada)
+		usuario
+	}
 	
 	@Test
-	def void testLlegarAlMaximoDePublicacionesOfensivas() {
-		/*	Al llegar al maximo de calificaciones el usuario se banea */
-		usuario.cantidadCalificacionesOfensivas = 5
-		usuario.sumarPublicacionOfensiva	
+	def void unUsuarioConMuchasPublicacionesOfensivasEsBaneado() {
+		for(var int i=0; i<6; i++ ){
+			usuario.agregarCalificacion(crearCalificacionOfensiva())
+		}
 		
 		Assert.assertTrue(usuario.baneado)
-		Assert.assertEquals(0, usuario.cantidadCalificacionesOfensivas, 0)
+		Assert.assertEquals(6, usuario.cantidadCalificacionesOfensivas)
+	}
+	
+	protected def Calificacion crearCalificacionOfensiva() {
+		new Calificacion() => [ esOfensiva= true]
 	}
 }

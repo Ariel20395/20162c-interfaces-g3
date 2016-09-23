@@ -56,7 +56,7 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		val Panel panelHorizontal = new Panel(panel)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		generarCampoDeDatos(panelHorizontal, "Servicios inscriptos:", "administrador.cantidadDeServicios", Color.BLUE)
+		generarCampoDeDatos(panelHorizontal, "Servicios inscriptos:", "cantidadDeServicios", Color.BLUE)
 		generarCampoDeDatos(panelHorizontal, "  Habilitados:", "administrador.cantServiciosHabilitados",Color.BLUE)
 		generarCampoDeDatos(panelHorizontal, "  Desahabilitados:", "administrador.cantServiciosDeshabilitados", Color.RED)
 	}
@@ -104,8 +104,7 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		this.composicionDeTabla(table)
 		new Button(panelVertical)=>[
 			caption = "Nuevo"
-			onClick([| modelObject.administrador.altaDeServicio("nombreProvisorio")
-			])
+			onClick([| modelObject.setCrearNuevoServicio ])
 			width = 50
 		]
 	}
@@ -173,7 +172,7 @@ class AdministracionDeServicioWindow extends SimpleWindow<AdminOfrecidosAppModel
 		]
 	}
 	def eliminarServicio() {
-		(new ConfirmEliminarServWindow (this, modelObject)).open
+		(new ConfirmEliminarWindow (this, modelObject, "Eliminar Servicio", "¿Estas seguro de eliminar el servicio?")).open
 		
 	}
 		

@@ -34,6 +34,12 @@ class AdminUsuarioAppModel {
 
 	def void setCrearNuevoUsuario() {
 		this.admin.crearNuevoUsuario
+		firePropertyChanged(this, "usuarios")
+	}
+	
+	def void setEliminarUsuario() {
+		this.admin.eliminarUsuario(this.usuarioSeleccionado)
+		firePropertyChanged(this, "usuarios")
 	}
 	
 }

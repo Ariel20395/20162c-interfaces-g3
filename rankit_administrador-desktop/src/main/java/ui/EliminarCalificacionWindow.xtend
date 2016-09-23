@@ -28,7 +28,7 @@ class EliminarCalificacionWindow extends TransactionalDialog<AdminCalificacionAp
 		
 		new Button(actions) => [
 			caption = "Aceptar"
-			onClick [| this.modelObject.administracion.eliminarCalificacion(modelObject.calificacionSeleccionada); this.accept]
+			onClick [| this.modelObject.setEliminarCalificacion; this.accept]
 			setAsDefault
 			disableOnError	
 		]

@@ -166,7 +166,7 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		
 		new Button(panelVertical) => [
 			caption = "Nuevo"
-			onClick([| modelObject.admin.crearNuevoUsuario])
+			onClick([| modelObject.setCrearNuevoUsuario])
 			width = 200
 		]
 	}

@@ -26,7 +26,7 @@ class EliminarWindow extends TransactionalDialog<AdminUsuarioAppModel>  {
 		
 		new Button(actions) => [
 			caption = "Aceptar"
-			onClick [| this.modelObject.admin.eliminarUsuario(modelObject.usuarioSeleccionado); this.accept]
+			onClick [| this.modelObject.setEliminarUsuario; this.accept]
 			setAsDefault
 			disableOnError	
 		]

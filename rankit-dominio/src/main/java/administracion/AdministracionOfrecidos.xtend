@@ -59,9 +59,7 @@ class AdministracionOfrecidos {
 	}
 	
 	def serviciosHabilitados() {
-		this.servicios.filter[
-			ofrecido| ofrecido.habilitado==true
-		].toList
+		this.servicios.filter[it.habilitado].toList
 	}
 	
 	def cantServiciosDeshabilitados(){

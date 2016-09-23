@@ -8,14 +8,17 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
 
-class ConfirmEliminarServWindow extends TransactionalDialog<AdminOfrecidosAppModel> {
+class ConfirmEliminarWindow extends TransactionalDialog<AdminOfrecidosAppModel> {
 	
-	new(WindowOwner owner, AdminOfrecidosAppModel model) {
+	var String mensajeDeAlerta
+
+	new(WindowOwner owner, AdminOfrecidosAppModel model,String mensajeDeAlerta, String titulo) {
 		super(owner, model)
+		this.title = titulo
+		this.mensajeDeAlerta = mensajeDeAlerta
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		this.title = this.titulo
 		
 		mainPanel.layout = new ColumnLayout(1)
 		
@@ -23,18 +26,15 @@ class ConfirmEliminarServWindow extends TransactionalDialog<AdminOfrecidosAppMod
 	}
 	
 	def mensajeDeAlerta() {
-		"¿Desea eliminar el Servicio?"
+		return mensajeDeAlerta
 	}
 	
-	def titulo() {
-		"Eliminar Servicio"
-	}
 	
 	override protected void addActions(Panel actions) {
 		
 		new Button(actions) => [
 			caption = "Aceptar"
-			onClick [| this.modelObject.administrador.eliminarOfrecido(modelObject.ofrecidoSeleccionado); this.accept]
+			onClick [| this.modelObject.setEliminarOfrecido; this.accept]
 			setAsDefault
 			disableOnError	
 			width = 100

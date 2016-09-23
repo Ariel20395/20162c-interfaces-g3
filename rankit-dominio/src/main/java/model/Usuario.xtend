@@ -17,7 +17,8 @@ class Usuario {
 	private Boolean  baneado
 	private String 	 password
 	private List<Calificacion> calificaciones
-	private Integer	cantidadCalificacionesOfensivas
+	
+	Integer MAXIMA_CANTIDAD_PUBLICACIONES_OFENSIVAS=5
 	
 	new(String nombre, String pass) {
 		/*	Constructor. Se crea el usuario con un nombre y password determinado. 
@@ -29,7 +30,6 @@ class Usuario {
 		this.activo		= false
 		this.baneado	= false
 		this.calificaciones = new ArrayList<Calificacion>()
-		this.cantidadCalificacionesOfensivas = 0
 	}
 	
 	def void resetPassword() {
@@ -69,25 +69,14 @@ class Usuario {
 	}
 	
 	def agregarCalificacion(Calificacion calificacion) {
-		/*	Se guarda la calificación en el primer lugar de la lista 	*/
 		this.calificaciones.add(0, calificacion)
-	}
-	
-	def eliminarCalificacion(Calificacion calificacion) {
-		/*	Elimina una calificación de la lista de calificaciones 		*/
-		this.calificaciones.remove(calificacion)
-	}
-	
-	def sumarPublicacionOfensiva() {
-		/*	Se actualiza en +1 la cantidad de publicaciones ofensivas. 
-		 * 	Si el usuario llega al maximo(5), este se banea	y la cantidad
-		 *	de publicaciones ofensivas vuelve a 0						*/
-		if(this.cantidadCalificacionesOfensivas == 5) {
-			this.banear
-			this.cantidadCalificacionesOfensivas = 0
-		} else {
-			this.cantidadCalificacionesOfensivas ++
+		if (this.cantidadCalificacionesOfensivas > MAXIMA_CANTIDAD_PUBLICACIONES_OFENSIVAS){
+			this.banear	
 		}
+	}
+	
+	def Integer getCantidadCalificacionesOfensivas(){
+		this.calificaciones.filter[it.esOfensiva].size
 	}
 	
 	def getFechaUltimaCalificacion() {
@@ -105,4 +94,9 @@ class Usuario {
 	def getFechaDeIngreso() {
 		this.fechaIngreso.toString("dd/MM/YYYY HH:mm")
 	}
+	
+	def eliminarCalificacion(Calificacion calificacion) {
+		this.calificaciones.remove(calificacion)
+	}
+	
 }

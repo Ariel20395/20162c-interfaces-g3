@@ -16,13 +16,8 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.KeyWordTextArea
 import org.uqbar.arena.widgets.NumericField
-<<<<<<< HEAD
-import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.bindings.NotNullObservable
-=======
 import org.uqbar.arena.bindings.NotNullObservable
 import org.uqbar.arena.layout.VerticalLayout
->>>>>>> d1aba0c40a2a24588b48afdfbd6b0e4c6c487641
 
 class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionAppModel> {
 	
@@ -99,22 +94,6 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 				height = 50
 				multiLine = true
 			]
-			
-<<<<<<< HEAD
-			calificaionOfensiva(it)
-			
-			new Button(it) => [
-			val calificacion = new NotNullObservable("calificacionSeleccionada")
-			caption = "Eliminar"
-			onClick([| this.eliminarCalificacion()])
-			bindEnabled(calificacion)
-			width = 250
-		]
-		]
-	}
-	
-	def calificaionOfensiva(Panel miPanel) {
-=======
 			habilitado(it)
 			
 			new Button(it)=>[
@@ -134,7 +113,6 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 	
 	
 	def habilitado(Panel miPanel) {
->>>>>>> d1aba0c40a2a24588b48afdfbd6b0e4c6c487641
 		new Panel(miPanel) => [
 			layout = new HorizontalLayout
 			new CheckBox(it) => [
@@ -143,8 +121,6 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 			subtitulo(it, "Contenido Ofensivo")
 		]
 	}
-	
-	
 	
 	def panelResumenDeSituacion(Panel miPanel) {
 		new Panel(miPanel) => [
@@ -197,7 +173,7 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 		new Panel(miPanel) => [ 
 		new Button(it) => [
 			caption = "Nuevo"
-			onClick([| modelObject.administracion.nuevaCalificacion])
+			onClick([| modelObject.setNuevaCalificacion])
 		]
 		]
 	}
@@ -268,9 +244,6 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 				value <=> binding
 			]
 		]	
-	}
-	def eliminarCalificacion() {
-		(new confirmacionDeEliminacionCalificacion (this, modelObject)).open
 	}
 	
 }

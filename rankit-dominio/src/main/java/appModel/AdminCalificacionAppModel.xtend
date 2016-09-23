@@ -20,16 +20,6 @@ class AdminCalificacionAppModel {
 		administracion = new AdministracionCalificacion()	
 	}
 	
-<<<<<<< HEAD
-	//Retorna la lista de calificaciones del 
-	def List<Calificacion> getCalificacionesEvaluado() {
-		administracion.buscarOfrecido(evaluadoBuscado)
-	}
-	
-	//
-	def List<Calificacion> getCalificacionesUsuarios() {
-		administracion.buscarUsuario(usuarioBuscado)
-=======
 	def List<Calificacion> getCalificaciones() {
 		administracion.buscarCalificacion(nombreUsuarioBuscado, nombreOfrecidoBuscado)
 	}
@@ -37,12 +27,21 @@ class AdminCalificacionAppModel {
 	def void setNombreUsuarioBuscado(String nombre){
 		this.nombreUsuarioBuscado = nombre
 		firePropertyChanged(this,"calificaciones")
->>>>>>> d1aba0c40a2a24588b48afdfbd6b0e4c6c487641
 	}
 	
 	def void setNombreOfrecidoBuscado(String nombre){
 		this.nombreOfrecidoBuscado = nombre
 		firePropertyChanged(this,"calificaciones")
+	}
+	
+	def void setNuevaCalificacion() {
+		administracion.nuevaCalificacion
+		firePropertyChanged(this, "calificaciones")
+	}
+	
+	def void setEliminarCalificacion() {
+		administracion.eliminarCalificacion(this.calificacionSeleccionada)
+		firePropertyChanged(this, "calificaciones")
 	}
 	
 }

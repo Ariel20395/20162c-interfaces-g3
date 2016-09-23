@@ -20,18 +20,19 @@ class AdministracionCalificacion {
 	}
 
 	def buscarCalificacion(String nombreUsuario, String nombreOfrecido) {
-		this.calificaciones.filter[calificacion | this.match(nombreUsuario, calificacion.usuario.nombre) &&
+		this.calificaciones.filter[calificacion | 
+			this.match(nombreUsuario, calificacion.usuario.nombre) &&
 			this.match(nombreOfrecido, calificacion.ofrecido.nombre)].toList
 	}
 
-	def match(Object expectedValue, Object realValue) {
+	def match(String expectedValue, String realValue) {
 		if (expectedValue == null) {
 			return true
 		}
 		if (realValue == null) {
 			return false
 		}
-		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
+		realValue.toLowerCase().contains(expectedValue.toLowerCase())
 	}
 	
 	
@@ -42,7 +43,6 @@ class AdministracionCalificacion {
 		
 		agregarCalificacion(calificacion)
 	}
-	
 	
 	def  void agregarCalificacion(Calificacion calificacion) {
 		this.calificaciones.add(calificacion) 

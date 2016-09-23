@@ -55,9 +55,9 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		val Panel panelHorizontal = new Panel(panel)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		generarCampoDeDatos(panelHorizontal, "Lugares inscriptos:", "administrador.cantidadDeLugares", Color.BLUE)
-		generarCampoDeDatos(panelHorizontal, "  Habilitados:", "administrador.cantLugaresHabilitados",Color.BLUE)
-		generarCampoDeDatos(panelHorizontal, "  Desahabilitados:", "administrador.cantLugaresDeshabilitados", Color.RED)
+		generarCampoDeDatos(panelHorizontal, "Lugares inscriptos:", "cantidadDeLugares", Color.BLUE)
+		generarCampoDeDatos(panelHorizontal, "  Habilitados:", "cantLugaresHabilitados",Color.BLUE)
+		generarCampoDeDatos(panelHorizontal, "  Desahabilitados:", "cantLugaresDeshabilitados", Color.RED)
 	}
 
 	def armarBusqueda(Panel panel) {
@@ -103,8 +103,7 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		this.composicionDeTabla(table)
 		new Button(panelVertical)=>[
 			caption = "Nuevo"
-			onClick([| modelObject.administrador.altaDeLugar("nombreProvisorio")
-			])
+			onClick([| modelObject.setCrearNuevoLugar])
 			width = 50
 		]
 	}
@@ -172,7 +171,7 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		]
 	}
 	def eliminarLugar() {
-		(new ConfirmEliminarLugarWindow (this, modelObject)).open
+		(new ConfirmEliminarWindow (this, modelObject, "Eliminar lugar", "¿Estas seguro de eliminar lugar?")).open
 	}
 
 	def verCalificaciones() {
@@ -187,7 +186,7 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 		val Panel panelHorizontal = new Panel(panel)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		new CheckBox(panelHorizontal).bindValueToProperty("ofrecidoSeleccionado.habilitado")
+		new CheckBox(panelHorizontal).bindValueToProperty("habilitado")
 		
 		new Label(panelHorizontal).text = "Habilitado" 
 	}

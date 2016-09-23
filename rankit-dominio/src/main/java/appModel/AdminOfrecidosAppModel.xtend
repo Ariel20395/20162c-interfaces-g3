@@ -1,11 +1,12 @@
 package appModel
 
-import org.uqbar.commons.utils.Observable
 import administracion.AdministracionOfrecidos
-import model.Ofrecido
-import static org.uqbar.commons.model.ObservableUtils.*
-import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import model.Ofrecido
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
+
+import static org.uqbar.commons.model.ObservableUtils.*
 
 @Accessors
 @Observable
@@ -28,6 +29,14 @@ class AdminOfrecidosAppModel {
 		administrador.buscarLugar(nombreLugar)
 	}
 	
+	def Integer getCantidadDeServicios() {
+		administrador.cantidadDeServicios
+	}
+	
+	def Integer getCantidadDeLugares() {
+		administrador.cantidadDeLugares
+	}
+	
 	def void setNombreServicio(String nombre){
 		this.nombreServicio = nombre
 		firePropertyChanged(this,"servicios")
@@ -36,4 +45,45 @@ class AdminOfrecidosAppModel {
 		this.nombreLugar = nombre
 		firePropertyChanged(this,"lugares")
 	} 
+	def Integer getCantLugaresHabilitados(){
+		administrador.cantLugaresHabilitados
+	}
+	def Integer getCantLugaresDeshabilitados(){
+		administrador.cantLugaresDeshabilitados
+	}
+	def void setCrearNuevoLugar() {
+		administrador.altaDeLugar("Prueba")
+		firePropertyChanged(this, "lugares")
+		firePropertyChanged(this, "cantidadDeLugares")
+		cambioLugarHabilitado
+	}
+	
+	def Boolean getHabilitado() {
+		this.ofrecidoSeleccionado.habilitado
+	}
+	
+	def void setHabilitado(Boolean habilitado) {
+		this.ofrecidoSeleccionado.setHabilitado(habilitado)
+		cambioLugarHabilitado
+	}
+	
+	protected def void cambioLugarHabilitado() {
+		firePropertyChanged(this, "cantLugaresHabilitados")
+		firePropertyChanged(this, "cantLugaresDeshabilitados")
+	}
+	
+	def void setCrearNuevoServicio() {
+		administrador.altaDeServicio("Prueba")
+		firePropertyChanged(this, "servicios")
+		firePropertyChanged(this, "cantidadDeServicios")
+		firePropertyChanged(this, "cantidadDeServiciosDeshabilitados")
+	}
+	
+	def void setEliminarOfrecido() {
+		administrador.eliminarServicio(this.ofrecidoSeleccionado)
+		firePropertyChanged(this, "lugares")
+		firePropertyChanged(this, "servicios")
+		firePropertyChanged(this, "cantidadDeServicios")
+	}
+	
 }
