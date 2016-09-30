@@ -7,6 +7,7 @@ import model.Ofrecido
 import model.Calificacion
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.UserException
 
 @Accessors
 @Observable
@@ -35,13 +36,12 @@ class AdministracionCalificacion {
 		realValue.toLowerCase().contains(expectedValue.toLowerCase())
 	}
 	
-	
-	def void nuevaCalificacion() {
-		var Usuario usuario = new Usuario("ADMIN", "123")
-		var Ofrecido ofrecido = new Ofrecido("prueba")
-		var Calificacion calificacion = new Calificacion(7, "prueba", usuario, ofrecido)
-		
-		agregarCalificacion(calificacion)
+	//crea una nueva calificacion con usuario "ADMIN" y descripcion "prueba"
+	def nuevaCalificacion() {
+		var Usuario usuario = new Usuario("ADMIN", "")
+		var Ofrecido ofrecido = new Ofrecido("")
+		var Calificacion calificacion = new Calificacion(0, "prueba", usuario, ofrecido)
+		calificacion
 	}
 	
 	def  void agregarCalificacion(Calificacion calificacion) {
@@ -50,6 +50,9 @@ class AdministracionCalificacion {
 	
 	
 	def  void eliminarCalificacion(Calificacion calificacion) {
+		if (this.calificaciones.empty) {
+			throw new UserException ("no se puede eliminar, no hay más calificaciones")
+		}
 		this.calificaciones.remove(calificacion)
 	}
 	

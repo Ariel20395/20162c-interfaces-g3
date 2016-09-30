@@ -32,7 +32,7 @@ class CalificacionTest {
 	
 	//Testea que cambie la calificacion de no ofensiva (esOfensiva = false) a ofenciva (esOfensiva = true)
 	@Test def void testNoEsOfensiva() {
-		calificacion.cambiarEsOfensiva
+		calificacion.activarEsOfensiva
 		
 		Assert.assertTrue(calificacion.esOfensiva)
 	}

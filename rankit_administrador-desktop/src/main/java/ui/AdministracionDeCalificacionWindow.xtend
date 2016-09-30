@@ -27,11 +27,9 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 	}
 	
 	override protected addActions(Panel actionsPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	
@@ -99,16 +97,16 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 			new Button(it)=>[
 				val elemSeleccionado = new NotNullObservable("calificacionSeleccionada")
 				caption = "Eliminar"
-				onClick([| this.eliminarCalificacion])
+				onClick([| this.modelObject.eliminarCalificacion])
 				bindEnabled(elemSeleccionado)
 				width = 250
 			]
 		]
 	}
 	
-	def eliminarCalificacion() {
-		(new EliminarCalificacionWindow (this, modelObject)).open
-	}
+	//def confirmacionEliminar() {
+	//	(new EliminarCalificacionWindow (this, modelObject)).open
+	//}
 	
 	
 	
@@ -116,7 +114,7 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 		new Panel(miPanel) => [
 			layout = new HorizontalLayout
 			new CheckBox(it) => [
-				value <=> "calificacionSeleccionada.esOfensiva"
+				value <=> "esOfensiva"
 			]
 			subtitulo(it, "Contenido Ofensivo")
 		]
@@ -130,8 +128,8 @@ class AdministracionDeCalificacionWindow extends SimpleWindow<AdminCalificacionA
 		]
 		new Panel(miPanel) => [
 			layout = new HorizontalLayout
-			contarCalificaciones(it,"Calificaciones Registradas: ", "administracion.totalCalificacionesRegistradas", Color.BLUE)
-			contarCalificaciones(it, "Ofensivas: ", "administracion.totalCalificacionesOfensivas", Color.RED)
+			contarCalificaciones(it,"Calificaciones Registradas: ", "totalCalificacionesRegistradas", Color.BLUE)
+			contarCalificaciones(it, "Ofensivas: ", "totalCalificacionesOfensivas", Color.RED)
 	   	]
 	}
 	
