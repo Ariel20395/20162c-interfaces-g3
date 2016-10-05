@@ -64,26 +64,30 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		val Panel panelHorizontal = new Panel(panelVertical)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		
-		crearResumenDeInformacion(panelHorizontal, "Nombre:", "usuarioSeleccionado.nombre", Color.BLACK).width = 200
+		new Label(panelHorizontal).text = "Nombre: "
+		new TextBox(panelHorizontal)=> [
+			value <=> "usuarioSeleccionado.nombre"
+			width = 200
+			]
 		
 		new ErrorsPanel(panelVertical, "Edita la Información")
 				
 		new Label(panelVertical).text = "Fecha de Registro:"
 		
 		new Label(panelVertical) => [
-			value <=> "usuarioSeleccionado.fechaDeIngreso"
+			bindValueToProperty("usuarioSeleccionado.fechaDeIngreso")//.adapter = 
+//				new PropertyAdapter(DateTime, DateTime.toString())
 			] 
 		
-		this.usuarioActivo(panelVertical)
-		
-		this.usuarioBaneado(panelVertical)
+		this.checkBoxUsuario(panelVertical, "usuarioActivo", "Activo")
+		this.checkBoxUsuario(panelVertical, "usuarioBaneado", "Baneado")
 		
 		new Label(panelVertical).text = "Última calificación:"
 		
 		new Label(panelVertical) => [
 			value <=> "usuarioSeleccionado.fechaUltimaCalificacion"
 		]
+		
 		
 		new Button(panelVertical) => [
 			val elementoSeleccionado = new NotNullObservable("usuarioSeleccionado")
@@ -113,6 +117,7 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		]
 	}
 	
+
 	def revisarPublicaciones() {
 		(new AdministracionDeCalificacionWindow(this, new AdminCalificacionAppModel => [
 			administracion.calificaciones = modelObject.usuarioSeleccionado.calificaciones
@@ -130,28 +135,16 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 	}
 	
 	
-	def usuarioBaneado(Panel panel) {
+	def checkBoxUsuario(Panel panel, String binding, String texto) {
 		
-		val Panel panelHorizontal = new Panel(panel)
-		panelHorizontal.layout = new HorizontalLayout
+		val Panel contain = new Panel(panel)
+		contain.layout = new HorizontalLayout
 		
-		new CheckBox(panelHorizontal).bindValueToProperty("usuarioSeleccionado.baneado")
+		new CheckBox(contain)=> [value <=> binding]
 		
-		new Label(panelHorizontal).text = "Baneado" 
+		new Label(contain).text = texto
 	}
-	
-	def usuarioActivo(Panel panel) {
 		
-		val Panel panelHorizontal = new Panel(panel)
-		panelHorizontal.layout = new HorizontalLayout
-		
-		new CheckBox(panelHorizontal) => [
-			value <=> ("usuarioSeleccionado.activo")
-		]
-		
-		new Label(panelHorizontal).text = "Activo" 
-	}
-	
 	
 	def crearTablaDeContenido(Panel panel) {
 		
@@ -229,10 +222,10 @@ class AdministracionDeUsuarioWindow extends SimpleWindow<AdminUsuarioAppModel>{
 		val Panel panelHorizontal = new Panel(panel)
 		panelHorizontal.layout = new HorizontalLayout
 		
-		crearResumenDeInformacion(panelHorizontal, "Usuarios Registrados:", "admin.cantidadDeUsuarios", Color.BLUE)
-		crearResumenDeInformacion(panelHorizontal, "Activos:", "admin.cantidadDeUsuariosActivos", Color.BLUE)
-		crearResumenDeInformacion(panelHorizontal, "Inactivos:", "admin.cantidadDeUsuariosInactivos", Color.RED)
-		crearResumenDeInformacion(panelHorizontal, "Baneados:", "admin.cantidadDeUsuariosBaneados", Color.RED)
+		crearResumenDeInformacion(panelHorizontal, "Usuarios Registrados:", "cantidadDeUsuarios", Color.BLUE)
+		crearResumenDeInformacion(panelHorizontal, "Activos:", "cantidadDeUsuariosActivos", Color.BLUE)
+		crearResumenDeInformacion(panelHorizontal, "Inactivos:", "cantidadDeUsuariosInactivos", Color.RED)
+		crearResumenDeInformacion(panelHorizontal, "Baneados:", "cantidadDeUsuariosBaneados", Color.RED)
 	}
 	
 	def crearResumenDeInformacion(Panel panel, String nombreCampo, String cantidadDeCampo, Color color) {

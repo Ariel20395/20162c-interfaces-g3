@@ -170,6 +170,7 @@ class AdministracionDeLugarWindow extends SimpleWindow<AdminOfrecidosAppModel> {
 			width = 250
 		]
 	}
+	
 	def eliminarLugar() {
 		(new ConfirmEliminarWindow (this, modelObject, "Eliminar lugar", "¿Estas seguro de eliminar lugar?")).open
 	}

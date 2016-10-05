@@ -1,12 +1,13 @@
 package appModel
 
-import org.uqbar.commons.utils.Observable
 import administracion.AdministracionUsuario
-import model.Usuario
-import static org.uqbar.commons.model.ObservableUtils.*
-import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import model.Usuario
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.UserException
+import org.uqbar.commons.utils.Observable
+
+import static org.uqbar.commons.model.ObservableUtils.*
 
 @Accessors
 @Observable
@@ -35,11 +36,54 @@ class AdminUsuarioAppModel {
 	def void setCrearNuevoUsuario() {
 		this.admin.crearNuevoUsuario
 		firePropertyChanged(this, "usuarios")
+		firePropertyChanged(this, "cantidadDeUsuarios")
+		cambioResumen
 	}
 	
 	def void setEliminarUsuario() {
 		this.admin.eliminarUsuario(this.usuarioSeleccionado)
 		firePropertyChanged(this, "usuarios")
+		firePropertyChanged(this, "cantidadDeUsuarios")
+		cambioResumen
 	}
 	
+	def cambioResumen() {
+		firePropertyChanged(this, "cantidadDeUsuariosActivos")
+		firePropertyChanged(this, "cantidadDeUsuariosInactivos")
+		firePropertyChanged(this, "cantidadDeUsuariosBaneados")
+	}
+	
+	def getCantidadDeUsuarios() {
+		this.admin.cantidadDeUsuarios
+	}
+	
+	def getCantidadDeUsuariosActivos() {
+		this.admin.cantidadDeUsuariosActivos
+	}
+	
+	def getCantidadDeUsuariosInactivos() {
+		this.admin.cantidadDeUsuariosInactivos
+	}
+	
+	def getCantidadDeUsuariosBaneados() {
+		this.admin.cantidadDeUsuariosBaneados
+	}
+	
+	def void setUsuarioBaneado(Boolean baneado) {
+		this.usuarioSeleccionado.setBaneado(baneado)
+		cambioResumen
+	}
+	
+	def getUsuarioBaneado() {
+		this.usuarioSeleccionado.baneado
+	}
+	
+	def void setUsuarioActivo(Boolean activo) {
+		this.usuarioSeleccionado.setActivo(activo)
+		cambioResumen
+	}
+	
+	def getUsuarioActivo() {
+		this.usuarioSeleccionado.activo
+	}
 }

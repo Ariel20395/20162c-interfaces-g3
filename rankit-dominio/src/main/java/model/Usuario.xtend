@@ -92,7 +92,7 @@ class Usuario {
 	}
 	
 	def getFechaDeIngreso() {
-		this.fechaIngreso.toString("dd/MM/YYYY HH:mm")
+		this.fechaIngreso
 	}
 	
 	def eliminarCalificacion(Calificacion calificacion) {
