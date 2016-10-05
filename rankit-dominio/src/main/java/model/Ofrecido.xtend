@@ -26,7 +26,7 @@ class Ofrecido {
 	}
 	
 	def void habilitar(){
-		this.habilitado = true
+		this.habilitado = true;
 	}	
 	
 	def void deshabilitar(){
