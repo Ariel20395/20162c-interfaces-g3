@@ -60,10 +60,10 @@ class Usuario {
 		this.baneado = false
 	}
 	
-	def crearCalificacion(Ofrecido ofrecido, Integer puntos, String detalle) {
+	def crearCalificacion(String ofrecido, Integer puntos, String detalle) {
 		/*	El usuario crea una calificación y esta se guarda en su lista de 
 		 * 	calificaciones en el primer lugar	 */
-		 var Calificacion nuevaCalificacion = new Calificacion(puntos, detalle, this, ofrecido)
+		 var Calificacion nuevaCalificacion = new Calificacion(puntos, detalle, this.nombre, ofrecido)
 		 this.agregarCalificacion(nuevaCalificacion)
 		 
 	}

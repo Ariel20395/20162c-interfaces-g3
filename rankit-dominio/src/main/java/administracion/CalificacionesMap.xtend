@@ -14,16 +14,27 @@ class CalificacionesMap {
 	
 	//Retorna el objeto con el @Parameter id.
 	def getCalificacion(Integer id) {
-		calificacionById.get(id)
+		var calificaciones = new HashMap<Integer, Calificacion>
+		calificaciones = calificacionById
+		calificaciones.filter[k, v| k == id]
+	} 
+	
+	//Retorna el objeto con el usuario buscado en la calificacion.
+	def getCalificacionesDeUsuario(String nombreUsuario) {
+		var calificaciones = new HashMap<Integer, Calificacion>
+		calificaciones = calificacionById
+		calificaciones.filter[k, v| v.nombreUsuario == nombreUsuario]
 	}
+		
 	
 	//Elimina el objeto con el @Parameter id.
 	def eliminarCalificacion(Integer id) {
 		calificacionById.remove(id)
+		
 	}
 	
 	//Retorna todos los objetos de la colección.
 	def getCalificaciones() {
-		calificacionById.values
+		calificacionById
 	}
 }

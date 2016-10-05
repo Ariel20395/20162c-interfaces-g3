@@ -11,16 +11,14 @@ class OfrecidoTest {
 		private Ofrecido freddo
 		private Calificacion cal1
 		private Calificacion cal2
-		private Usuario user
 		
 		@Before
 		def void setUp(){
 			
 			aysa = new Ofrecido("Aysa")
 			freddo = new Ofrecido("Freddo")
-			user = new Usuario("Juan", "007")
-			cal1 = new Calificacion(8, "Bueno", user, aysa)
-			cal2 = new Calificacion (4, "Regular", user, aysa)
+			cal1 = new Calificacion(8, "Bueno", "Juan", aysa.nombre)
+			cal2 = new Calificacion (4, "Regular", "Juan", aysa.nombre)
 			
 		}
 		

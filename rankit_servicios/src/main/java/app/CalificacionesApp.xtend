@@ -49,18 +49,18 @@ class CalificacionesApp {
 		correoARG.fechaRegistro = new DateTime(2015, 9, 9, 19, 00)
 		cineHoyts.fechaRegistro = new DateTime(2015, 11, 12, 9, 00)
 		
-		usuario1.crearCalificacion(netflix, 8, "muy bueno")
-		usuario2.crearCalificacion(cablevision, 5, "algo caro")
+		usuario1.crearCalificacion(netflix.nombre, 8, "muy bueno")
+		usuario2.crearCalificacion(cablevision.nombre, 5, "algo caro")
 
-		var calificacion1 = new Calificacion(8, "esto anda bien", usuario1, netflix)
-		var calificacion2 = new Calificacion(8, "muy caro", usuario2, cablevision)
-		var calificacion3 = new Calificacion(8, "buen costo, problemas con internet", usuario3, telecentro)
-		var calificacion4 = new Calificacion(8, "buenos precios", usuario4, carpinteria)
-		var calificacion5 = new Calificacion(8, "no llega a tiempo establecido", usuario5, correoARG)
-		var calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1, netflix)
-		var calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2, cineHoyts)
-		var calificacion8 = new Calificacion(6, "Se corta a veces", usuario3, netflix)
-		var calificacion9 = new Calificacion(9, "Atención muy buena", usuario3, cineHoyts)
+		var calificacion1 = new Calificacion(8, "esto anda bien", usuario1.nombre, netflix.nombre)
+		var calificacion2 = new Calificacion(8, "muy caro", usuario2.nombre, cablevision.nombre)
+		var calificacion3 = new Calificacion(8, "buen costo, problemas con internet", usuario3.nombre, telecentro.nombre)
+		var calificacion4 = new Calificacion(8, "buenos precios", usuario4.nombre, carpinteria.nombre)
+		var calificacion5 = new Calificacion(8, "no llega a tiempo establecido", usuario5.nombre, correoARG.nombre)
+		var calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1.nombre, netflix.nombre)
+		var calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2.nombre, cineHoyts.nombre)
+		var calificacion8 = new Calificacion(6, "Se corta a veces", usuario3.nombre, netflix.nombre)
+		var calificacion9 = new Calificacion(9, "Atención muy buena", usuario3.nombre, cineHoyts.nombre)
 		calificacion9.esOfensiva = true
 		
 		
