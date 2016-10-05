@@ -5,39 +5,39 @@ import java.util.List
 import model.Ofrecido
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import model.TipoOfrecido
 
 @Accessors
 @Observable
 
 class AdministracionOfrecidos {
 	
-	private List<Ofrecido> servicios
-	private List<Ofrecido> lugares
+	private List<Ofrecido> ofrecidos
 	
 	new(){
-		servicios = new ArrayList<Ofrecido>
-		lugares   = new ArrayList<Ofrecido>
+		ofrecidos = new ArrayList<Ofrecido>
 	}
 
 	def void altaDeServicio(String nombre){
-		/*Crea un nuevo Ofrecido con nombre "nombre" y lo guarda en la lista de "servicios"*/
-		var nuevo = new Ofrecido(nombre)
-		this.agregarServicio(nuevo)
+		var nuevo = new Ofrecido(nombre, TipoOfrecido.SERVICIO)
+		this.agregarOfrecido(nuevo)
 		
 	}
 	
-	def void agregarServicio(Ofrecido servicio){
-		this.servicios.add(servicio)
+	def void agregarOfrecido(Ofrecido servicio){
+		this.ofrecidos.add(servicio)
 		
 	}
-	
-	def eliminarServicio(Ofrecido servicio){
-		this.servicios.remove(servicio)
+	def List<Ofrecido> getLugares(){
+		this.ofrecidos.filter[ofrecido | ofrecido.tipo == TipoOfrecido.LUGAR ].toList
+	}
+	def List<Ofrecido> getServicios(){
+		this.ofrecidos.filter[ofrecido | ofrecido.tipo == TipoOfrecido.SERVICIO].toList
 	}
 
 	def buscaServicio(String nombre) {
 		/*	Filtra la lista de servicios por nombre	*/
-		this.servicios.filter[ofrecido | this.match(nombre, ofrecido.nombre)].toList
+		this.ofrecidos.filter[ofrecido | this.match(nombre, ofrecido.nombre)].toList
 	}
 	
 	def match(Object expectedValue, Object realValue) {
@@ -51,7 +51,7 @@ class AdministracionOfrecidos {
 	}
 	
 	def cantidadDeServicios(){
-		this.servicios.size
+		this.getServicios.size
 	}	
 
 	def cantServiciosHabilitados(){
@@ -59,7 +59,7 @@ class AdministracionOfrecidos {
 	}
 	
 	def serviciosHabilitados() {
-		this.servicios.filter[it.habilitado].toList
+		this.getServicios.filter[it.habilitado].toList
 	}
 	
 	def cantServiciosDeshabilitados(){
@@ -67,17 +67,8 @@ class AdministracionOfrecidos {
 	}
 	
 	def void altaDeLugar(String nombre){
-		/*Crea un nuevo Ofrecido con nombre "nombre" y lo guarda en la lista de "lugares" */
-		var nuevo = new Ofrecido(nombre)
-		this.agregarLugar(nuevo)
-	}
-	
-	def void agregarLugar(Ofrecido lugar){
-		this.getLugares.add(lugar)
-	}
-	
-	def eliminarLugar(Ofrecido lugar){
-		this.lugares.remove(lugar)
+		var nuevo = new Ofrecido(nombre, TipoOfrecido.LUGAR)
+		this.agregarOfrecido(nuevo)
 	}
 	
 	def buscarLugar(String nombre) {
@@ -86,7 +77,7 @@ class AdministracionOfrecidos {
 	}
 	
 	def cantidadDeLugares(){
-		this.lugares.size
+		this.getLugares.size
 	}
 	
 	def cantLugaresHabilitados(){
@@ -94,9 +85,8 @@ class AdministracionOfrecidos {
 	}
 	
 	def lugaresHabilitados() {
-		this.lugares.filter[
-			ofrecido| ofrecido.habilitado==true
-		].toList
+		this.getLugares.filter[
+			ofrecido| ofrecido.habilitado].toList
 	}
 	
 	def cantLugaresDeshabilitados(){
@@ -108,13 +98,7 @@ class AdministracionOfrecidos {
 	}
 	
 	def eliminarOfrecido(Ofrecido ofrecido) {
-		if (this.lugares.contains(ofrecido)) {
-			this.eliminarLugar(ofrecido)	
-		}
-		if (this.servicios.contains(ofrecido)) {
-			this.eliminarServicio(ofrecido)	
-		}
-		
+		this.ofrecidos.remove(ofrecido)
 	}
 	
 }

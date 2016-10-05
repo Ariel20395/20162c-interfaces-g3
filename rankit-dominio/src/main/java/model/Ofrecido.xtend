@@ -13,8 +13,9 @@ class Ofrecido {
 	private DateTime fechaRegistro
 	private Boolean habilitado
 	private List<Calificacion> calificaciones
+	private TipoOfrecido tipo
 	
-	new(String nombre){
+	new(String nombre,TipoOfrecido tipo){
 		/*Constructor. Crea un ofrecido con Nombre. 
 		 *La fecha de registro se establece automáticamente al momento de la construcción.
 		 * Se crea deshabilitado por defecto.
@@ -23,6 +24,7 @@ class Ofrecido {
 		this.fechaRegistro = DateTime.now
 		this.habilitado = false
 		this.calificaciones = new ArrayList<Calificacion>
+		this.tipo = tipo
 	}
 	
 	def void habilitar(){

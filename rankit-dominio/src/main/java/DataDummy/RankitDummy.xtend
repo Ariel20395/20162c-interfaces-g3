@@ -9,6 +9,7 @@ import administracion.AdministracionCalificacion
 import administracion.AdministracionOfrecidos
 import org.joda.time.DateTime
 import java.util.ArrayList
+import model.TipoOfrecido
 
 class RankitDummy {
 
@@ -54,12 +55,12 @@ class RankitDummy {
 		usuario2.activar
 		usuario3.activar
 
-		netflix = new Ofrecido("Netflix")
-		cablevision = new Ofrecido("Cablevisión")
-		telecentro = new Ofrecido("TeleCentro")
-		carpinteria = new Ofrecido("Carpintería")
-		correoARG = new Ofrecido("CorreoArgentino")
-		cineHoyts = new Ofrecido("Hoyts General Cinema")
+		netflix = new Ofrecido("Netflix", TipoOfrecido.SERVICIO)
+		cablevision = new Ofrecido("Cablevisión", TipoOfrecido.SERVICIO)
+		telecentro = new Ofrecido("TeleCentro", TipoOfrecido.SERVICIO)
+		carpinteria = new Ofrecido("Carpintería", TipoOfrecido.LUGAR)
+		correoARG = new Ofrecido("CorreoArgentino", TipoOfrecido.LUGAR)
+		cineHoyts = new Ofrecido("Hoyts General Cinema", TipoOfrecido.LUGAR)
 
 		netflix.fechaRegistro = new DateTime(2016, 9, 5, 12, 00)
 		cablevision.fechaRegistro = new DateTime(2015, 10, 2, 15, 00)
@@ -148,20 +149,17 @@ class RankitDummy {
 	def crearAdminOfrecidosDummy() {
 		var AdministracionOfrecidos administrador = new AdministracionOfrecidos
 		setCalifAOfrecidos
-		agregarServicios(administrador)
-		agregarLugares(administrador)
+		agregarOfrecidos(administrador)
 		administrador
 	}
 
-	def agregarServicios(AdministracionOfrecidos ad) {
-		ad.agregarServicio(netflix)
-		ad.agregarServicio(cablevision)
-		ad.agregarServicio(telecentro)
+	def agregarOfrecidos(AdministracionOfrecidos ad) {
+		ad.agregarOfrecido(netflix)
+		ad.agregarOfrecido(cablevision)
+		ad.agregarOfrecido(telecentro)
+		ad.agregarOfrecido(carpinteria)
+		ad.agregarOfrecido(correoARG)
+		ad.agregarOfrecido(cineHoyts)
 	}
 
-	def agregarLugares(AdministracionOfrecidos adLug) {
-		adLug.agregarLugar(carpinteria)
-		adLug.agregarLugar(correoARG)
-		adLug.agregarLugar(cineHoyts)
-	}
 }
