@@ -7,6 +7,7 @@ import model.Calificacion
 import model.Usuario
 import model.Ofrecido
 import java.util.List
+import model.TipoOfrecido
 
 class AdministracionCalificacionTest {
 	AdministracionCalificacion administracionCalificacion
@@ -21,10 +22,10 @@ class AdministracionCalificacionTest {
 	@Before def void setUp() throws Exception {
 		administracionCalificacion = new AdministracionCalificacion()
 		usuario1 = new Usuario("Juan", "456242")
-		ofrecido1 = new Ofrecido("Pizzeria La Plata")
+		ofrecido1 = new Ofrecido("Pizzeria La Plata", TipoOfrecido.LUGAR)
 		calificacion1 = new Calificacion(5, "mucha espera para la atencion",usuario1 , ofrecido1)
 		usuario2 = new Usuario("Marcos", "fkhsdig8")
-		ofrecido2 = new Ofrecido("Personal")
+		ofrecido2 = new Ofrecido("Personal", TipoOfrecido.SERVICIO)
 		calificacion2 = new Calificacion(8, "Buena señal",usuario2 , ofrecido2)
 		
 		administracionCalificacion.agregarCalificacion(calificacion1)

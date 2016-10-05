@@ -16,8 +16,8 @@ class OfrecidoTest {
 		@Before
 		def void setUp(){
 			
-			aysa = new Ofrecido("Aysa")
-			freddo = new Ofrecido("Freddo")
+			aysa = new Ofrecido("Aysa", TipoOfrecido.SERVICIO)
+			freddo = new Ofrecido("Freddo", TipoOfrecido.LUGAR)
 			user = new Usuario("Juan", "007")
 			cal1 = new Calificacion(8, "Bueno", user, aysa)
 			cal2 = new Calificacion (4, "Regular", user, aysa)

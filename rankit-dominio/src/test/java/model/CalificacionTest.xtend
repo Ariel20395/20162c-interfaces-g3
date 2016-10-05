@@ -13,7 +13,7 @@ class CalificacionTest {
 	
 	@Before def void setUp() throws Exception {
 		usuario = new Usuario("Miguel", "123456")
-		ofrecido = new Ofrecido("Abasto Shopping")
+		ofrecido = new Ofrecido("Abasto Shopping", TipoOfrecido.LUGAR)
 		calificacion = new Calificacion (7, "Exelente", usuario, ofrecido)
 		fecha = new DateTime("2016-01-20")
 	}

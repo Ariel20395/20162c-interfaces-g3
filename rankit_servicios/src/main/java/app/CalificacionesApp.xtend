@@ -7,6 +7,7 @@ import model.Ofrecido
 import org.joda.time.DateTime
 import org.uqbar.xtrest.api.XTRest
 import controller.CalificacionController
+import model.TipoOfrecido
 
 class CalificacionesApp {
 	
@@ -33,12 +34,12 @@ class CalificacionesApp {
 		
 		
 		
-		var netflix = new Ofrecido("Netflix")
-		var cablevision = new Ofrecido("Cablevisión")
-		var telecentro = new Ofrecido("TeleCentro")
-		var carpinteria = new Ofrecido("Carpintería")
-		var correoARG = new Ofrecido("CorreoArgentino")
-		var cineHoyts = new Ofrecido("Hoyts General Cinema")
+		var netflix = new Ofrecido("Netflix", TipoOfrecido.SERVICIO)
+		var cablevision = new Ofrecido("Cablevisión", TipoOfrecido.SERVICIO)
+		var telecentro = new Ofrecido("TeleCentro", TipoOfrecido.SERVICIO)
+		var carpinteria = new Ofrecido("Carpintería", TipoOfrecido.LUGAR)
+		var correoARG = new Ofrecido("CorreoArgentino", TipoOfrecido.LUGAR)
+		var cineHoyts = new Ofrecido("Hoyts General Cinema", TipoOfrecido.LUGAR)
 		
 		
 

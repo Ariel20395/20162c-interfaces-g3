@@ -8,6 +8,7 @@ import model.Calificacion
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.model.UserException
+import model.TipoOfrecido
 
 @Accessors
 @Observable
@@ -39,7 +40,7 @@ class AdministracionCalificacion {
 	//crea una nueva calificacion con usuario "ADMIN" y descripcion "prueba"
 	def nuevaCalificacion() {
 		var Usuario usuario = new Usuario("ADMIN", "")
-		var Ofrecido ofrecido = new Ofrecido("")
+		var Ofrecido ofrecido = new Ofrecido("",TipoOfrecido.LUGAR)
 		var Calificacion calificacion = new Calificacion(0, "prueba", usuario, ofrecido)
 		calificacion
 	}
