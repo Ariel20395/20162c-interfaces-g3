@@ -13,3 +13,4 @@
 *generated-sources
 /rankit_administrador-desktop/bin
 /rankit_administrador-desktop/xtend-gen
+/target/

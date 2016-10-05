@@ -1,10 +1,11 @@
 package appModel
 
 import administracion.AdministracionCalificacion
-import model.Calificacion
-import org.uqbar.commons.utils.Observable
-import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import model.Calificacion
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
+
 import static org.uqbar.commons.model.ObservableUtils.*
 
 @Observable
@@ -31,17 +32,53 @@ class AdminCalificacionAppModel {
 	
 	def void setNombreOfrecidoBuscado(String nombre){
 		this.nombreOfrecidoBuscado = nombre
-		firePropertyChanged(this,"calificaciones")
+		firePropertyChanged(this, "calificaciones")
+		firePropertyChanged(this, "totalCalificacionesRegistradas")
 	}
 	
 	def void setNuevaCalificacion() {
-		administracion.nuevaCalificacion
-		firePropertyChanged(this, "calificaciones")
+		
+		var calificacion = administracion.nuevaCalificacion
+		
+		administracion.agregarCalificacion(calificacion)
+		this.calificacionSeleccionada = calificacion
+		this.notificarAObservadores
 	}
 	
-	def void setEliminarCalificacion() {
-		administracion.eliminarCalificacion(this.calificacionSeleccionada)
+	def void eliminarCalificacion() {
+		administracion.eliminarCalificacion(calificacionSeleccionada)
+		this.calificacionSeleccionada = this.getCalificaciones.get(0)
+		this.notificarAObservadores()
+	}
+	
+	def getEsOfensiva() {
+		this.calificacionSeleccionada.esOfensiva
+		
+	}
+	
+	def setEsOfensiva(Boolean unBool) {
+		this.calificacionSeleccionada.esOfensiva = unBool
+		this.notificarAObservadores
+	}
+	
+	
+	def getTotalCalificacionesRegistradas() {
+		administracion.totalCalificacionesRegistradas
+	}
+	
+	def getTotalCalificacionesOfensivas() {
+		administracion.totalCalificacionesOfensivas
+	}
+	
+	def getTotalCalificacionesNoOfensivas() {
+		administracion.totalCalificacionesNoOfensivas
+	}
+	
+	protected def void notificarAObservadores() {
 		firePropertyChanged(this, "calificaciones")
+		firePropertyChanged(this, "totalCalificacionesRegistradas")
+		firePropertyChanged(this, "totalCalificacionesOfensivas")
+		firePropertyChanged(this, "totalCalificacionesNoOfensivas")
 	}
 	
 }

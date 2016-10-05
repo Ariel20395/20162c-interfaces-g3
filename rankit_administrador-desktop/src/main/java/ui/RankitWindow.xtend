@@ -78,8 +78,8 @@ class RankitWindow extends Window<RankitAppModel>{
 			actionPanel, 
 			"Calificaciones", 
 			this.administracionDeCalificacion, 
-			"adminCalificacion.administracion.totalCalificacionesNoOfensivas",
-			"adminCalificacion.administracion.totalCalificacionesRegistradas",
+			"adminCalificacion.totalCalificacionesNoOfensivas",
+			"adminCalificacion.totalCalificacionesRegistradas",
 			null)
 	}
 	

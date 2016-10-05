@@ -31,8 +31,12 @@ class Calificacion {
 	}
 	
 	//Cambia la calificacion a el not de esOfensiva.
-	def cambiarEsOfensiva() {
-		this.esOfensiva = ! esOfensiva	
+	def activarEsOfensiva() {
+		this.esOfensiva = true	
+	}
+	
+	def rechazarEsOfensiva() {
+		this.esOfensiva = false
 	}
 	
 	//Retorna el nombre del usuario.
