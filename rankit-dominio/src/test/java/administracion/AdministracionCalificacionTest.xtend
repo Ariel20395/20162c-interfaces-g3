@@ -49,16 +49,9 @@ class AdministracionCalificacionTest {
 	
 	//Cambio la calificacion1 a esOfensiva = true y cuando le pregunto la cantidad de calificaciones ofensiva responde 1
 	@Test def void testTotalCalificacionesOfensivas() {
-		calificacion1.cambiarEsOfensiva
+		calificacion1.activarEsOfensiva
 		
 		assertEquals(1, administracionCalificacion.totalCalificacionesOfensivas)
-	}
-	
-	//Agrego una nueva calificacion, entonces su cantidad de calificaiones se incrementan en 1
-	@Test def void testNuevaCalificacion() {
-		administracionCalificacion.nuevaCalificacion
-		
-		assertEquals(3, administracionCalificacion.totalCalificacionesRegistradas)
 	}
 	
 	@Test def void BuscarUsuario() {

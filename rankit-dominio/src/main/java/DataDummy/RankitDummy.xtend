@@ -35,7 +35,7 @@ class RankitDummy {
 	Calificacion calificacion8
 	Calificacion calificacion9
 
-	List<Calificacion> calificaciones
+	var List<Calificacion> calificaciones = new ArrayList<Calificacion>()
 
 	new() {
 		usuario1 = new Usuario("Miguel", "123456")
@@ -70,24 +70,24 @@ class RankitDummy {
 
 		calificacion1 = new Calificacion(8, "esto anda bien", usuario1, netflix)
 		calificacion2 = new Calificacion(8, "muy caro", usuario2, cablevision)
-		calificacion3 = new Calificacion(8, "ben costo, problemas con internet", usuario3, telecentro)
+		calificacion3 = new Calificacion(8, "buen costo, problemas con internet", usuario3, telecentro)
 		calificacion4 = new Calificacion(8, "buenos precios", usuario4, carpinteria)
 		calificacion5 = new Calificacion(8, "no llega a tiempo establecido", usuario5, correoARG)
 		calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1, netflix)
 		calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2, cineHoyts)
 		calificacion8 = new Calificacion(6, "Se corta a veces", usuario3, netflix)
 		calificacion9 = new Calificacion(9, "Atención muy buena", usuario3, cineHoyts)
+		calificacion9.esOfensiva = true
 
-		calificaciones = #[
-			calificacion1, 
-			calificacion2, 
-			calificacion3, 
-			calificacion4, 
-			calificacion5, 
-			calificacion6,
-			calificacion7, 
-			calificacion8, 
-			calificacion9].toList
+		calificaciones.add(calificacion1)
+		calificaciones.add(calificacion2)
+		calificaciones.add(calificacion3)
+		calificaciones.add(calificacion4)
+		calificaciones.add(calificacion5)
+		calificaciones.add(calificacion6)
+		calificaciones.add(calificacion7)
+		calificaciones.add(calificacion8)
+		calificaciones.add(calificacion9)
 	}
 
 	def setCalificacionesAUsuarios() {
@@ -124,7 +124,7 @@ class RankitDummy {
 
 	def crearDummyDataCalificacion() {
 		var AdministracionCalificacion administracion = new AdministracionCalificacion()
-		administracion.setCalificaciones(new ArrayList(calificaciones))
+		administracion.setCalificaciones(calificaciones)
 		administracion
 	}
 
