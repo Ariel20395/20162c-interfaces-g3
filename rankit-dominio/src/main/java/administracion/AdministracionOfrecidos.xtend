@@ -5,6 +5,7 @@ import java.util.List
 import model.Ofrecido
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import model.Comparador
 
 @Accessors
 @Observable
@@ -37,17 +38,7 @@ class AdministracionOfrecidos {
 
 	def buscaServicio(String nombre) {
 		/*	Filtra la lista de servicios por nombre	*/
-		this.servicios.filter[ofrecido | this.match(nombre, ofrecido.nombre)].toList
-	}
-	
-	def match(Object expectedValue, Object realValue) {
-		if (expectedValue == null) {
-			return true
-		}
-		if (realValue == null) {
-			return false
-		}
-		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
+		this.servicios.filter[ofrecido | Comparador.compararPorNombre(nombre, ofrecido.nombre)].toList
 	}
 	
 	def cantidadDeServicios(){
@@ -82,7 +73,7 @@ class AdministracionOfrecidos {
 	
 	def buscarLugar(String nombre) {
 		/*	Filtra la lista de lugares por nombre	*/
-		this.lugares.filter[ofrecido | this.match(nombre, ofrecido.nombre)].toList
+		this.servicios.filter[ofrecido | Comparador.compararPorNombre(nombre, ofrecido.nombre)].toList
 	}
 	
 	def cantidadDeLugares(){

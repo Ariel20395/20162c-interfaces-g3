@@ -4,10 +4,10 @@ import administracion.AdministracionUsuario
 import java.util.List
 import model.Usuario
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
 
 import static org.uqbar.commons.model.ObservableUtils.*
+import org.uqbar.commons.model.UserException
 
 @Accessors
 @Observable
@@ -22,9 +22,6 @@ class AdminUsuarioAppModel {
 	}
 	
 	def List<Usuario> getUsuarios() {
-		if(admin.buscarUsuario(nombreUsuarioBuscado).isEmpty) {
-			throw new UserException("No hay usuarios con ese nombre")
-		}
 		admin.buscarUsuario(nombreUsuarioBuscado)
 	}
 	
@@ -42,6 +39,10 @@ class AdminUsuarioAppModel {
 	
 	def void setEliminarUsuario() {
 		this.admin.eliminarUsuario(this.usuarioSeleccionado)
+		if(this.usuarios.empty) {
+			throw new UserException("No hay mas usuarios")
+		}
+		this.usuarioSeleccionado = getUsuarios.get(0)
 		firePropertyChanged(this, "usuarios")
 		firePropertyChanged(this, "cantidadDeUsuarios")
 		cambioResumen

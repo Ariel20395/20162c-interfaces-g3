@@ -1,7 +1,7 @@
 package controller
 
 import org.uqbar.xtrest.json.JSONUtils
-import administracion.CalificacionesMap
+import serviceApp.CalificacionesMap
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Controller
 

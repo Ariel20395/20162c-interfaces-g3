@@ -1,4 +1,4 @@
-package administracion
+package serviceApp
 
 import java.util.HashMap
 import model.Calificacion
