@@ -4,6 +4,7 @@ import org.uqbar.commons.utils.Observable
 import org.joda.time.DateTime
 import java.util.ArrayList
 import java.util.List
+import java.util.Random
 
 @Accessors
 @Observable
@@ -13,8 +14,10 @@ class Ofrecido {
 	private DateTime fechaRegistro
 	private Boolean habilitado
 	private List<Calificacion> calificaciones
+	private TipoOfrecido tipo
+	private Integer id
 	
-	new(String nombre){
+	new(String nombre,TipoOfrecido tipo){
 		/*Constructor. Crea un ofrecido con Nombre. 
 		 *La fecha de registro se establece automáticamente al momento de la construcción.
 		 * Se crea deshabilitado por defecto.
@@ -23,6 +26,8 @@ class Ofrecido {
 		this.fechaRegistro = DateTime.now
 		this.habilitado = false
 		this.calificaciones = new ArrayList<Calificacion>
+		this.tipo = tipo
+		this.id = new Random().nextInt(1000)
 	}
 	
 	def void habilitar(){
