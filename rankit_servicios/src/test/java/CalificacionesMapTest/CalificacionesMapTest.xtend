@@ -3,45 +3,45 @@ package CalificacionesMapTest
 import org.junit.Before
 import org.junit.Test
 import static org.junit.Assert.*
-import administracion.CalificacionesMap
-import model.Calificacion
+import serviciosApp.CalificacionesService
+import modelServicios.CalificacionService
 
 class CalificacionesMapTest {
-	CalificacionesMap calificacionesMap
+	CalificacionesService calificacionesService
 	
 	@Before def void setUp() throws Exception {
-		calificacionesMap = new CalificacionesMap
+		calificacionesService = new CalificacionesService
 		
 	}
 	
 	@Test def void testAgregarCalificacion() {
-	var	Calificacion calificacion1 = new Calificacion(8,"detalle", "Diego", "Cablevision")
+	var	CalificacionService calificacion1 = new CalificacionService(5, 8,"detalle", "Diego", "Cablevision")
 	
-		calificacionesMap.setCalificacion(1, calificacion1 )
+		calificacionesService.setCalificacion(calificacion1)
 		
-		assertEquals(1, calificacionesMap.calificaciones.size)
+		assertEquals(1, calificacionesService.calificaciones.size)
 	}
 	
 	
 	@Test def void testEliminarCalificacion() {
-		var	Calificacion calificacion1 = new Calificacion(8,"detalle", "Diego", "Cablevision")
+		var	CalificacionService calificacion1 = new CalificacionService(5, 8,"detalle", "Diego", "Cablevision")
 		
-		calificacionesMap.setCalificacion(1, calificacion1 )
-		calificacionesMap.eliminarCalificacion(1)
+		calificacionesService.setCalificacion(calificacion1)
+		calificacionesService.eliminarCalificacion(calificacion1)
 		
-		assertTrue(calificacionesMap.calificaciones.isEmpty)
+		assertTrue(calificacionesService.calificaciones.isEmpty)
 	}
 	
 	@Test def void testGetCalificacionDeUsuario() {
 		
-		var	Calificacion diego = new Calificacion(8,"detalle", "Diego", "Cablevision")
-		var	Calificacion miguel = new Calificacion(8,"detalle", "Miguel", "Cablevision")
-		var	Calificacion javier = new Calificacion(8,"detalle", "Javier", "Cablevision")
+		var	CalificacionService diego = new CalificacionService(1, 8,"detalle", "Diego", "Cablevision")
+		var	CalificacionService miguel = new CalificacionService(2, 8,"detalle", "Miguel", "Cablevision")
+		var	CalificacionService javier = new CalificacionService(3, 8,"detalle", "Javier", "Cablevision")
 		
-		calificacionesMap.setCalificacion(1, diego)
-		calificacionesMap.setCalificacion(2, miguel)
-		calificacionesMap.setCalificacion(3, javier)
+		calificacionesService.setCalificacion(diego)
+		calificacionesService.setCalificacion(miguel)
+		calificacionesService.setCalificacion(javier)
 		
-		assertEquals(calificacionesMap.getCalificacion(2) , calificacionesMap.getCalificacionesDeUsuario("Miguel"))
+		assertEquals(calificacionesService.getCalificacion(2) , calificacionesService.getCalificacionesDeUsuario("Miguel").get(0))
 	}
 }

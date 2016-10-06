@@ -1,36 +1,37 @@
 package controller
 
 import org.uqbar.xtrest.json.JSONUtils
-import administracion.CalificacionesMap
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.commons.model.UserException
 import org.uqbar.xtrest.api.annotation.Delete
+import serviciosApp.CalificacionesService
+import modelServicios.CalificacionService
 
 @Controller
 class CalificacionController {
 	extension JSONUtils = new JSONUtils
-	CalificacionesMap calificacionesMap
+	CalificacionesService calificacionesService
 	
-	new(CalificacionesMap calificacionesMap) {
-		this.calificacionesMap = calificacionesMap
-	}
-	
+	new(CalificacionesService calificacionesService) {
+		this.calificacionesService = calificacionesService
+		}
+		
 	@Get("/calificaciones")
 		def getCalificaciones() {
 			response.contentType = "application/json"
-			ok(this.calificacionesMap.getCalificaciones.toJson)
+			ok(this.calificacionesService.getCalificaciones.toJson)
 		}
 		
-	 @Get("/calificaciones/:calificacion")
-		def getCalificacionesByUsuario() {
+	@Get("/calificaciones/:calificacion")
+		def getCalificacionesPorUsuario() {
 			response.contentType = "application/json"
 			try {
-				var calificacionMap = this.calificacionesMap.getCalificacionesDeUsuario(String.valueOf(calificacion))
-					if (calificacionMap.empty) {
+				var calificaciones = this.calificacionesService.getCalificacionesDeUsuario(String.valueOf(calificacion))
+					if (calificaciones.empty) {
 						notFound('{"error": "la calificacion con ese usuario que quiere buscar no existe"}')
 					} else {
-							ok(calificacionMap.toJson)
+							ok(calificaciones.toJson)
 						   }
 			}
        		catch (UserException ex) {
@@ -42,13 +43,14 @@ class CalificacionController {
 		def eliminarCalificacionID() {
 			response.contentType = "application/json"
 			try {
-				var calificacion = this.calificacionesMap.eliminarCalificacion(Integer.valueOf(id))
-				if (this.calificacionesMap.calificaciones.get(Integer.valueOf(id)) != calificacion) {
-					ok('{ "correcto!": "Calificacion eliminada" }')
+				var CalificacionService calificacionAEliminar = this.calificacionesService.getCalificacion(Integer.valueOf(id))
+			    this.calificacionesService.eliminarCalificacion(calificacionAEliminar)
+				
+				if (calificacionAEliminar == null) {
+					notFound("Calificacion no encontada")
 					
 				} else {
-					
-						notFound('{"error": "la calificacion con ese id que quiere buscar no existe"}')
+						ok("Calificacion eliminada")
 					   }
 				}
 			catch (NumberFormatException ex) {
@@ -63,7 +65,7 @@ class CalificacionController {
         try {
 	       	
 	        this.calificacionesMap.setCalificacion(id, calificacion)
-	    	ok()
+	    	ok('{ "": "Calificacion editada" }')
         } catch (UnrecognizedPropertyException exception) {
         	badRequest('{ "error": "El body debe ser un Libro" }')        	
         }
