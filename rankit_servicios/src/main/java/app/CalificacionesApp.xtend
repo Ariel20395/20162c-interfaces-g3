@@ -2,14 +2,14 @@ package app
 
 import org.uqbar.xtrest.api.XTRest
 import controller.CalificacionController
-import serviceApp.CalificacionesMap
 import DataDummy.RankitDummy
+import service.CalificacionService
 
 class CalificacionesApp {
 	
 	def static void main(String[] args) {
 		
-		var calificaciones = new CalificacionesMap
+		var calificaciones = new CalificacionService
 		var calificacionesTotales = new RankitDummy().crearDummyDataCalificacion.calificaciones
 		
 		for(var int i = 0; i < calificacionesTotales.size; i++){

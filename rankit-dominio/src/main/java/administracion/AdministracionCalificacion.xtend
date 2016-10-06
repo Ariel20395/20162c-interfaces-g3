@@ -23,8 +23,8 @@ class AdministracionCalificacion {
 
 	def buscarCalificacion(String nombreUsuario, String nombreOfrecido) {
 		this.calificaciones.filter[calificacion | 
-			Comparador.compararPorNombre(nombreUsuario, calificacion.usuario.nombre) &&
-			Comparador.compararPorNombre(nombreOfrecido, calificacion.ofrecido.nombre)].toList
+			Comparador.compararPorNombre(nombreUsuario, calificacion.usuario) &&
+			Comparador.compararPorNombre(nombreOfrecido, calificacion.ofrecido)].toList
 	}
 	
 	//crea una nueva calificacion con usuario "ADMIN" y descripcion "prueba"

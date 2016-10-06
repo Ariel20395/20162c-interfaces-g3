@@ -1,9 +1,9 @@
-package serviceApp
+package service
 
 import java.util.HashMap
 import model.Calificacion
 
-class CalificacionesMap {
+class CalificacionService {
 	
 	var calificacionById = new HashMap<Integer, Calificacion>
 	

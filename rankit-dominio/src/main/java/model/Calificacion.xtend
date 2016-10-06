@@ -12,8 +12,8 @@ class Calificacion {
 	DateTime fechaRegistro
 	String detalle
 	Boolean esOfensiva
-	Usuario usuario
-	Ofrecido ofrecido
+	String usuario
+	String ofrecido
 	
 	new() {
 		esOfensiva = false
@@ -26,8 +26,8 @@ class Calificacion {
 		this.fechaRegistro = DateTime.now
 		this.detalle = unDetalle
 		this.esOfensiva = false
-		this.usuario = unUsuario
-		this.ofrecido = unOfrecido
+		this.usuario = unUsuario.nombre
+		this.ofrecido = unOfrecido.nombre
 	}
 	
 	//Cambia la calificacion a el not de esOfensiva.
@@ -41,12 +41,12 @@ class Calificacion {
 	
 	//Retorna el nombre del usuario.
 	def getNombreUsuario() {
-		this.usuario.nombre
+		this.usuario
 	}
 	
 	//Retorna el nombre del evaluado.
 	def getNombreEvaluado() {
-		this.ofrecido.nombre
+		this.ofrecido
 	}
 	
 	//Retorna la fecha de registro de la calificacion.
