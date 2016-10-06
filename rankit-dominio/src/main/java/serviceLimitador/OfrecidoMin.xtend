@@ -2,7 +2,9 @@ package serviceLimitador
 
 import model.TipoOfrecido
 import model.Ofrecido
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class OfrecidoMin {
 	String nombre
 	TipoOfrecido tipo

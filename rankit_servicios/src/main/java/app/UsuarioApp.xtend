@@ -13,7 +13,7 @@ class UsuarioApp {
 		var usuarios = new RankitDummy().crearAdminUsuarioDummy.usuarios
 		
 		for(var int i = 0; i < usuarios.size; i++){
-			usuarioService.setUsuario(usuarios.get(i));
+			usuarioService.agregarUsuario(usuarios.get(i));
 		}
 		
 		XTRest.startInstance(new UsuarioController(usuarioService), 9000)

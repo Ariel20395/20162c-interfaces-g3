@@ -15,6 +15,5 @@ class UsuarioMin {
 		this.password	= usuario.password
 		this.id			= usuario.id
 	}
-	
-	
+		
 }

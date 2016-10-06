@@ -3,6 +3,7 @@ package service
 import java.util.ArrayList
 import model.Usuario
 import serviceLimitador.UsuarioMin
+import java.util.HashMap
 
 class UsuarioService {
 	
@@ -17,12 +18,12 @@ class UsuarioService {
 		this.usuarios
 	}
 	
-	def  setUsuario(Usuario usuario) {
+	def void agregarUsuario(Usuario usuario) {
 		var UsuarioMin usuarioMin = new UsuarioMin(usuario)
 		this.usuarios.add(usuarioMin)
 	}
 	
-	def crearUsuario(String nombre, String password) {
+	def void crearUsuario(String nombre, String password) {
 		var Usuario usuario = new Usuario(nombre, password)
 		var UsuarioMin usuarioNuevo = new UsuarioMin(usuario) 
 		usuarios.add(usuarioNuevo)
@@ -41,7 +42,9 @@ class UsuarioService {
 	}
 	
 	def getIdUsuario(String nombreUsuario) {
-		getUsuario(nombreUsuario).id
+		var map = new HashMap<String, Integer>()
+		map.put("id", getUsuario(nombreUsuario).id)
+		map
 	}
 	
 	def getUsuario(String nombreUsuario) {

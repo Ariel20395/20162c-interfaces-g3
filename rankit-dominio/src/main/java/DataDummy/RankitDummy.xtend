@@ -55,12 +55,18 @@ class RankitDummy {
 		usuario2.activar
 		usuario3.activar
 
-		netflix = new Ofrecido("Netflix", TipoOfrecido.SERVICIO)
+		netflix 	= new Ofrecido("Netflix", TipoOfrecido.SERVICIO)
 		cablevision = new Ofrecido("Cablevisión", TipoOfrecido.SERVICIO)
-		telecentro = new Ofrecido("TeleCentro", TipoOfrecido.SERVICIO)
+		telecentro 	= new Ofrecido("TeleCentro", TipoOfrecido.SERVICIO)
 		carpinteria = new Ofrecido("Carpintería", TipoOfrecido.LUGAR)
-		correoARG = new Ofrecido("CorreoArgentino", TipoOfrecido.LUGAR)
-		cineHoyts = new Ofrecido("Hoyts General Cinema", TipoOfrecido.LUGAR)
+		correoARG 	= new Ofrecido("CorreoArgentino", TipoOfrecido.LUGAR)
+		cineHoyts 	= new Ofrecido("Hoyts General Cinema", TipoOfrecido.LUGAR)
+		
+		netflix.habilitar
+		telecentro.habilitar
+		correoARG.habilitar
+		cineHoyts.habilitar
+		cablevision.habilitar
 
 		netflix.fechaRegistro = new DateTime(2016, 9, 5, 12, 00)
 		cablevision.fechaRegistro = new DateTime(2015, 10, 2, 15, 00)
@@ -104,16 +110,13 @@ class RankitDummy {
 	}
 
 	def setCalifAOfrecidos() {
-		netflix.habilitar
 		netflix.agregarCalificacion(calificacion1)
 		netflix.agregarCalificacion(calificacion2)
 		cablevision.agregarCalificacion(calificacion2)
-		telecentro.habilitar
 		telecentro.agregarCalificacion(calificacion8)
 		telecentro.agregarCalificacion(calificacion5)
 		telecentro.agregarCalificacion(calificacion9)
 		carpinteria.agregarCalificacion(calificacion8)
-		correoARG.habilitar
 		correoARG.agregarCalificacion(calificacion6)
 		correoARG.agregarCalificacion(calificacion9)
 		correoARG.agregarCalificacion(calificacion9)
@@ -123,6 +126,25 @@ class RankitDummy {
 		cineHoyts.agregarCalificacion(calificacion4)
 	}
 
+	def setUsuarios(AdministracionUsuario admin) {
+
+		admin.usuarios.add(usuario1)
+		admin.usuarios.add(usuario2)
+		admin.usuarios.add(usuario3)
+		admin.usuarios.add(usuario4)
+		admin.usuarios.add(usuario5)
+
+	}
+
+	def agregarOfrecidos(AdministracionOfrecidos ad) {
+		ad.agregarOfrecido(netflix)
+		ad.agregarOfrecido(cablevision)
+		ad.agregarOfrecido(telecentro)
+		ad.agregarOfrecido(carpinteria)
+		ad.agregarOfrecido(correoARG)
+		ad.agregarOfrecido(cineHoyts)
+	}
+	
 	def crearDummyDataCalificacion() {
 		var AdministracionCalificacion administracion = new AdministracionCalificacion()
 		administracion.setCalificaciones(calificaciones)
@@ -136,15 +158,6 @@ class RankitDummy {
 		admin
 	}
 
-	def setUsuarios(AdministracionUsuario admin) {
-
-		admin.usuarios.add(usuario1)
-		admin.usuarios.add(usuario2)
-		admin.usuarios.add(usuario3)
-		admin.usuarios.add(usuario4)
-		admin.usuarios.add(usuario5)
-
-	}
 
 	def crearAdminOfrecidosDummy() {
 		var AdministracionOfrecidos administrador = new AdministracionOfrecidos
@@ -153,13 +166,5 @@ class RankitDummy {
 		administrador
 	}
 
-	def agregarOfrecidos(AdministracionOfrecidos ad) {
-		ad.agregarOfrecido(netflix)
-		ad.agregarOfrecido(cablevision)
-		ad.agregarOfrecido(telecentro)
-		ad.agregarOfrecido(carpinteria)
-		ad.agregarOfrecido(correoARG)
-		ad.agregarOfrecido(cineHoyts)
-	}
 
 }
