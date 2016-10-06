@@ -100,5 +100,8 @@ class AdministracionOfrecidos {
 	def eliminarOfrecido(Ofrecido ofrecido) {
 		this.ofrecidos.remove(ofrecido)
 	}
+	def List<Ofrecido> ofrecidosHabilitados(){
+		this.ofrecidos.filter[ofrecido | ofrecido.habilitado].toList
+	}
 	
 }
