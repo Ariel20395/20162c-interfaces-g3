@@ -1,7 +1,8 @@
-package ServiciosApp
+package service
 
 import model.Ofrecido
 import java.util.List
+import serviceLimitador.OfrecidoMin
 
 class OfrecidosService {
 	private List<OfrecidoMin> ofrecidosMin

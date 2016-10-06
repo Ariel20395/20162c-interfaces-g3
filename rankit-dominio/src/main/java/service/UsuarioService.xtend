@@ -6,11 +6,11 @@ import serviceLimitador.UsuarioMin
 
 class UsuarioService {
 	
+	var usuarios = new ArrayList<UsuarioMin>()
+	
 	new() {
 		
 	}
-	
-	var usuarios = new ArrayList<UsuarioMin>()
 	
 	def getUsuarios() {
 		/*	Retorna los usuarios	*/

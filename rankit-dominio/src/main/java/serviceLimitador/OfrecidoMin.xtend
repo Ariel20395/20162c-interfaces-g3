@@ -1,4 +1,4 @@
-package ServiciosApp
+package serviceLimitador
 
 import model.TipoOfrecido
 import model.Ofrecido

@@ -2,8 +2,8 @@ package controller
 
 import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.json.JSONUtils
-import ServiciosApp.OfrecidosService
 import org.uqbar.xtrest.api.annotation.Get
+import service.OfrecidosService
 
 @Controller
 class OfrecidosController {
