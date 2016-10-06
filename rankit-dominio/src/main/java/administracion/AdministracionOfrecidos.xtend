@@ -5,14 +5,8 @@ import java.util.List
 import model.Ofrecido
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-<<<<<<< HEAD
-import model.Comparador
-=======
-import model.TipoOfrecido
->>>>>>> 98fa65491783380288cb56da885d61ca0780cb53
 import model.Comparador
 import model.TipoOfrecido
-import org.uqbar.commons.utils.Observable
 
 @Accessors
 @Observable
