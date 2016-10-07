@@ -6,9 +6,10 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 class OfrecidoMin {
-	String nombre
-	TipoOfrecido tipo
+	
 	Integer id
+	String 	nombre
+	TipoOfrecido tipo
 	
 	new(Ofrecido ofrecido){
 		this.nombre = ofrecido.nombre
@@ -16,5 +17,7 @@ class OfrecidoMin {
 		this.id = ofrecido.id
 		
 	}
+	
+	
 	
 }

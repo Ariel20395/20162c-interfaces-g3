@@ -7,9 +7,6 @@ class Comparador {
 		if (nombreEsperado == null) {
 			return true
 		}
-		if (nombreObtenido == null) {
-			return false
-		}
 		nombreObtenido.toLowerCase().contains(nombreEsperado.toLowerCase())
 	}
 	

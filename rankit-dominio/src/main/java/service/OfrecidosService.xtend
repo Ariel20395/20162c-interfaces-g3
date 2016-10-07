@@ -1,14 +1,13 @@
 package service
 
-import model.Ofrecido
-import java.util.List
-import serviceLimitador.OfrecidoMin
 import java.util.ArrayList
+import java.util.List
+import model.Ofrecido
+import serviceLimitador.OfrecidoMin
 
 class OfrecidosService {
 	
 	var ofrecidosMin = new ArrayList<OfrecidoMin>()
-	
 	
 	new(){
 
@@ -22,4 +21,5 @@ class OfrecidosService {
 	def List<OfrecidoMin> getOfrecidos(){
 		ofrecidosMin
 	}
+	
 }

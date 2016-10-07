@@ -1,4 +1,4 @@
-package DataDummy
+package dataDummy
 
 import administracion.AdministracionUsuario
 import java.util.List
