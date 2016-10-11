@@ -5,6 +5,7 @@ import org.junit.Test
 import model.Ofrecido
 import org.junit.Assert
 import java.util.List
+import model.TipoOfrecido
 
 class AdministracionOfrecidosTest {
 	
@@ -20,13 +21,13 @@ class AdministracionOfrecidosTest {
 	def void init(){
 		administrador = new AdministracionOfrecidos
 		administradorCon2LugaresY1Servicio = new AdministracionOfrecidos
-		lugSushi = new Ofrecido("Sushi Pop")
-		lugFreddo = new Ofrecido ("Fredo")
-		servSpeedy = new Ofrecido("Speedy")
-		servAysa = new Ofrecido("Aysa")	
-		administradorCon2LugaresY1Servicio.agregarServicio(servSpeedy)
-		administradorCon2LugaresY1Servicio.agregarServicio(servAysa)
-		administradorCon2LugaresY1Servicio.agregarLugar(lugFreddo)
+		lugSushi = new Ofrecido("Sushi Pop", TipoOfrecido.LUGAR)
+		lugFreddo = new Ofrecido ("Fredo", TipoOfrecido.LUGAR)
+		servSpeedy = new Ofrecido("Speedy", TipoOfrecido.SERVICIO)
+		servAysa = new Ofrecido("Aysa", TipoOfrecido.SERVICIO)	
+		administradorCon2LugaresY1Servicio.agregarOfrecido(servSpeedy)
+		administradorCon2LugaresY1Servicio.agregarOfrecido(servAysa)
+		administradorCon2LugaresY1Servicio.agregarOfrecido(lugFreddo)
 		
 		
 	}
@@ -72,8 +73,8 @@ class AdministracionOfrecidosTest {
 		var List<Ofrecido> listaEsperadaEnServicio = #[servSpeedy]
 		var List<Ofrecido> listaEsperadaEnLugar = #[]
 		
-		administradorCon2LugaresY1Servicio.eliminarLugar(lugFreddo)
-		administradorCon2LugaresY1Servicio.eliminarServicio(servAysa)
+		administradorCon2LugaresY1Servicio.eliminarOfrecido(lugFreddo)
+		administradorCon2LugaresY1Servicio.eliminarOfrecido(servAysa)
 		
 		Assert.assertArrayEquals(listaEsperadaEnServicio, administradorCon2LugaresY1Servicio.servicios)
 		Assert.assertArrayEquals(listaEsperadaEnLugar, administradorCon2LugaresY1Servicio.lugares)

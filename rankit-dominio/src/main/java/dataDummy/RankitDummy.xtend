@@ -1,4 +1,4 @@
-package DataDummy
+package dataDummy
 
 import administracion.AdministracionUsuario
 import java.util.List
@@ -55,12 +55,18 @@ class RankitDummy {
 		usuario2.activar
 		usuario3.activar
 
-		netflix = new Ofrecido("Netflix", TipoOfrecido.SERVICIO)
+		netflix 	= new Ofrecido("Netflix", TipoOfrecido.SERVICIO)
 		cablevision = new Ofrecido("Cablevisión", TipoOfrecido.SERVICIO)
-		telecentro = new Ofrecido("TeleCentro", TipoOfrecido.SERVICIO)
+		telecentro 	= new Ofrecido("TeleCentro", TipoOfrecido.SERVICIO)
 		carpinteria = new Ofrecido("Carpintería", TipoOfrecido.LUGAR)
-		correoARG = new Ofrecido("CorreoArgentino", TipoOfrecido.LUGAR)
-		cineHoyts = new Ofrecido("Hoyts General Cinema", TipoOfrecido.LUGAR)
+		correoARG 	= new Ofrecido("CorreoArgentino", TipoOfrecido.LUGAR)
+		cineHoyts 	= new Ofrecido("Hoyts General Cinema", TipoOfrecido.LUGAR)
+		
+		netflix.habilitar
+		telecentro.habilitar
+		correoARG.habilitar
+		cineHoyts.habilitar
+		cablevision.habilitar
 
 		netflix.fechaRegistro = new DateTime(2016, 9, 5, 12, 00)
 		cablevision.fechaRegistro = new DateTime(2015, 10, 2, 15, 00)
@@ -69,15 +75,15 @@ class RankitDummy {
 		correoARG.fechaRegistro = new DateTime(2015, 9, 9, 19, 00)
 		cineHoyts.fechaRegistro = new DateTime(2015, 11, 12, 9, 00)
 
-		calificacion1 = new Calificacion(8, "esto anda bien", usuario1, netflix)
-		calificacion2 = new Calificacion(8, "muy caro", usuario2, cablevision)
-		calificacion3 = new Calificacion(8, "buen costo, problemas con internet", usuario3, telecentro)
-		calificacion4 = new Calificacion(8, "buenos precios", usuario4, carpinteria)
-		calificacion5 = new Calificacion(8, "no llega a tiempo establecido", usuario5, correoARG)
-		calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1, netflix)
-		calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2, cineHoyts)
-		calificacion8 = new Calificacion(6, "Se corta a veces", usuario3, netflix)
-		calificacion9 = new Calificacion(9, "Atención muy buena", usuario3, cineHoyts)
+		calificacion1 = new Calificacion(8, "esto anda bien", usuario1.nombre, netflix.nombre)
+		calificacion2 = new Calificacion(8, "muy caro", usuario2.nombre, cablevision.nombre)
+		calificacion3 = new Calificacion(8, "buen costo, problemas con internet", usuario3.nombre, telecentro.nombre)
+		calificacion4 = new Calificacion(8, "buenos precios", usuario4.nombre, carpinteria.nombre)
+		calificacion5 = new Calificacion(8, "no llega a tiempo establecido", usuario5.nombre, correoARG.nombre)
+		calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1.nombre, netflix.nombre)
+		calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2.nombre, cineHoyts.nombre)
+		calificacion8 = new Calificacion(6, "Se corta a veces", usuario3.nombre, netflix.nombre)
+		calificacion9 = new Calificacion(9, "Atención muy buena", usuario3.nombre, cineHoyts.nombre)
 		calificacion9.esOfensiva = true
 
 		calificaciones.add(calificacion1)
@@ -104,16 +110,13 @@ class RankitDummy {
 	}
 
 	def setCalifAOfrecidos() {
-		netflix.habilitar
 		netflix.agregarCalificacion(calificacion1)
 		netflix.agregarCalificacion(calificacion2)
 		cablevision.agregarCalificacion(calificacion2)
-		telecentro.habilitar
 		telecentro.agregarCalificacion(calificacion8)
 		telecentro.agregarCalificacion(calificacion5)
 		telecentro.agregarCalificacion(calificacion9)
 		carpinteria.agregarCalificacion(calificacion8)
-		correoARG.habilitar
 		correoARG.agregarCalificacion(calificacion6)
 		correoARG.agregarCalificacion(calificacion9)
 		correoARG.agregarCalificacion(calificacion9)
@@ -123,6 +126,25 @@ class RankitDummy {
 		cineHoyts.agregarCalificacion(calificacion4)
 	}
 
+	def setUsuarios(AdministracionUsuario admin) {
+
+		admin.usuarios.add(usuario1)
+		admin.usuarios.add(usuario2)
+		admin.usuarios.add(usuario3)
+		admin.usuarios.add(usuario4)
+		admin.usuarios.add(usuario5)
+
+	}
+
+	def agregarOfrecidos(AdministracionOfrecidos ad) {
+		ad.agregarOfrecido(netflix)
+		ad.agregarOfrecido(cablevision)
+		ad.agregarOfrecido(telecentro)
+		ad.agregarOfrecido(carpinteria)
+		ad.agregarOfrecido(correoARG)
+		ad.agregarOfrecido(cineHoyts)
+	}
+	
 	def crearDummyDataCalificacion() {
 		var AdministracionCalificacion administracion = new AdministracionCalificacion()
 		administracion.setCalificaciones(calificaciones)
@@ -136,30 +158,12 @@ class RankitDummy {
 		admin
 	}
 
-	def setUsuarios(AdministracionUsuario admin) {
-
-		admin.usuarios.add(usuario1)
-		admin.usuarios.add(usuario2)
-		admin.usuarios.add(usuario3)
-		admin.usuarios.add(usuario4)
-		admin.usuarios.add(usuario5)
-
-	}
 
 	def crearAdminOfrecidosDummy() {
 		var AdministracionOfrecidos administrador = new AdministracionOfrecidos
 		setCalifAOfrecidos
 		agregarOfrecidos(administrador)
 		administrador
-	}
-
-	def agregarOfrecidos(AdministracionOfrecidos ad) {
-		ad.agregarOfrecido(netflix)
-		ad.agregarOfrecido(cablevision)
-		ad.agregarOfrecido(telecentro)
-		ad.agregarOfrecido(carpinteria)
-		ad.agregarOfrecido(correoARG)
-		ad.agregarOfrecido(cineHoyts)
 	}
 
 }

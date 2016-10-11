@@ -1,6 +1,6 @@
 package runnable
 
-import DataDummy.RankitDummy
+import dataDummy.RankitDummy
 import appModel.RankitAppModel
 import org.uqbar.arena.Application
 import ui.RankitWindow

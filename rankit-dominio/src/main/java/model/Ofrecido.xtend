@@ -4,6 +4,7 @@ import org.uqbar.commons.utils.Observable
 import org.joda.time.DateTime
 import java.util.ArrayList
 import java.util.List
+import java.util.Random
 
 @Accessors
 @Observable
@@ -14,6 +15,7 @@ class Ofrecido {
 	private Boolean habilitado
 	private List<Calificacion> calificaciones
 	private TipoOfrecido tipo
+	private Integer id
 	
 	new(String nombre,TipoOfrecido tipo){
 		/*Constructor. Crea un ofrecido con Nombre. 
@@ -25,6 +27,7 @@ class Ofrecido {
 		this.habilitado = false
 		this.calificaciones = new ArrayList<Calificacion>
 		this.tipo = tipo
+		this.id = new Random().nextInt(1000)
 	}
 	
 	def void habilitar(){
