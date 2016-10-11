@@ -24,7 +24,7 @@ class RankingService {
 		ofrecidosRankin
 	}
 	
-	def buscar(String nombre, String tipo, Integer calificacionesBuscadas, Integer rankingBuscado ){
+	def buscar(String nombre, String tipo, String calificacionesBuscadas, String rankingBuscado ){
 		
 		this.ofrecidosRankin.filter[rankinMin |
 			verificarNombre(rankinMin, nombre) &&
@@ -37,7 +37,7 @@ class RankingService {
 		if(rankingBuscado == null) {
 			return true
 		}
-		rankinMin.ranking >= rankingBuscado
+		rankinMin.ranking >= Integer.valueOf(rankingBuscado)
 	}
 	
 	def verificarCantidad(OfrecidoRankinMin rankinMin, String cantCalif) {

@@ -4,7 +4,7 @@ import org.uqbar.xtrest.api.XTRest
 import dataDummy.RankItServiceDummy
 import controller.RankItController
 
-class RankItApp {
+class RankItServiceApp {
 	
 	def static void main(String[] args) {
 		

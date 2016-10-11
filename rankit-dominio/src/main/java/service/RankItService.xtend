@@ -1,6 +1,7 @@
 package service
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import serviceLimitador.CalificacionMin
 
 @Accessors
 class RankItService {
@@ -8,6 +9,7 @@ class RankItService {
 	private OfrecidosService ofrecidoService
 	private UsuarioService	usuarioService
 	private RankingService	rankingService
+	private CalificacionesService calificacionService
 	
 	new() {
 		
@@ -43,6 +45,34 @@ class RankItService {
 	
 	def buscar(String nombreOfrecido, String tipo, String cantidad, String ranking) {
 		rankingService.buscar(nombreOfrecido, tipo, cantidad, ranking)
+	}
+	
+	def getCalificacionesDeUsuario(String usuario) {
+		calificacionService.getCalificacionesDeUsuario(usuario)
+	}
+	
+	def getCalificacion(Integer id) {
+		calificacionService.getCalificacion(id)
+	}
+	
+	def eliminarCalificacion(CalificacionMin calificacionMin) {
+		calificacionService.eliminarCalificacion(calificacionMin)
+	}
+	
+	def ingresoDeDatosCorrectos(Integer puntos, String detalle, String evaluado) {
+		calificacionService.ingresoDeDatosCorrectos(puntos, detalle, evaluado)
+	}
+	
+	def realizarNuevaCalificacion(Integer puntos, String detalle, String usuario, String evaluado) {
+		calificacionService.realizarCalificacion(puntos, detalle, usuario, evaluado)
+	}
+	
+	def existeCalificacion(Integer id) {
+		calificacionService.existeCalificacion(id)
+	}
+	
+	def editarCalificacionPorId(Integer id, Integer puntos, String detalle, String evaluado) {
+		calificacionService.editarCalificacionPorId(id, puntos, detalle, evaluado)
 	}
 	
 	
