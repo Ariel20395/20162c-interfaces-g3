@@ -6,15 +6,13 @@ import org.joda.time.DateTime
 import org.junit.Assert
 
 class CalificacionTest {
-	Usuario usuario
-	Ofrecido ofrecido
+	
 	Calificacion calificacion
 	DateTime fecha
 	
 	@Before def void setUp() throws Exception {
-		usuario = new Usuario("Miguel", "123456")
-		ofrecido = new Ofrecido("Abasto Shopping", TipoOfrecido.LUGAR)
-		calificacion = new Calificacion (7, "Exelente", usuario, ofrecido)
+		
+		calificacion = new Calificacion (7, "Exelente", "Miguel", "Abasto Shopping")
 		fecha = new DateTime("2016-01-20")
 	}
 	
@@ -39,7 +37,7 @@ class CalificacionTest {
 	
 	@Test def void testGetNombreUsuario() {
 		
-		Assert.assertEquals("Miguel", calificacion.getNombreUsuario)
+		Assert.assertEquals("Miguel", calificacion.nombreUsuario)
 	}
 	
 	@Test def void testGetnombreOfrecido() {

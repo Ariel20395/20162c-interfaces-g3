@@ -20,8 +20,8 @@ class UsuarioTest {
 		netflix = new Ofrecido("Netflix", TipoOfrecido.SERVICIO)
 		speedy	= new Ofrecido("Speedy", TipoOfrecido.SERVICIO)
 		
-		usuario.crearCalificacion(speedy, 2, "mala conexion")
-		usuario.crearCalificacion(netflix, 4, "muy bueno")
+		usuario.crearCalificacion(speedy.nombre, 2, "mala conexion")
+		usuario.crearCalificacion(netflix.nombre, 4, "muy bueno")
 	}
 
 	@Test
