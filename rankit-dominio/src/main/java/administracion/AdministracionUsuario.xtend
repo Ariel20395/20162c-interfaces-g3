@@ -5,6 +5,7 @@ import java.util.List
 import model.Usuario
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import model.Comparador
 
 @Accessors
 @Observable
@@ -30,17 +31,7 @@ class AdministracionUsuario {
 	
 	def buscarUsuario(String nombre) {
 		/*	Filtra la lista de usuarios por nombre	*/
-		this.usuarios.filter[usuario | this.match(nombre, usuario.nombre)].toList
-	}
-	
-	def match(Object expectedValue, Object realValue) {
-		if (expectedValue == null) {
-			return true
-		}
-		if (realValue == null) {
-			return false
-		}
-		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
+		this.usuarios.filter[usuario | Comparador.compararPorNombre(nombre, usuario.nombre)	].toList
 	}
 	
 	def void eliminarUsuario(Usuario usuario) {

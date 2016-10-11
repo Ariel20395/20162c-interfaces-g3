@@ -6,6 +6,8 @@ import model.Calificacion
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.model.UserException
+import model.Comparador
+
 
 @Accessors
 @Observable
@@ -20,23 +22,15 @@ class AdministracionCalificacion {
 
 	def buscarCalificacion(String nombreUsuario, String nombreOfrecido) {
 		this.calificaciones.filter[calificacion | 
-			this.match(nombreUsuario, calificacion.nombreUsuario) &&
-			this.match(nombreOfrecido, calificacion.nombreOfrecido)].toList
-	}
 
-	def match(String expectedValue, String realValue) {
-		if (expectedValue == null) {
-			return true
-		}
-		if (realValue == null) {
-			return false
-		}
-		realValue.toLowerCase().contains(expectedValue.toLowerCase())
+			Comparador.compararPorNombre(nombreUsuario, calificacion.usuario) &&
+			Comparador.compararPorNombre(nombreOfrecido, calificacion.ofrecido)].toList
 	}
 	
 	//crea una nueva calificacion con usuario "ADMIN" y descripcion "prueba"
 	def nuevaCalificacion() {
 		var Calificacion calificacion = new Calificacion(0, "prueba", "ADMIN", "")
+		
 		calificacion
 	}
 	

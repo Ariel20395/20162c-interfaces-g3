@@ -14,12 +14,10 @@ class OfrecidoTest {
 		
 		@Before
 		def void setUp(){
-			
-			aysa = new Ofrecido("Aysa")
-			freddo = new Ofrecido("Freddo")
+			aysa = new Ofrecido("Aysa", TipoOfrecido.SERVICIO)
+			freddo = new Ofrecido("Freddo", TipoOfrecido.LUGAR)
 			cal1 = new Calificacion(8, "Bueno", "Juan", aysa.nombre)
 			cal2 = new Calificacion (4, "Regular", "Juan", aysa.nombre)
-			
 		}
 		
 		
@@ -42,7 +40,6 @@ class OfrecidoTest {
 			
 			Assert.assertEquals(12, aysa.puntajeTotal,0)
 			Assert.assertEquals(6, aysa.puntajePromedio,0)
-			Assert.assertEquals(aysa.calificaciones(), lista)
-				
+			Assert.assertEquals(aysa.calificaciones(), lista)		
 		}
 }

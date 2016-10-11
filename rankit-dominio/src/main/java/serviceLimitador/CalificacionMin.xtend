@@ -1,4 +1,4 @@
-package ServiceLimitador
+package serviceLimitador
 
 
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -19,7 +19,7 @@ class CalificacionMin {
 	new(Calificacion calificacion) {
 		this.id = calificacion.id
 		this.puntos = calificacion.puntos
-		this.usuario = calificacion.nombreUsuario
-		this.ofrecido = calificacion.nombreOfrecido
+		this.usuario = calificacion.usuario
+		this.ofrecido = calificacion.ofrecido
 	}
 }

@@ -42,7 +42,7 @@ class CalificacionTest {
 	
 	@Test def void testGetnombreOfrecido() {
 		
-		Assert.assertEquals("Abasto Shopping", calificacion.nombreOfrecido)
+		Assert.assertEquals("Abasto Shopping", calificacion.nombreEvaluado)
 	}
 	
 }

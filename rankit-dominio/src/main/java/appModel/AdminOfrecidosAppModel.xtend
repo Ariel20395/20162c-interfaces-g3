@@ -39,11 +39,11 @@ class AdminOfrecidosAppModel {
 	
 	def void setNombreServicio(String nombre){
 		this.nombreServicio = nombre
-		firePropertyChanged(this,"servicios")
+		firePropertyChanged(this,"ofrecidos")
 	}
 	def void setNombreLugar(String nombre){
 		this.nombreLugar = nombre
-		firePropertyChanged(this,"lugares")
+		firePropertyChanged(this,"ofrecidos")
 	} 
 	def Integer getCantLugaresHabilitados(){
 		administrador.cantLugaresHabilitados
@@ -53,7 +53,7 @@ class AdminOfrecidosAppModel {
 	}
 	def void setCrearNuevoLugar() {
 		administrador.altaDeLugar("Prueba")
-		firePropertyChanged(this, "lugares")
+		firePropertyChanged(this, "ofrecidos")
 		firePropertyChanged(this, "cantidadDeLugares")
 		cambioLugarHabilitado
 	}
@@ -74,15 +74,14 @@ class AdminOfrecidosAppModel {
 	
 	def void setCrearNuevoServicio() {
 		administrador.altaDeServicio("Prueba")
-		firePropertyChanged(this, "servicios")
+		firePropertyChanged(this, "ofrecidos")
 		firePropertyChanged(this, "cantidadDeServicios")
 		firePropertyChanged(this, "cantidadDeServiciosDeshabilitados")
 	}
 	
 	def void setEliminarOfrecido() {
-		administrador.eliminarServicio(this.ofrecidoSeleccionado)
-		firePropertyChanged(this, "lugares")
-		firePropertyChanged(this, "servicios")
+		administrador.eliminarOfrecido(this.ofrecidoSeleccionado)
+		firePropertyChanged(this, "ofrecidos")
 		firePropertyChanged(this, "cantidadDeServicios")
 	}
 	

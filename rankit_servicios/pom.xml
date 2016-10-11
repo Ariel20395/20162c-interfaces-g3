@@ -25,8 +25,8 @@
 		
 		<dependency>
 		    <groupId>Ramirez-Bada-Schab</groupId>
- 	   	    <artifactId>rankit-dominio</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+			<artifactId>rankit-dominio</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
 		</dependency>	
   </dependencies>
   

@@ -14,8 +14,9 @@ class Calificacion {
 	DateTime fechaRegistro
 	String detalle
 	Boolean esOfensiva
-	String nombreUsuario
-	String nombreOfrecido
+	String usuario
+	String ofrecido
+
 	
 	new() {
 		id = new Random().nextInt(1000)
@@ -24,14 +25,15 @@ class Calificacion {
 	}
 	
 	//Constructor 
-	new(Integer unosPuntos, String unDetalle, String unNombreUsuario, String unNombreOfrecido) {
+	new(Integer unosPuntos, String unDetalle, String unUsuario, String unOfrecido) {
 		this.id = new Random().nextInt(1000)
 		this.puntos = unosPuntos
 		this.fechaRegistro = DateTime.now
 		this.detalle = unDetalle
 		this.esOfensiva = false
-		this.nombreUsuario = unNombreUsuario
-		this.nombreOfrecido = unNombreOfrecido
+		this.usuario = unUsuario
+		this.ofrecido = unOfrecido
+
 	}
 	
 	//Cambia la calificacion a true
@@ -43,7 +45,18 @@ class Calificacion {
 	def rechazarEsOfensiva() {
 		this.esOfensiva = false
 	}
-		
+	
+	//Retorna el nombre del usuario.
+	def getNombreUsuario() {
+		this.usuario
+	}
+	
+	//Retorna el nombre del evaluado.
+	def getNombreEvaluado() {
+		this.ofrecido
+	}
+	
+
 	//Retorna la fecha de registro de la calificacion.
 	def getFechaRegistro() {
 		this.fechaRegistro.toString("dd/MM/YYYY HH:mm")

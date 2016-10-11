@@ -6,11 +6,13 @@ import org.joda.time.DateTime
 import java.util.ArrayList
 import java.util.List
 import org.uqbar.commons.model.UserException
+import java.util.Random
 
 @Accessors
 @Observable
 class Usuario {
 	
+	private Integer	 id
 	private String 	 nombre
 	private DateTime fechaIngreso
 	private Boolean	 activo
@@ -30,6 +32,7 @@ class Usuario {
 		this.activo		= false
 		this.baneado	= false
 		this.calificaciones = new ArrayList<Calificacion>()
+		this.id = new Random().nextInt(1000)
 	}
 	
 	def void resetPassword() {
@@ -92,7 +95,7 @@ class Usuario {
 	}
 	
 	def getFechaDeIngreso() {
-		this.fechaIngreso.toString("dd/MM/YYYY HH:mm")
+		this.fechaIngreso
 	}
 	
 	def eliminarCalificacion(Calificacion calificacion) {
