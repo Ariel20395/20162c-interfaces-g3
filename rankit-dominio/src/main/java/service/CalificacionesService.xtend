@@ -1,4 +1,4 @@
-package serviciosApp
+package service
 
 import java.util.ArrayList
 import java.util.List
@@ -35,7 +35,7 @@ class CalificacionesService {
 	def getCalificacionesDeUsuario(String nombreDeUsuario) {
 		var calificacionesAux = calificaciones
 		
-		calificacionesAux.filter[calificacion | calificacion.usuario == nombreDeUsuario].toList
+		calificacionesAux.filter[calificacion | calificacion.usuario.contains(nombreDeUsuario)].toList
 	}
 		
 	
@@ -51,8 +51,28 @@ class CalificacionesService {
 	
 	def realizarCalificacion(Integer puntos, String detalle, String nombreUsuario, String nombreOfrecido) {
 		var Calificacion calificacion = new Calificacion(puntos, detalle, nombreUsuario, nombreOfrecido)
-		var CalificacionMin calificacionMin = new CalificacionMin(calificacion)
 		
-		calificaciones.add(calificacionMin)
+		agregarCalificacion(calificacion)
 	}
+	
+	def ingresoDeDatosCorrectos(Integer puntos, String detalle, String evaluado) {
+		return puntos != null && detalle != "" && evaluado != ""
+	}
+	
+	def existeCalificacion(Integer id) {
+		var calificacion = buscarCalificacionPorId(id)
+		return calificacion != null
+	}
+	
+	def buscarCalificacionPorId(Integer idCalificacion) {
+		calificaciones.findFirst[calificacion | calificacion.id == idCalificacion]
+	}
+	
+	def editarCalificacionPorId(Integer id, Integer nuevosPuntos, String nuevoDetalle, String nuevoEvaluado) {
+		var calificacionAEditar = buscarCalificacionPorId(id)
+		calificacionAEditar.puntos  = nuevosPuntos
+		calificacionAEditar.detalle = nuevoDetalle
+		calificacionAEditar.ofrecido = nuevoEvaluado
+	}
+	
 }

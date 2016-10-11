@@ -1,9 +1,9 @@
 package app
 
-import DataDummy.RankitDummy
 import org.uqbar.xtrest.api.XTRest
-import serviciosApp.CalificacionesService
 import controller.CalificacionController
+import service.CalificacionesService
+import dataDummy.RankitDummy
 
 class CalificacionesApp {
 	

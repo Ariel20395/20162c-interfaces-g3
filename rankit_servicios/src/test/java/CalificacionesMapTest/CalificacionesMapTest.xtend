@@ -3,9 +3,9 @@ package CalificacionesMapTest
 import org.junit.Before
 import org.junit.Test
 import static org.junit.Assert.*
-import serviciosApp.CalificacionesService
 import serviceLimitador.CalificacionMin
 import model.Calificacion
+import service.CalificacionesService
 
 class CalificacionesMapTest {
 	CalificacionesService calificacionesService

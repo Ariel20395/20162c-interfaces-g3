@@ -13,6 +13,7 @@ class CalificacionMin {
 	Integer puntos
 	String usuario
 	String ofrecido
+	String detalle
 	
 	
 	//Constructor 
@@ -21,5 +22,6 @@ class CalificacionMin {
 		this.puntos = calificacion.puntos
 		this.usuario = calificacion.usuario
 		this.ofrecido = calificacion.ofrecido
+		this.detalle = calificacion.detalle
 	}
 }
