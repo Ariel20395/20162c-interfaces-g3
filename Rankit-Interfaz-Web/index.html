@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+	<!-- BOOTSTRAP -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="node_modules/bootstrap/css/bootstrap-theme.min.css">
+  	<script src="node_modules/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- JQUERY -->
+	<script src="node_modules/jquery/jquery.min.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row header"> 
+			<div class="col-sm-3"><img src="rankit.jpg" alt="logoRankit" width="114" height="142"></div>
+			<div class="col-sm-3"><p>Rank-it</p></div>
+			<div class="col-sm-6"><p style="font-size:20px">Debería ir el cuadro de logueo.</p></div>
+		</div>
+		<form action="" class="form-horizontal">
+		<div class="row main">
+				<br>
+				<div class="form-group">
+					<label class="control-label col-md-2 for="idDelServer">Nombre:</label>
+					<div class="col-md-3"><input class="form-control" type="text" placeholder= "Ingrese el nombre a buscar" name="nombreEnElServer" id="idDelServer">
+					</div>
+					<label class="control-label col-md-2" for="idDelServer">Calificaciones:</label>
+					<div class="col-md-3"><input class="form-control" type="text" placeholder= "Ingrese una cantidad" name="nombreEnElServer" id="idDelServer">
+					</div>
+				</div>
+		</div>
+		<div class="row main">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="idDelServer">Ranking:</label>
+					<div class="col-md-3"><input class="form-control" type="text" placeholder= "Ingrese un ranking" name="nombreEnElServer" id="idDelServer">
+					</div>
+					<label class="control-label col-md-2" for="tipo">Seleccione tipo:</label>
+					<select class="col-md-2" id="tipo" >
+							<option>Servicio</option>
+							<option>Lugar</option>
+					</select>
+				</div>
+				<div class="col-md-7 pull-right"><button class="btn btn-primary col-md-2 ">Buscar</button></div>
+				<br>
+				</div>
+		</div>
+		</form>
+	</div>
+</body>
+</html>
