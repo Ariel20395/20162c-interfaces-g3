@@ -1,1 +1,8 @@
+/xtrest/target/
+/xtrest/.classpath
+/xtrest/.project
+/xtrest/.settings/
+*generated-sources
+/xtrest/bin
+/xtrest/xtend-gen
 /target/
