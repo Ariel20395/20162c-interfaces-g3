@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="page-header">
+    <div class="col-sm-3"><img src="/rankit.jpg" alt="logoRankit" width="170" height="99"></div>
+	<div class="col-sm-4"><h1>Rank-IT</h1></div>
+
+    <div class="col-sm-5" ng-controller="noLoginController as logout">
+    
+        <div>
+            <div class="col-sm-3">
+                <input ng-model="logout.nombreUsuario" type="text" placeholder= "Nombre de usuario" > 
+            </div>
+
+            <div class = "col-sm-2">
+                <button type="button" ng- click = "logout.login()"> Login </button>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-sm-3">
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese Password">
+            </div>
+
+            <div class = "col-sm-2">
+                <button type="button" class="btn btn-link" ng- click = "logout.login()"> Registrate! </button>
+            </div>
+        </div>
+    
+    </div>
+    </div>
+</div>    
