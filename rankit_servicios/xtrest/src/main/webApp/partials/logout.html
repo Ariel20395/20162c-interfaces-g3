@@ -3,9 +3,10 @@
     <div class="col-sm-3"><img src="/rankit.jpg" alt="logoRankit" width="170" height="99"></div>
 	<div class="col-sm-4"><h1>Rank-IT</h1></div>
 
-    <div class="col-sm-5" ng-controller="loginCtrl as logout">
-    
-        <div>
+    <div ng-controller="loginCtrl as logout">
+        <div class="row">
+        <div class="col-md-5">
+        <form class="form-horizontal">
             <div class="col-sm-3">
                 <input ng-model="logout.nombreUsuario" type="text" placeholder= "Nombre de usuario" > 
             </div>
@@ -13,18 +14,21 @@
             <div class = "col-sm-2">
                 <button type="button" ng- click = "logout.login()"> Login </button>
             </div>
+        </form>
         </div>
 
-        <div>
-            <div class="col-sm-3">
+        <div class="col-md-5">
+            <form class="form-horizontal">
+            <div class="col-md-3">
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese Password">
             </div>
 
             <div class = "col-sm-2">
                 <button type="button" class="btn btn-link" ng- click = "logout.login()"> Registrate! </button>
             </div>
+            </form>
         </div>
-    
+        </div>
     </div>
     </div>
 </div>    
