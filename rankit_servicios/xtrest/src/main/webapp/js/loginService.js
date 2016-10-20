@@ -1,10 +1,10 @@
 rankitApp.service("LoginService", function() {
 
-    this.login = function(usuario) {
-        
+    this.login = function(nombreUsuario, passwordUsuario) {
+        //
     };
     
-    this.registrar = function(usuario) {
+    this.registrar = function(nombreUsuario, passwordUsuario) {
         // modelo crearUsuario
     }
     

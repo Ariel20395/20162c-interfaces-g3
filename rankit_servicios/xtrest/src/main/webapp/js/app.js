@@ -1,8 +1,9 @@
 'use strict';
-var rankitApp = angular.module('rankitApp', ['ui.router']);
 
 /* Controllers */
-rankitApp.controller('BusquedaController', function ( BusquedaService) {
+var rankitApp = angular.module('rankitApp', ['ui.router']);
+
+rankitApp.controller('BusquedaController', function (BusquedaService) {
 
     this.nombreOfrecido = '';
     this.calificacion = '';
@@ -20,24 +21,23 @@ rankitApp.controller('BusquedaController', function ( BusquedaService) {
 
 rankitApp.controller('LoginController', function($state, LoginService) {
    
-    this.usuario = {
-        'nombreUsuario' : '',
-        'passwordUsuario' : ''
-    };
+    this.nombreUsuario = '';
+    this.passUsuario = '';
     
     this.login = function() {
-        LoginService.login(this.usuario);
+        LoginService.login(this.nombreUsuario, this.passUsuario);
+        if(loginCorrecto) {
+            $state.go("login");
+        }
     };
     
     this.registrarse = function() {
-        LoginService.registrar(this.usuario);
+        LoginService.registrar(this.nombreUsuario, this.password);
     };
     
     this.logout = function() {
-        this.usuario = {
-            'nombreUsuario' : '',
-            'passwordUsuario' : ''
-        };
+        this.nombreUsuario = '';
+        this.passUsuario = '';
         $state.go("logout");
     };
     
