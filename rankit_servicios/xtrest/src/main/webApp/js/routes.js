@@ -8,7 +8,7 @@ rankitApp.config(function ($stateProvider, $urlRouterProvider) {
             views: {
                 'header': {
                     templateUrl: '/partials/logout.html',
-                    controller: "LoginController as LoginCtrl"
+                    controller: "LoginController as loginCtrl"
                 },
                 'panelBusqueda': {
                     templateUrl: "partials/busqueda.html",
@@ -16,31 +16,18 @@ rankitApp.config(function ($stateProvider, $urlRouterProvider) {
               }
             }
         })
-};
-
     
-  /*
-    .state('logout', {
-      url: "/",
-      templateUrl: "partials/noLogin.html",
-      controller: "loginController as loginCtrl"
-    })
-
-    .state('login', {
-      url: "/:id",
-      templateUrl: "partials/login.html",
-      controller: "LoginController as LoginCtrl"
-  })
-
-  .state('busqueda', {
-      url: "/:id",
-      templateUrl: "partials/search.html",
-      controller: "BusquedaController as busquedaCtrl"
-    })
-  
-  .state('calificar', {
-      url: "/:id",
-      templateUrl: "partials/calificar.html",
-      controller: "SearchController as searchCtrl"
-    })
-  */
+        .state('login', {
+            url: '/',
+            views: {
+                'header': {
+                    templateUrl: '/partials/login.html',
+                    controller: "LoginController as loginCtrl"
+                },
+                'panelBusqueda': {
+                    templateUrl: "partials/busqueda.html",
+                    controller: "BusquedaController as busquedaCtrl"
+              }
+            }
+        });
+});

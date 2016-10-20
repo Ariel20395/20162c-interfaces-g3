@@ -1,4 +1,4 @@
-LoginServiceApp.service("LogoutService", function() {
+rankitApp.service("LogoutService", function() {
 
     this.login = function(nombreUsuario, passwordUsuario) {
         //
