@@ -1,0 +1,36 @@
+<div class = "container">
+    <form action="" class="form-horizontal">
+            <div class="input-group" ng-controller="busquedaCtrl as busqueda">
+                <label>Nombre:</label>
+                <input ng-model="busqueda.nombreOfrecido" type="text" placeholder= "Ingrese el nombre a buscar" >
+
+                <label>Seleccione tipo:</label>
+                <select ng-model="busqueda.tipo" >
+                    <option ng-repeat="option in busqueda.tiposDeOfrecidos" value="{{option.id}}">{{option.tipo}}</option> <!-- -->
+                </select>
+
+                <label>Calificaciones:</label>
+                <input ng-model="busqueda.calificacion" type="text" placeholder= "Ingrese una cantidad">
+
+                <label>Ranking:</label>
+                <input ng-model="busqueda.ranking" type="text" placeholder= "Ingrese un ranking">
+
+                <div>
+                    <button type="button" class="btn btn-primary" ng-click="busqueda.buscar()">Buscar</button>
+                </div>
+            </div>
+    </form>
+    
+    <div>
+        <div> <h2 class="text-center"> 4 Resultados para su busqueda </h2></div>
+    </div>
+
+    <div>
+        <div class="col-sm-6">
+
+        </div>
+
+        <div class="col-sm-6">
+        </div>
+    </div> 
+</div>
