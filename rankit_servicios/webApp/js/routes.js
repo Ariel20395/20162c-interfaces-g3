@@ -14,7 +14,7 @@ rankitApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('logout', {
       url: "/",
       templateUrl: "partials/noLogin.html",
-      controller: "logoutController as logoutCtrl"
+      controller: "loginController as loginCtrl"
     })
 
     .state('login', {

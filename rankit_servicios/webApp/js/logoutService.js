@@ -1,4 +1,4 @@
-LoginServiceApp.service("LoginService", function() {
+LoginServiceApp.service("LogoutService", function() {
 
     this.login = function(nombreUsuario, passwordUsuario) {
         //

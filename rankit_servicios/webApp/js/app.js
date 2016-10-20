@@ -6,20 +6,20 @@ var rankitApp = angular.module('rankitApp', ['ui.router']);
 rankitApp.controller('BusquedaController', function (BusquedaService) {
 
     this.nombreOfrecido = '';
-    this.calificacion ='';
-    this.ranking ='';
-    this.tipo ='';
+    this.calificacion = '';
+    this.ranking = '';
+    this.tipo = '';
     this.tiposDeOfrecidos = BusquedaService.tipos;
-    this.resultados = []
+    this.resultados = BusquedaService.calificaciones;
     
     this.buscar = function () {
-        this.resultados = BusquedaService.buscar(this.nombreOfrecido, this.tipo, this.ranking, this.calificacion)
+        this.resultados = BusquedaService.buscar(this.nombreOfrecido, this.tipo, this.ranking, this.calificacion);
     };
 
 });
 
 
-rankitApp.controller('logoutController', function($state, LoginService) {
+rankitApp.controller('loginController', function($state, LoginService) {
    
     this.nombreUsuario = '';
     this.passUsuario = '';
@@ -27,19 +27,17 @@ rankitApp.controller('logoutController', function($state, LoginService) {
     this.login = function() {
         LoginService.login(this.nombreUsuario, this.passUsuario);
         if(loginCorrecto) {
-            $state.go("login")
+            $state.go("login");
         }
-    }
+    };
     
     this.registrarse = function() {
         LoginService.registrar(this.nombreUsuario, this.password);
-    }
-});
-
-
-rankitApp.controller('LoginController', function($state, LoginService) {
+    };
     
     this.logout = function() {
+        this.nombreUsuario = '';
+        this.passUsuario = '';
         $state.go("logout");
     };
     
