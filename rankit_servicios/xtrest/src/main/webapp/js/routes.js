@@ -4,10 +4,10 @@ rankitApp.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider
         .state('logout', {
-            url: '/',
+            url: "/",
             views: {
                 'header': {
-                    templateUrl: '/partials/logout.html',
+                    templateUrl: "/partials/logout.html",
                     controller: "LoginController as loginCtrl"
                 },
                 'panelBusqueda': {
@@ -18,10 +18,10 @@ rankitApp.config(function ($stateProvider, $urlRouterProvider) {
         })
     
         .state('login', {
-            url: '/acceso',
+            url: "/acceso",
             views: {
                 'header': {
-                    templateUrl: '/partials/login.html',
+                    templateUrl: "/partials/login.html",
                     controller: "LoginController as loginCtrl"
                 },
                 'panelBusqueda': {

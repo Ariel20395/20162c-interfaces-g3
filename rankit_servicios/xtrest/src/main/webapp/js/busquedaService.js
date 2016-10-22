@@ -9,7 +9,6 @@ rankitApp.service("BusquedaService", function() {
     ];
     
     this.tipos = [
-        {id: '0', tipo:''},
         {id: '1', tipo:'SERVICIO'},
         {id: '2', tipo:'LUGAR'}
     ];
