@@ -1,0 +1,69 @@
+'use strict';
+var rankitApp = angular.module('rankitApp', ['ui.router', 'ngResource']);
+
+/* Controllers */
+rankitApp.controller('BusquedaController', function ($resource, rankitService) {
+
+    var self = this;
+    
+    this.ranking = {
+        nombre : '',
+        tipo : '',
+        calificaciones : '',
+        ranking : '' 
+    };
+    
+    this.tiposDeOfrecidos = [
+        {id: '1', tipo:'SERVICIO'},
+        {id: '2', tipo:'LUGAR'}
+    ];
+    
+    this.resultados = [];
+    
+    this.getRanking = function() {
+	    rankitService.findAll(function(response) {
+	    	self.resultados = response.data;
+	    });
+    };
+    
+    this.getRanking();
+        
+    this.buscar = function (ranking) {
+        rankitService.findRanking(self.ranking, function(response) {
+            self.resultados = response.data
+        }); 
+        this.tipo = '';
+    };
+
+});
+
+
+rankitApp.controller('LoginController', function($state) {
+   
+    this.usuario = {
+        'nombreUsuario' : '',
+        'passwordUsuario' : ''
+    };
+    
+    this.login = function() {   
+    };
+    
+    this.registrarse = function() {   
+    };
+    
+    this.logout = function() {
+        this.usuario = {
+            'nombreUsuario' : '',
+            'passwordUsuario' : ''
+        };
+        $state.go("logout");
+    };
+    
+    this.calificar = function() {
+        $state.go("calificar");  
+    };
+});
+
+rankitApp.controller('CalificarController', function() {
+    
+})
