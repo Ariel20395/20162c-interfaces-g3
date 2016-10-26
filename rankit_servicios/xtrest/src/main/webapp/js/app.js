@@ -1,21 +1,51 @@
 'use strict';
-var rankitApp = angular.module('rankitApp', ['ui.router']);
+var rankitApp = angular.module('rankitApp', ['ui.router', 'ngResource']);
 
 /* Controllers */
-rankitApp.controller('BusquedaController', function (BusquedaService) {
+rankitApp.controller('BusquedaController', function ($resource, Ranking) {
 
-    this.nombreOfrecido = '';
-    this.calificacion = '';
-    this.ranking = '';
-    this.tipo = '';
-    this.tiposDeOfrecidos = BusquedaService.tipos;
-    this.resultados = BusquedaService.calificaciones;
+    this.ranking = {
+        nombre : '',
+        tipo : '',
+        calificaciones : '',
+        ranking : '' 
+    };
     
-    this.buscar = function () {
-        this.resultados = BusquedaService.buscar(this.nombreOfrecido, this.tipo, this.ranking, this.calificacion);
+    this.tiposDeOfrecidos = [
+        {id: '1', tipo:'SERVICIO'},
+        {id: '2', tipo:'LUGAR'}
+    ];
+    
+    this.resultados = [];
+    
+    this.actualizarResultados = function() {
+        Ranking.query(function(data) {
+            this.resultados = data;
+        }, errorHandler);
+    };
+    
+    this.actualizarResultados();
+    
+    this.buscar = function (ranking) {
+        this.actualizarResultados();
         this.tipo = '';
     };
 
+    function errorHandler(error) {
+        this.notificarError(error.data);
+    }
+
+    this.errors = [];
+    this.notificarError = function(mensaje) {
+        this.errors.push(mensaje);
+        this.notificar(this.errors);
+    };
+
+    this.notificar = function(mensajes) {
+        $timeout(function() {
+            while (mensajes.length > 0) mensajes.pop();
+        }, 3000);
+    }
 });
 
 

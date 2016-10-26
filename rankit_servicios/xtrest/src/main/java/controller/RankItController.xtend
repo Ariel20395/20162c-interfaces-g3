@@ -22,12 +22,6 @@ class RankItController {
 		this.rankItService = service
 	}
 	
-	@Get("/usuarios")
-	def getUsuarios() {
-		response.contentType = "application/json"
-		ok(rankItService.getUsuarios.toJson)
-	}
-	
 	@Put("/usuarios")
     def createUsuario(@Body String body) {
         response.contentType = "application/json"

@@ -8,11 +8,11 @@
     
     <div class="form-group">
         <label class="control-label col-md-2">Nombre:</label>
-        <div class="col-md-4"><input ng-model="busquedaCtrl.nombreOfrecido" class="form-control" type="text" placeholder= "Ingrese el nombre del ofrecido">
+        <div class="col-md-4"><input ng-model="busquedaCtrl.ranking.nombre" class="form-control" type="text" placeholder= "Ingrese el nombre del ofrecido">
         </div>
         <label class="control-label col-md-2">Tipo:</label>
         <div class="col-md-4">
-             <select class="form-control"  ng-model="busqueda.tipo" >
+             <select class="form-control"  ng-model="busquedaCtrl.ranking.tipo" >
                     <option value="">Todo</option>
                     <option ng-repeat="option in busquedaCtrl.tiposDeOfrecidos" value="{{option.id}}">{{option.tipo}}</option>
             </select>
@@ -21,10 +21,10 @@
           
     <div class="form-group">
         <label class="control-label col-md-2">Calificacion:</label>
-        <div class="col-md-4"><input ng-model="busquedaCtrl.calificacion" class="form-control" type="text" placeholder= "Ingrese una cantidad">
+        <div class="col-md-4"><input ng-model="busquedaCtrl.ranking.calificaciones" class="form-control" type="text" placeholder= "Ingrese una cantidad">
         </div>
         <label class="control-label col-md-2">Ranking:</label>
-        <div class="col-md-4"><input ng-model="busquedaCtrl.ranking" class="form-control" type="text" placeholder= "Ingrese una cantidad">
+        <div class="col-md-4"><input ng-model="busquedaCtrl.ranking.ranking" class="form-control" type="text" placeholder= "Ingrese una cantidad">
         </div>
     </div>
     </form>
@@ -61,6 +61,4 @@
         </tr>
         </tbody>
     </table>
-    
-    
 </div>
