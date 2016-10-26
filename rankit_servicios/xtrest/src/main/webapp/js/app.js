@@ -2,8 +2,10 @@
 var rankitApp = angular.module('rankitApp', ['ui.router', 'ngResource']);
 
 /* Controllers */
-rankitApp.controller('BusquedaController', function ($resource, Ranking) {
+rankitApp.controller('BusquedaController', function ($resource, rankitService) {
 
+    var self = this;
+    
     this.ranking = {
         nombre : '',
         tipo : '',
@@ -18,50 +20,35 @@ rankitApp.controller('BusquedaController', function ($resource, Ranking) {
     
     this.resultados = [];
     
-    this.actualizarResultados = function() {
-        Ranking.query(function(data) {
-            this.resultados = data;
-        }, errorHandler);
+    this.getRanking = function() {
+	    rankitService.findAll(function(response) {
+	    	self.resultados = response.data;
+	    });
     };
     
-    this.actualizarResultados();
-    
+    this.getRanking();
+        
     this.buscar = function (ranking) {
-        this.actualizarResultados();
+        rankitService.findRanking(self.ranking, function(response) {
+            self.resultados = response.data
+        }); 
         this.tipo = '';
     };
 
-    function errorHandler(error) {
-        this.notificarError(error.data);
-    }
-
-    this.errors = [];
-    this.notificarError = function(mensaje) {
-        this.errors.push(mensaje);
-        this.notificar(this.errors);
-    };
-
-    this.notificar = function(mensajes) {
-        $timeout(function() {
-            while (mensajes.length > 0) mensajes.pop();
-        }, 3000);
-    }
 });
 
 
-rankitApp.controller('LoginController', function($state, LoginService) {
+rankitApp.controller('LoginController', function($state) {
    
     this.usuario = {
         'nombreUsuario' : '',
         'passwordUsuario' : ''
     };
     
-    this.login = function() {
-        LoginService.login(this.usuario);
+    this.login = function() {   
     };
     
-    this.registrarse = function() {
-        LoginService.registrar(this.usuario);
+    this.registrarse = function() {   
     };
     
     this.logout = function() {
@@ -76,3 +63,7 @@ rankitApp.controller('LoginController', function($state, LoginService) {
         $state.go("calificar");  
     };
 });
+
+rankitApp.controller('CalificarController', function() {
+    
+})

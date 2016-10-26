@@ -29,5 +29,19 @@ rankitApp.config(function ($stateProvider, $urlRouterProvider) {
                     controller: "BusquedaController as busquedaCtrl"
               }
             }
+        })
+    
+    .state('calificar', {
+            url: "/calificar",
+            views: {
+                'header': {
+                    templateUrl: "/partials/login.html",
+                    controller: "LoginController as loginCtrl"
+                },
+                'panelBusqueda': {
+                    templateUrl: "partials/calificacion.html"
+                    
+              }
+            }
         });
 });
