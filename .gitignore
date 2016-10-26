@@ -14,3 +14,11 @@
 /rankit_administrador-desktop/bin
 /rankit_administrador-desktop/xtend-gen
 /target/
+
+/rankit_servicios/xtrest/target/
+/rankit_servicios/xtrest/.classpath/
+/rankit_servicios/xtrest/.project/
+/rankit_servicios/xtrest/.settings/
+*generated-sources
+/rankit_servicios/xtrest/bin/
+/rankit_servicios/xtrest/xtend-gen/
