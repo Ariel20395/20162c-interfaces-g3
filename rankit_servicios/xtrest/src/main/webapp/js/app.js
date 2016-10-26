@@ -1,43 +1,74 @@
 'use strict';
+var rankitApp = angular.module('rankitApp', ['ui.router', 'ngResource']);
 
 /* Controllers */
-var rankitApp = angular.module('rankitApp', ['ui.router']);
+rankitApp.controller('BusquedaController', function ($resource, Ranking) {
 
-rankitApp.controller('BusquedaController', function (BusquedaService) {
-
-    this.nombreOfrecido = '';
-    this.calificacion = '';
-    this.ranking = '';
-    this.tipo = '';
-    this.tiposDeOfrecidos = BusquedaService.tipos;
-    this.resultados = BusquedaService.calificaciones;
+    this.ranking = {
+        nombre : '',
+        tipo : '',
+        calificaciones : '',
+        ranking : '' 
+    };
     
-    this.buscar = function () {
-        this.resultados = BusquedaService.buscar(this.nombreOfrecido, this.tipo, this.ranking, this.calificacion);
+    this.tiposDeOfrecidos = [
+        {id: '1', tipo:'SERVICIO'},
+        {id: '2', tipo:'LUGAR'}
+    ];
+    
+    this.resultados = [];
+    
+    this.actualizarResultados = function() {
+        Ranking.query(function(data) {
+            this.resultados = data;
+        }, errorHandler);
+    };
+    
+    this.actualizarResultados();
+    
+    this.buscar = function (ranking) {
+        this.actualizarResultados();
+        this.tipo = '';
     };
 
+    function errorHandler(error) {
+        this.notificarError(error.data);
+    }
+
+    this.errors = [];
+    this.notificarError = function(mensaje) {
+        this.errors.push(mensaje);
+        this.notificar(this.errors);
+    };
+
+    this.notificar = function(mensajes) {
+        $timeout(function() {
+            while (mensajes.length > 0) mensajes.pop();
+        }, 3000);
+    }
 });
 
 
 rankitApp.controller('LoginController', function($state, LoginService) {
    
-    this.nombreUsuario = '';
-    this.passUsuario = '';
+    this.usuario = {
+        'nombreUsuario' : '',
+        'passwordUsuario' : ''
+    };
     
     this.login = function() {
-        LoginService.login(this.nombreUsuario, this.passUsuario);
-        if(loginCorrecto) {
-            $state.go("login");
-        }
+        LoginService.login(this.usuario);
     };
     
     this.registrarse = function() {
-        LoginService.registrar(this.nombreUsuario, this.password);
+        LoginService.registrar(this.usuario);
     };
     
     this.logout = function() {
-        this.nombreUsuario = '';
-        this.passUsuario = '';
+        this.usuario = {
+            'nombreUsuario' : '',
+            'passwordUsuario' : ''
+        };
         $state.go("logout");
     };
     
