@@ -76,11 +76,16 @@ rankitApp.controller('CalificarController', function(calificacionService) {
     this.respuesta = [];
     
     this.getCalificacion = function() {
-        calificacionService.finCalificacion(self.ranking, function(response) {
-             self.respuesta = response.data;
+        calificacionService.findCalificacion(self.calificacion, function(response) {
+            self.respuesta = response.data;
         });    
     };
     
     this.getCalificacion();
     
+    this.realizarCalificacion = function() {
+        calificacionService.calificar(self.calificacion, function(response) {
+            self.respuesta = response.data;
+        });
+    };
 });
