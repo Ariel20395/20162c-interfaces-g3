@@ -7,22 +7,22 @@ rankitApp.controller('BusquedaController', function ($resource, rankitService) {
     var self = this;
     
     this.ranking = {
-        nombre : '',
-        tipo : '',
-        calificaciones : '',
-        ranking : '' 
+        nombre: '',
+        tipo: '',
+        calificaciones: '',
+        ranking: '' 
     };
     
     this.tiposDeOfrecidos = [
-        {tipo:'SERVICIO'},
-        {tipo:'LUGAR'}
+        {tipo: 'SERVICIO'},
+        {tipo: 'LUGAR'}
     ];
     
     this.resultados = [];
     
     this.getRanking = function() {
 	    rankitService.findAll(function(response) {
-	    	self.resultados = response.data;
+            self.resultados = response.data;
 	    });
     };
     
@@ -30,7 +30,7 @@ rankitApp.controller('BusquedaController', function ($resource, rankitService) {
         
     this.buscar = function () {
         rankitService.findRanking(self.ranking, function(response) {
-            self.resultados = response.data
+            self.resultados = response.data;
         }); 
     };
 
@@ -63,6 +63,24 @@ rankitApp.controller('LoginController', function($state) {
     };
 });
 
-rankitApp.controller('CalificarController', function() {
+rankitApp.controller('CalificarController', function(calificacionService) {
+    var self = this;
     
-})
+    this.calificacion = {
+        puntuacion: '',
+        detalle: '',
+        evaluado: '',
+        usuario: ''
+    };
+    
+    this.respuesta = [];
+    
+    this.getCalificacion = function() {
+        calificacionService.finCalificacion(self.ranking, function(response) {
+             self.respuesta = response.data;
+        });    
+    };
+    
+    this.getCalificacion();
+    
+});

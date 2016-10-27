@@ -12,3 +12,8 @@ rankitApp.service('rankitService', function($http) {
 
 });
 
+rankitApp.service('calificacionService', function($http) {
+    this.finCalificacion = function(calificacion, callback) {
+        $http.get('/calificaciones?usuario='+ calificacion.usuario).then(callback)  
+    }
+});
