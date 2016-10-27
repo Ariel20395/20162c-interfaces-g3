@@ -6,8 +6,8 @@
   <div class="row">
     <div class="col-sm-6">
      <div class="list-group">
-       <div class="list-group-item">
-         <h2>Nombre del ofrecido <span class="circulo">4</span><button type="button" class="btn btn-danger pull-right">Borrar</button></h2>
+       <div class="list-group-item" data-ng-repeat="calificacion in calificarCtrol.respuesta">
+         <h2>{{calificacion.usuario}} <span class="circulo">{{calificacion.puntuacion}}</span><button type="button" class="btn btn-danger pull-right">Borrar</button></h2>
          <h6 style="margin-bottom: 40px;">tipo de ofrecido <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal">Modificar</button></h6>
        </div>
      </div>
@@ -30,8 +30,8 @@
             <div class="col-sm-10"><input type="text" class="form-control"></div>
             <div class="col-sm-2"><input type="text" class="form-control"></div>
           </div>
-        </form autocomplete="on">
-        <form>
+        </form>
+        <form autocomplete="on">
            <div style="margin: 0px 25px 0px 20px;">
           <label>Motivo</label>
           <textarea class="form-control" rows="5" style="margin-bottom: 40px;"></textarea>
@@ -58,21 +58,25 @@
             <label class="pull-right">Puntaje</label>
           </div>
           <div class="form-group" style="margin-bottom: 50px;">
-            <div class="col-sm-10"><input type="text" class="form-control"></div>
-            <div class="col-sm-2"><input type="text" class="form-control"></div>
+            <div class="col-sm-10">
+                 <input ng-model="loginCtrl.calificacion.evaluado" type="text" class="form-control" placeholder= "Ingrese evaluado" > 
+            </div>
+            <div class="col-sm-2">
+                <input ng-model="loginCtrl.calificacion.puntacion" type="text" class="form-control" placeholder="puntos" > 
+            </div>
           </div>
         </form>
         
 
         <div>
          <form>
-           <div style="margin: 0px 25px 0px 20px;">
-          <label>Motivo</label>
-          <textarea class="form-control" rows="5" style="margin-bottom: 40px;"></textarea>
-          </div>
-          <div>
-           <button type="button" class="btn btn-defaul btn-block">Calificar</button>
-          </div>
+            <div style="margin: 0px 25px 0px 20px;">
+                <label>Motivo</label>
+                <input class="form-control" rows="5" ng-model=loginCtrl.calificacion.detalle>
+            </div>
+            <div>
+                <button type="button" class="btn btn-defaul btn-block" ng-click="loginCtrl.nuevaCalificacion()">Calificar</button>
+            </div>
          </form>
         </div>
 

@@ -39,8 +39,8 @@ rankitApp.config(function ($stateProvider, $urlRouterProvider) {
                     controller: "LoginController as loginCtrl"
                 },
                 'panelBusqueda': {
-                    templateUrl: "partials/calificacion.html"
-                    
+                    templateUrl: "partials/calificacion.html",
+                    controller: "BusquedaController as busquedaCtrl"
               }
             }
         });

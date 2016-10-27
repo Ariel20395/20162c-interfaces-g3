@@ -7,10 +7,10 @@ rankitApp.controller('BusquedaController', function (rankitService) {
     var self = this;
     
     this.ranking = {
-        nombre : '',
-        tipo : '',
-        calificaciones : '',
-        ranking : '' 
+        nombre: '',
+        tipo: '',
+        calificaciones: '',
+        ranking: '' 
     };
     
     this.tiposDeOfrecidos = [
@@ -26,7 +26,7 @@ rankitApp.controller('BusquedaController', function (rankitService) {
     
     this.getRanking = function() {
 	    rankitService.findAll(function(response) {
-	    	self.resultados = response.data;
+            self.resultados = response.data;
 	    });
     };
     
@@ -41,7 +41,7 @@ rankitApp.controller('BusquedaController', function (rankitService) {
 });
 
 
-rankitApp.controller('LoginController', function($state, usuarioService, $timeout) {
+rankitApp.controller('LoginController', function($state, usuarioService, calificacionService, $timeout) {
     
     var self = this;
    
@@ -87,7 +87,8 @@ rankitApp.controller('LoginController', function($state, usuarioService, $timeou
     };
     
     this.calificar = function() {
-        $state.go("calificar");  
+        $state.go("calificar");
+        this.getCalificaciones();
     };
     
     this.getNombreUsuario = function() {
@@ -104,8 +105,33 @@ rankitApp.controller('LoginController', function($state, usuarioService, $timeou
             while (mensajes.length > 0) mensajes.pop();
         }, 3000);
     }
-});
-
-rankitApp.controller('CalificarController', function() {
+    
+    /// CALIFICAR
+    this.calificacion = {
+        puntuacion: '',
+        detalle: '',
+        evaluado: '',
+        usuario: self.usuario.nombreUsuario
+    };
+    
+    this.calificacionesDeUsuario = [];
+    
+    this.getCalificaciones = function() {
+        calificacionService.findCalificacion(self.usuario, function(response) {
+             self.calificacionesDeUsuario = response.data;
+        });    
+    };
+    
+    this.nuevaCalificacion = function() {
+        calificacionService.crearCalificacion(self.calificacion)
+            .success(function(data){
+                self.getCalificaciones();
+        })
+            .error(function(err){
+                self.notificarError(err);    
+        });
+    }
+    
+    this.getCalificaciones();
     
 });
