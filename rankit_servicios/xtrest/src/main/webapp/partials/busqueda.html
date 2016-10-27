@@ -14,7 +14,7 @@
         <div class="col-md-4">
              <select class="form-control"  ng-model="busquedaCtrl.ranking.tipo" >
                     <option value="">Todo</option>
-                    <option ng-repeat="option in busquedaCtrl.tiposDeOfrecidos" value="{{option.id}}">{{option.tipo}}</option>
+                    <option ng-repeat="option in busquedaCtrl.tiposDeOfrecidos" value="{{option.tipo}}">{{option.tipo}}</option>
             </select>
         </div>
     </div>
@@ -31,7 +31,7 @@
     </div>
 
     <div class="col-md-2">
-       <button type="button" class="btn btn-primary btn-lg btn-lg" ng-click = "busquedaCtrl.buscar(busquedaCtrl.ranking)">Buscar</button>
+       <button type="button" class="btn btn-primary btn-lg btn-lg" ng-click = "busquedaCtrl.buscar()">Buscar</button>
     </div> 
 
   </div>    
@@ -40,7 +40,7 @@
 
 <div class="container">
     <div class="col-md-12">
-      <div class="well" style="text-align: center"><h1>Resultados para su búsqueda</h1></div>
+      <div class="well" style="text-align: center"><h1>{{busquedaCtrl.cantidadDeResultados()}} Resultados para su búsqueda</h1></div>
     </div>
     
     <table class="table table-striped">

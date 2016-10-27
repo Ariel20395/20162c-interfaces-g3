@@ -13,7 +13,7 @@
             </div>
 
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-lg" ng- click = "loginCtrl.login()"> Login </button>
+                <button type="button" class="btn btn-primary btn-lg" ng-click = "loginCtrl.login()"> Login </button>
             </div>
         </div>
 
@@ -23,8 +23,12 @@
             </div>
 
             <div class= "col-md-2">
-                <button type="button" class="btn btn-link" ng- click = "loginCtrl.login()"> Registrate! </button>
+                <button type="button" class="btn btn-link" ng-click = "loginCtrl.registrarse()"> Registrate! </button>
             </div>
+        </div>
+        
+        <div class="example-animate-container" style="padding-top:10px">
+            <div class="alert alert-danger animate-repeat" ng-repeat="error in LoginCtrl.errors">{{error}}</div>
         </div>
     </div>
     </div>

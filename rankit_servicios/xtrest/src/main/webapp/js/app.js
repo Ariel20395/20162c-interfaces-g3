@@ -1,8 +1,8 @@
 'use strict';
-var rankitApp = angular.module('rankitApp', ['ui.router', 'ngResource']);
+var rankitApp = angular.module('rankitApp', ['ui.router', 'ngAnimate']);
 
 /* Controllers */
-rankitApp.controller('BusquedaController', function ($resource, rankitService) {
+rankitApp.controller('BusquedaController', function (rankitService) {
 
     var self = this;
     
@@ -14,11 +14,15 @@ rankitApp.controller('BusquedaController', function ($resource, rankitService) {
     };
     
     this.tiposDeOfrecidos = [
-        {id: '1', tipo:'SERVICIO'},
-        {id: '2', tipo:'LUGAR'}
+        {tipo:'SERVICIO'},
+        {tipo:'LUGAR'}
     ];
     
     this.resultados = [];
+    
+    this.cantidadDeResultados = function() {
+        return self.resultados.length;
+    };
     
     this.getRanking = function() {
 	    rankitService.findAll(function(response) {
@@ -28,27 +32,49 @@ rankitApp.controller('BusquedaController', function ($resource, rankitService) {
     
     this.getRanking();
         
-    this.buscar = function (ranking) {
+    this.buscar = function () {
         rankitService.findRanking(self.ranking, function(response) {
-            self.resultados = response.data
+            self.resultados = response.data;
         }); 
-        this.tipo = '';
     };
 
 });
 
 
-rankitApp.controller('LoginController', function($state) {
+rankitApp.controller('LoginController', function($state, usuarioService, $timeout) {
+    
+    var self = this;
    
     this.usuario = {
         'nombreUsuario' : '',
         'passwordUsuario' : ''
     };
     
-    this.login = function() {   
+    this.idUsuario = {};
+    this.errors = [];
+    
+    this.login = function() {
+        usuarioService.loguearUsuario(self.usuario)
+        .success(function(data){
+            console.log(data);
+            self.idUsuario = data;
+            $state.go("login");
+        })
+        .error(function(err){
+            console.log(err);
+            self.notificarError(err);
+        });
     };
     
     this.registrarse = function() {   
+        usuarioService.registrarUsuario(self.usuario)
+        .success(function(data){
+            console.log(data);
+        })
+        .error(function(err){
+            console.log(err);
+            self.notificarError(err);
+        });
     };
     
     this.logout = function() {
@@ -56,14 +82,30 @@ rankitApp.controller('LoginController', function($state) {
             'nombreUsuario' : '',
             'passwordUsuario' : ''
         };
+        this.idUsuario = {};
         $state.go("logout");
     };
     
     this.calificar = function() {
         $state.go("calificar");  
     };
+    
+    this.getNombreUsuario = function() {
+        return this.usuario.nombreUsuario;
+    }
+    
+    this.notificarError = function(mensaje) {
+        this.errors.push(mensaje);
+        this.notificar(this.errors);
+    };
+
+    this.notificar = function(mensajes) {
+        $timeout(function() {
+            while (mensajes.length > 0) mensajes.pop();
+        }, 3000);
+    }
 });
 
 rankitApp.controller('CalificarController', function() {
     
-})
+});
