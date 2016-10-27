@@ -14,8 +14,8 @@ rankitApp.controller('BusquedaController', function ($resource, rankitService) {
     };
     
     this.tiposDeOfrecidos = [
-        {id: '1', tipo:'SERVICIO'},
-        {id: '2', tipo:'LUGAR'}
+        {tipo:'SERVICIO'},
+        {tipo:'LUGAR'}
     ];
     
     this.resultados = [];
@@ -28,11 +28,10 @@ rankitApp.controller('BusquedaController', function ($resource, rankitService) {
     
     this.getRanking();
         
-    this.buscar = function (ranking) {
+    this.buscar = function () {
         rankitService.findRanking(self.ranking, function(response) {
             self.resultados = response.data
         }); 
-        this.tipo = '';
     };
 
 });

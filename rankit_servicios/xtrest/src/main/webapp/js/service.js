@@ -4,7 +4,7 @@ rankitApp.service('rankitService', function($http) {
     }
     
     this.findRanking = function(ranking, callback) {
-     $http.get('?nombre='+ranking.nombre + 
+     $http.get('/ranking?nombre='+ranking.nombre + 
                '&tipo=' + ranking.tipo +
                '&calificaciones='+ ranking.calificaciones +
                '&ranking='+ ranking.ranking).then(callback)
