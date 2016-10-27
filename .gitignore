@@ -1,4 +1,5 @@
 .settings
+.classpath
 
 /rankit-dominio/target/
 /rankit-dominio/.classpath
