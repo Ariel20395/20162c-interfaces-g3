@@ -1,8 +1,8 @@
 'use strict';
-var rankitApp = angular.module('rankitApp', ['ui.router', 'ngResource']);
+var rankitApp = angular.module('rankitApp', ['ui.router', 'ngAnimate']);
 
 /* Controllers */
-rankitApp.controller('BusquedaController', function ($resource, rankitService) {
+rankitApp.controller('BusquedaController', function (rankitService) {
 
     var self = this;
     
@@ -14,11 +14,15 @@ rankitApp.controller('BusquedaController', function ($resource, rankitService) {
     };
     
     this.tiposDeOfrecidos = [
-        {tipo: 'SERVICIO'},
-        {tipo: 'LUGAR'}
+        {tipo:'SERVICIO'},
+        {tipo:'LUGAR'}
     ];
     
     this.resultados = [];
+    
+    this.cantidadDeResultados = function() {
+        return self.resultados.length;
+    };
     
     this.getRanking = function() {
 	    rankitService.findAll(function(response) {
@@ -37,17 +41,40 @@ rankitApp.controller('BusquedaController', function ($resource, rankitService) {
 });
 
 
-rankitApp.controller('LoginController', function($state) {
+rankitApp.controller('LoginController', function($state, usuarioService, calificacionService, $timeout) {
+    
+    var self = this;
    
     this.usuario = {
         'nombreUsuario' : '',
         'passwordUsuario' : ''
     };
     
-    this.login = function() {   
+    this.idUsuario = {};
+    this.errors = [];
+    
+    this.login = function() {
+        usuarioService.loguearUsuario(self.usuario)
+        .success(function(data){
+            console.log(data);
+            self.idUsuario = data;
+            $state.go("login");
+        })
+        .error(function(err){
+            console.log(err);
+            self.notificarError(err);
+        });
     };
     
     this.registrarse = function() {   
+        usuarioService.registrarUsuario(self.usuario)
+        .success(function(data){
+            console.log(data);
+        })
+        .error(function(err){
+            console.log(err);
+            self.notificarError(err);
+        });
     };
     
     this.logout = function() {
@@ -55,33 +82,63 @@ rankitApp.controller('LoginController', function($state) {
             'nombreUsuario' : '',
             'passwordUsuario' : ''
         };
+        this.idUsuario = {};
         $state.go("logout");
     };
     
     this.calificar = function() {
-        $state.go("calificar");  
+        $state.go("calificar");
+        this.getCalificaciones();
     };
-});
-
-rankitApp.controller('CalificarController', function(calificacionService) {
-    var self = this;
     
+    this.getNombreUsuario = function() {
+        return this.usuario.nombreUsuario;
+    }
+    
+    this.notificarError = function(mensaje) {
+        this.errors.push(mensaje);
+        this.notificar(this.errors);
+    };
+
+    this.notificar = function(mensajes) {
+        $timeout(function() {
+            while (mensajes.length > 0) mensajes.pop();
+        }, 3000);
+    }
+    
+    /// CALIFICAR
     this.calificacion = {
         puntuacion: '',
         detalle: '',
         evaluado: '',
-        usuario: ''
+        usuario: self.usuario.nombreUsuario
     };
     
-    this.respuesta = [];
+    this.calificacionesDeUsuario = [];
     
+<<<<<<< HEAD
     this.getCalificacion = function() {
         calificacionService.findCalificacion(self.calificacion, function(response) {
             self.respuesta = response.data;
+=======
+    this.getCalificaciones = function() {
+        calificacionService.findCalificacion(self.usuario, function(response) {
+             self.calificacionesDeUsuario = response.data;
+>>>>>>> fccd90b819519a12e181e0c17e67c9d45dadd543
         });    
     };
     
-    this.getCalificacion();
+    this.nuevaCalificacion = function() {
+        calificacionService.crearCalificacion(self.calificacion)
+            .success(function(data){
+                self.getCalificaciones();
+        })
+            .error(function(err){
+                self.notificarError(err);    
+        });
+    }
+    
+    this.getCalificaciones();
     
     this.realizarCalificacion = function() {
         calificacionService.calificar(self.calificacion, function(response) {

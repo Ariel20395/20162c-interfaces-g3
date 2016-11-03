@@ -42,7 +42,7 @@ class RankitDummy {
 		usuario1 = new Usuario("Miguel", "123456")
 		usuario2 = new Usuario("Juan", "67584")
 		usuario3 = new Usuario("Paula", "339465")
-		usuario4 = new Usuario("Ariel", "289925")
+		usuario4 = new Usuario("Ariel", "123456")
 		usuario5 = new Usuario("German", "457249")
 
 		usuario1.fechaIngreso = new DateTime(2016, 9, 1, 12, 50)

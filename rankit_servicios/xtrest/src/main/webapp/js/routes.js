@@ -26,7 +26,7 @@ rankitApp.config(function ($stateProvider, $urlRouterProvider) {
                 },
                 'panelBusqueda': {
                     templateUrl: "partials/busqueda.html",
-                    controller: "BusquedaController as busquedaCtrl; CalificarController as calificarCtrl"
+                    controller: "BusquedaController as busquedaCtrl"
               }
             }
         })
@@ -40,7 +40,7 @@ rankitApp.config(function ($stateProvider, $urlRouterProvider) {
                 },
                 'panelBusqueda': {
                     templateUrl: "partials/calificacion.html",
-                    controller: "CalificarController as calificarCtrl"
+                    controller: "BusquedaController as busquedaCtrl"
               }
             }
         });
