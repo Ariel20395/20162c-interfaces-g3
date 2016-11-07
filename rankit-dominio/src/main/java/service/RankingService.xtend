@@ -34,17 +34,19 @@ class RankingService {
 	}
 	
 	def verificarRanking(OfrecidoRankinMin rankinMin, String rankingBuscado) {
-		if(rankingBuscado == null) {
+		if(verificarSiEsNullOStringVacio(rankingBuscado)) {
 			return true
+		} else {
+			rankinMin.ranking >= Integer.valueOf(rankingBuscado)			
 		}
-		rankinMin.ranking >= Integer.valueOf(rankingBuscado)
 	}
 	
 	def verificarCantidad(OfrecidoRankinMin rankinMin, String cantCalif) {
 		if(verificarSiEsNullOStringVacio(cantCalif)) {
 			return true
+		} else {
+			rankinMin.calificaciones >= Integer.valueOf(cantCalif)	
 		}
-		rankinMin.calificaciones >= Integer.valueOf(cantCalif)
 	}
 	
 	def verificarTipo(OfrecidoRankinMin rankinMin, String tipo) {

@@ -1,0 +1,38 @@
+<div class="container">
+<div class="row">
+    <div class="page-header">
+    <div class="form-horizontal">
+    <div class="form-group">
+    <div class="col-md-3"><img src="/rankit.jpg" alt="logoRankit" width="170" height="99"></div>
+	<div class="col-md-4" style="text-align: center"><h1>Rank-IT</h1></div>
+
+    <div class="col-md-5">
+        <div class="form-group">
+            <div class="col-md-6">
+                <input ng-model="loginCtrl.usuario.nombreUsuario" type="text" class="form-control" placeholder= "Nombre de usuario" > 
+            </div>
+
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary btn-lg" ng-click = "loginCtrl.login()"> Login </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <input ng-model="loginCtrl.usuario.password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese Password">
+            </div>
+
+            <div class= "col-md-2">
+                <button type="button" class="btn btn-link" ng-click = "loginCtrl.registrarse()"> Registrate! </button>
+            </div>
+        </div>
+        
+        <div class="example-animate-container" style="padding-top:10px">
+            <div class="alert alert-danger animate-repeat" ng-repeat="error in LoginCtrl.errors">{{error}}</div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>    
+</div>
