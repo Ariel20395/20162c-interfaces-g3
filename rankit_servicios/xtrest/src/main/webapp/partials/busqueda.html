@@ -1,0 +1,64 @@
+<div class="container" >
+<div class="jumbotron">
+
+  <div class="row">
+
+    <div class="col-md-10">
+      <form class="form-horizontal">
+    
+    <div class="form-group">
+        <label class="control-label col-md-2">Nombre:</label>
+        <div class="col-md-4"><input ng-model="busquedaCtrl.ranking.nombre" class="form-control" type="text" placeholder= "Ingrese el nombre del ofrecido">
+        </div>
+        <label class="control-label col-md-2">Tipo:</label>
+        <div class="col-md-4">
+             <select class="form-control"  ng-model="busquedaCtrl.ranking.tipo" >
+                    <option value="">Todo</option>
+                    <option ng-repeat="option in busquedaCtrl.tiposDeOfrecidos" value="{{option.tipo}}">{{option.tipo}}</option>
+            </select>
+        </div>
+    </div>
+          
+    <div class="form-group">
+        <label class="control-label col-md-2">Calificacion:</label>
+        <div class="col-md-4"><input ng-model="busquedaCtrl.ranking.calificaciones" class="form-control" type="text" placeholder= "Ingrese una cantidad">
+        </div>
+        <label class="control-label col-md-2">Ranking:</label>
+        <div class="col-md-4"><input ng-model="busquedaCtrl.ranking.ranking" class="form-control" type="text" placeholder= "Ingrese una cantidad">
+        </div>
+    </div>
+    </form>
+    </div>
+
+    <div class="col-md-2">
+       <button type="button" class="btn btn-primary btn-lg btn-lg" ng-click = "busquedaCtrl.buscar()">Buscar</button>
+    </div> 
+
+  </div>    
+</div>
+</div>
+
+<div class="container">
+    <div class="col-md-12">
+      <div class="well" style="text-align: center"><h1>{{busquedaCtrl.cantidadDeResultados()}} Resultados para su búsqueda</h1></div>
+    </div>
+    
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Ranking</th>
+            <th>Calificaciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="resultado in busquedaCtrl.resultados">
+            <td> {{resultado.evaluado.nombre}} </td>
+            <td> {{resultado.evaluado.tipo}} </td>
+            <td> {{resultado.ranking}} </td>
+            <td> {{resultado.calificaciones}} </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
