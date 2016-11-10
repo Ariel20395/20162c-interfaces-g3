@@ -1,4 +1,6 @@
 .settings
+.classpath
+.project
 
 /rankit-dominio/target/
 /rankit-dominio/.classpath

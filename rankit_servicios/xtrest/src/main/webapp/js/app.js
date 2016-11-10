@@ -116,9 +116,15 @@ rankitApp.controller('LoginController', function($state, usuarioService, calific
     
     this.calificacionesDeUsuario = [];
     
+<<<<<<< HEAD
+    this.getCalificacion = function() {
+        calificacionService.findCalificacion(self.calificacion, function(response) {
+            self.respuesta = response.data;
+=======
     this.getCalificaciones = function() {
         calificacionService.findCalificacion(self.usuario, function(response) {
              self.calificacionesDeUsuario = response.data;
+>>>>>>> fccd90b819519a12e181e0c17e67c9d45dadd543
         });    
     };
     
@@ -134,4 +140,9 @@ rankitApp.controller('LoginController', function($state, usuarioService, calific
     
     this.getCalificaciones();
     
+    this.realizarCalificacion = function() {
+        calificacionService.calificar(self.calificacion, function(response) {
+            self.respuesta = response.data;
+        });
+    };
 });
