@@ -7,8 +7,8 @@
 6 silly lifecycle intefaz_web@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle intefaz_web@1.0.0~start: intefaz_web@1.0.0
 8 verbose lifecycle intefaz_web@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle intefaz_web@1.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/ariel/Escritorio/Interfaces/CIU-2016-G-Interfaces/rankit_servicios/xtrest/src/main/webapp/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ariel/bin:/usr/local/java/jdk1.8.0_91/bin
-10 verbose lifecycle intefaz_web@1.0.0~start: CWD: /home/ariel/Escritorio/Interfaces/CIU-2016-G-Interfaces/rankit_servicios/xtrest/src/main/webapp
+9 verbose lifecycle intefaz_web@1.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/migue/Unqui/ProgramacionDeInterfacesDeUsuario/20162c-interfaces-g3/rankit_servicios/xtrest/src/main/webapp/node_modules/.bin:/opt/apache-maven-3.3.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+10 verbose lifecycle intefaz_web@1.0.0~start: CWD: /home/migue/Unqui/ProgramacionDeInterfacesDeUsuario/20162c-interfaces-g3/rankit_servicios/xtrest/src/main/webapp
 11 silly lifecycle intefaz_web@1.0.0~start: Args: [ '-c', 'http-server  -p 8000 -c-1' ]
 12 info lifecycle intefaz_web@1.0.0~start: Failed to exec start script
 13 verbose stack Error: intefaz_web@1.0.0 start: `http-server  -p 8000 -c-1`
@@ -19,7 +19,7 @@
 13 verbose stack     at maybeClose (internal/child_process.js:821:16)
 13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
 14 verbose pkgid intefaz_web@1.0.0
-15 verbose cwd /home/ariel/Escritorio/Interfaces/CIU-2016-G-Interfaces/rankit_servicios/xtrest/src/main/webapp
+15 verbose cwd /home/migue/Unqui/ProgramacionDeInterfacesDeUsuario/20162c-interfaces-g3/rankit_servicios/xtrest/src/main/webapp
 16 error Linux 4.4.0-42-generic
 17 error argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
 18 error node v4.2.6
