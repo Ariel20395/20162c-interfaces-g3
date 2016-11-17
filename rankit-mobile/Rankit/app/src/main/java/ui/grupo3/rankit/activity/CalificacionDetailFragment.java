@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import ui.grupo3.rankit.R;
-import ui.grupo3.rankit.dummy.DummyContent;
+import ui.grupo3.rankit.activity.dummy.DummyContent;
 
 /**
- * A fragment representing a single Calificacion detail screen.
- * This fragment is either contained in a {@link CalificacionListActivity}
+ * A fragment representing a single Item detail screen.
+ * This fragment is either contained in a {@link CalificacionesListActivity}
  * in two-pane mode (on tablets) or a {@link CalificacionDetailActivity}
  * on handsets.
  */
@@ -58,11 +58,11 @@ public class CalificacionDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.calificacion_detail, container, false);
+        View rootView = inflater.inflate(R.layout.item_detail, container, false);
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.calificacion_detail)).setText(mItem.details);
+            ((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.details);
         }
 
         return rootView;

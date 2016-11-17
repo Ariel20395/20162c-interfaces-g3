@@ -14,17 +14,17 @@ import android.view.MenuItem;
 import ui.grupo3.rankit.R;
 
 /**
- * An activity representing a single Calificacion detail screen. This
+ * An activity representing a single Item detail screen. This
  * activity is only used narrow width devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
- * in a {@link CalificacionListActivity}.
+ * in a {@link CalificacionesListActivity}.
  */
 public class CalificacionDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calificacion_detail);
+        setContentView(R.layout.activity_item_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
@@ -61,7 +61,7 @@ public class CalificacionDetailActivity extends AppCompatActivity {
             CalificacionDetailFragment fragment = new CalificacionDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.calificacion_detail_container, fragment)
+                    .add(R.id.item_detail_container, fragment)
                     .commit();
         }
     }
@@ -77,7 +77,7 @@ public class CalificacionDetailActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            NavUtils.navigateUpTo(this, new Intent(this, CalificacionListActivity.class));
+            NavUtils.navigateUpTo(this, new Intent(this, CalificacionesListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

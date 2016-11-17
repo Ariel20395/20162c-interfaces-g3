@@ -31,8 +31,8 @@ class RankItService {
 		usuarioService.existeUsuario(nombreUsuario, passwordUsuario)
 	}
 	
-	def getIdUsuario(String nombreUsuario) {
-		usuarioService.getIdUsuario(nombreUsuario)
+	def getNombreUsuario(String nombreUsuario) {
+		usuarioService.getNombreUsuario(nombreUsuario)
 	}
 	
 	def passwordIncorrecto(String nombreUsuario, String passwordUsuario) {
