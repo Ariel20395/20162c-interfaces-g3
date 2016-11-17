@@ -21,7 +21,7 @@ public class CalificacionAdapter extends AbstractListAdapter<Calificacion> {
     public View getView(int position, View convertView, ViewGroup parent) {
         Calificacion calificacion = (Calificacion) getItem(position);
         View row = generateRow(R.layout.calificacion_list_content, parent);
-        setColumnTextView(row, R.id.txtNombreOfrecido, calificacion.getOfrecido());
+        setColumnTextView(row, R.id.ofrecido, calificacion.getOfrecido());
         return row;
     }
 
