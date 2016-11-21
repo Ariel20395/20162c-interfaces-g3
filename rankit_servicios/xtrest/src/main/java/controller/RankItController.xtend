@@ -68,7 +68,7 @@ class RankItController {
 		ok(this.rankItService.buscar(nombre, tipo, calificaciones, ranking).toJson)
 	}
 	
-	@Get("/calificaciones")
+	@Get("/calificaciones") 
 	def getCalificaciones(String usuario) {
 		response.contentType = "application/json"
 

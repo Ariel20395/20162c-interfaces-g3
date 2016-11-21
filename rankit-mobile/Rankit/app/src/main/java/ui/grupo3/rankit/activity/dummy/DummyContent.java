@@ -1,4 +1,4 @@
-package ui.grupo3.rankit.dummy;
+package ui.grupo3.rankit.activity.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
