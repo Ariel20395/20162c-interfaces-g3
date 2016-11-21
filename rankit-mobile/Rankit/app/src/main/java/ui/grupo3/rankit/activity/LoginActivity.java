@@ -53,6 +53,7 @@ public class LoginActivity extends FragmentActivity{
 
     private String nombreUsuario;
     private String passwordUsuario;
+    private String nombreAutenticado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +61,8 @@ public class LoginActivity extends FragmentActivity{
         setContentView(R.layout.activity_login);
 
 
-        Button usuarioButton = (Button) findViewById(R.id.login_button);
-        usuarioButton.setOnClickListener(new OnClickListener() {
+        Button loginButton = (Button) findViewById(R.id.login_button);
+        loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -69,6 +70,13 @@ public class LoginActivity extends FragmentActivity{
 
                 Usuario usuario = new Usuario(nombreUsuario, passwordUsuario);
                 autenticar(usuario);
+                if(nombreAutenticado != null) {
+
+                    Intent calificacionesView = new Intent(view.getContext(), CalificacionesListActivity.class);
+                    calificacionesView.putExtra("nombreUsuario", nombreAutenticado);
+
+                    startActivity(calificacionesView);
+                }
             }
         });
 
@@ -119,12 +127,8 @@ public class LoginActivity extends FragmentActivity{
         ConectionRest.crearService().loginUsuario(usuario, new Callback<EntidadDominioTo>() {
             @Override
             public void success(EntidadDominioTo autenticado, Response response) {
-                String nombre = autenticado.getNombre();
+                nombreAutenticado = autenticado.getNombre();
 
-                Intent calificacionesView = new Intent(this, CalificacionesListActivity.class);
-                calificacionesView.putExtra(CalificacionesFragment.NOMBRE_USUARIO, nombre);
-
-                startActivity(calificacionesView);
             }
 
             @Override

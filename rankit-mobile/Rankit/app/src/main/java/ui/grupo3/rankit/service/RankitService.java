@@ -11,6 +11,7 @@ import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.PUT;
+import ui.grupo3.rankit.model.Calificacion;
 import ui.grupo3.rankit.model.EntidadDominioTo;
 import ui.grupo3.rankit.model.Usuario;
 
@@ -28,11 +29,12 @@ public interface RankitService {
 
     @FormUrlEncoded
     @GET("/calificaciones")
-        void getCalificaciones(@Field("usuario") String nombreUsuario);
+        void getCalificaciones(@Field("usuario") String nombreUsuario, Callback<List<Calificacion>> handlerRespuesta);
 
     @FormUrlEncoded
     @PUT("/calificaciones")
         void editarCalificacion(@Field("id") String id, @Field("puntuacion") String puntuacion,
-                                @Field("detalle") String detalle, @Field("evaluado") String evaluado);
+                                @Field("detalle") String detalle, @Field("evaluado") String evaluado,
+                                Callback<Calificacion> handlerRespuesta);
 
 }
