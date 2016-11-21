@@ -41,9 +41,9 @@ class UsuarioService {
 		]
 	}
 	
-	def getIdUsuario(String nombreUsuario) {
-		var map = new HashMap<String, Integer>()
-		map.put("id", getUsuario(nombreUsuario).id)
+	def getNombreUsuario(String nombreUsuario) {
+		var map = new HashMap<String, String>()
+		map.put("nombre", getUsuario(nombreUsuario).nombre)
 		map
 	}
 	

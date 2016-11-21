@@ -3,6 +3,7 @@ package ui.grupo3.rankit.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -38,7 +39,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends FragmentActivity implements RankitFragment.Callbacks {
+public class LoginActivity extends FragmentActivity implements UsuarioFragment.Callbacks {
 
 
     /**
@@ -91,6 +92,15 @@ public class LoginActivity extends FragmentActivity implements RankitFragment.Ca
                 attemptLogin();
             }
         });
+
+        Button registrarButton = (Button) findViewById(R.id.registrar_button);
+        registrarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attemptLogin();
+            }
+        });
+
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
@@ -162,7 +172,7 @@ public class LoginActivity extends FragmentActivity implements RankitFragment.Ca
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && verificarPassword(usuario, password)) {
+        if (!TextUtils.isEmpty(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -192,10 +202,7 @@ public class LoginActivity extends FragmentActivity implements RankitFragment.Ca
         }
     }
 
-    private boolean verificarPassword(String usuario, String password) {
-        // REST verifica si el password es correcto
-        return true;
-    }
+
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic

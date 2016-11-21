@@ -47,7 +47,7 @@ class RankItController {
 		val passwordUsuario = usuario.get("password")
 
 		if(rankItService.existeUsuario(nombreUsuario, passwordUsuario)) {
-			ok(rankItService.getIdUsuario(nombreUsuario).toJson)
+			ok(rankItService.getNombreUsuario(nombreUsuario).toJson)
 		} else if(rankItService.passwordIncorrecto(nombreUsuario, passwordUsuario)) {
 			badRequest(' { "Error": "Password incorrecto" }')
 		} else {
