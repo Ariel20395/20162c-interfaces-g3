@@ -49,38 +49,12 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-<<<<<<< HEAD
-public class LoginActivity extends FragmentActivity implements UsuarioFragment.Callbacks {
 
-
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
-
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
-    private UserLoginTask mAuthTask = null;
-
-    // UI references.
-    private AutoCompleteTextView usuarioView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
-=======
 public class LoginActivity extends FragmentActivity{
 
     private String nombreUsuario;
     private String passwordUsuario;
->>>>>>> ceb5b14627dcd0c830a62618fb9a1fbd2512dae3
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,27 +67,9 @@ public class LoginActivity extends FragmentActivity{
             @Override
             public void onClick(View view) {
 
-<<<<<<< HEAD
-        Button registrarButton = (Button) findViewById(R.id.registrar_button);
-        registrarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
 
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
-    }
-
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
-=======
                 setUsuario();
->>>>>>> ceb5b14627dcd0c830a62618fb9a1fbd2512dae3
+
 
                 Usuario usuario = new Usuario(nombreUsuario, passwordUsuario);
                 autenticar(usuario);
