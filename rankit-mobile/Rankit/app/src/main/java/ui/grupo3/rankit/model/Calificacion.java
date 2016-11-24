@@ -7,8 +7,8 @@ import java.util.Random;
  */
 
 public class Calificacion {
-    private Integer id;
-    private Integer puntos;
+    private int id;
+    private int puntos;
     private String detalle;
     private String usuario;
     private String ofrecido;

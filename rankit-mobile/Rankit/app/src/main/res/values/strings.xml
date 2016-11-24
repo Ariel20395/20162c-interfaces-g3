@@ -18,5 +18,7 @@
     <string name="title_calificacion_list">Calificaciones</string>
     <string name="title_calificacion_detail">Calificacion Detail</string>
 
+    <string name="nombre">nombre ofrecido</string>
+
 </resources>
  

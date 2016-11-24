@@ -11,6 +11,9 @@ import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.PUT;
+import retrofit.http.Path;
+import retrofit.http.Query;
+import ui.grupo3.rankit.model.Calificacion;
 import ui.grupo3.rankit.model.EntidadDominioTo;
 import ui.grupo3.rankit.model.Usuario;
 
@@ -20,19 +23,19 @@ import ui.grupo3.rankit.model.Usuario;
 
 public interface RankitService {
     @PUT("/usuarios")
-        void registrarUsuario(@Body Usuario usuario, Callback<Void> handler);
+    void registrarUsuario(@Body Usuario usuario, Callback<Void> handler);
 
 
     @POST("/usuarios")
-        void loginUsuario(@Body Usuario usuario, Callback<EntidadDominioTo> handlerRespuesta);
+    void loginUsuario(@Body Usuario usuario, Callback<EntidadDominioTo> handlerRespuesta);
 
-    @FormUrlEncoded
+
     @GET("/calificaciones")
-        void getCalificaciones(@Field("usuario") String nombreUsuario);
+    void getCalificaciones(@Query("usuario") String usuario, Callback<List<Calificacion>> handlerRespuesta);
 
-    @FormUrlEncoded
-    @PUT("/calificaciones")
-        void editarCalificacion(@Field("id") String id, @Field("puntuacion") String puntuacion,
-                                @Field("detalle") String detalle, @Field("evaluado") String evaluado);
+    @PUT("/calificaciones?id={id}&puntuacion={puntuacion}&detalle={detalle}&evaluado={evaluado}")
+    void editarCalificacion(@Path("id") String id, @Path("puntuacion") String puntuacion,
+                            @Path("detalle") String detalle, @Path("evaluado") String evaluado,
+                            Callback<Calificacion> handlerRespuesta);
 
 }

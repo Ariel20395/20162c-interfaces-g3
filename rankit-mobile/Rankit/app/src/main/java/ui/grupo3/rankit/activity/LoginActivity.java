@@ -54,7 +54,7 @@ public class LoginActivity extends FragmentActivity{
 
     private String nombreUsuario;
     private String passwordUsuario;
-
+    private String nombreAutenticado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,84 +62,22 @@ public class LoginActivity extends FragmentActivity{
         setContentView(R.layout.activity_login);
 
 
-        Button usuarioButton = (Button) findViewById(R.id.login_button);
-        usuarioButton.setOnClickListener(new OnClickListener() {
+        Button loginButton = (Button) findViewById(R.id.login_button);
+        loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
                 setUsuario();
-
 
                 Usuario usuario = new Usuario(nombreUsuario, passwordUsuario);
                 autenticar(usuario);
             }
-<<<<<<< HEAD
-        }
-    }
-
-
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
-    private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
-
-        // Reset errors.
-        usuarioView.setError(null);
-        mPasswordView.setError(null);
-
-        // Store values at the time of the login attempt.
-        String usuario = usuarioView.getText().toString();
-        String password = mPasswordView.getText().toString();
-
-        boolean cancel = false;
-        View focusView = null;
-
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-
-        // Verifica que el usuario existe
-        if (TextUtils.isEmpty(usuario)) {
-            usuarioView.setError(getString(R.string.error_field_required));
-            focusView = usuarioView;
-            cancel = true;
-        } else if (!isEmailValid(usuario)) {
-            usuarioView.setError(getString(R.string.error_invalid_usuario));
-            focusView = usuarioView;
-            cancel = true;
-        }
-
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
-        } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(usuario, password);
-            mAuthTask.execute((Void) null);
-        }
-    }
-
-
-=======
         });
 
         Button registrarButton = (Button) findViewById(R.id.registrar_button);
         registrarButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
->>>>>>> ceb5b14627dcd0c830a62618fb9a1fbd2512dae3
 
                 setUsuario();
 
@@ -183,12 +121,14 @@ public class LoginActivity extends FragmentActivity{
         ConectionRest.crearService().loginUsuario(usuario, new Callback<EntidadDominioTo>() {
             @Override
             public void success(EntidadDominioTo autenticado, Response response) {
-                String nombre = autenticado.getNombre();
+                nombreAutenticado = autenticado.getNombre();
+                if(nombreAutenticado != null) {
 
-                Intent calificacionesView = new Intent(this, CalificacionesListActivity.class);
-                calificacionesView.putExtra(CalificacionesFragment.NOMBRE_USUARIO, nombre);
+                    Intent calificacionesView = new Intent(LoginActivity.this, CalificacionesListActivity.class);
+                    calificacionesView.putExtra("nombreUsuario", nombreAutenticado);
 
-                startActivity(calificacionesView);
+                    startActivity(calificacionesView);
+                }
             }
 
             @Override
@@ -203,4 +143,3 @@ public class LoginActivity extends FragmentActivity{
 
 
 }
-

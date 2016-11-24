@@ -10,4 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ui.grupo3.rankit.activity.CalificacionesListActivity">
 
+
+    <ListView android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 </RelativeLayout>
