@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.SearchView;
 import android.widget.Toast;
 import java.util.List;
 import retrofit.Callback;
@@ -16,12 +16,13 @@ import retrofit.client.Response;
 import ui.grupo3.rankit.R;
 import ui.grupo3.rankit.adapter.CalificacionesAdapter;
 import ui.grupo3.rankit.model.Calificacion;
-import ui.grupo3.rankit.model.ConectionRest;
+import ui.grupo3.rankit.service.ConectionRest;
 
 
 public class CalificacionesListActivity extends FragmentActivity {
     private ListView lista;
     protected String usuario;
+    private CalificacionesAdapter calificacionesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,29 @@ public class CalificacionesListActivity extends FragmentActivity {
         this.usuario = bundle.getString("nombreUsuario");
 
         obtenerCalificaciones();
+        
+        busqueda();
 
+    }
+
+
+    private void busqueda() {
+
+        SearchView busqueda = (SearchView) findViewById(R.id.busqueda);
+
+        busqueda.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String calificacion) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String calificacion) {
+
+                calificacionesAdapter.getFilter().filter(calificacion);
+                return false;
+            }
+        });
     }
 
     private void setLista() {
@@ -63,8 +86,8 @@ public class CalificacionesListActivity extends FragmentActivity {
     }
 
     private void agregarCalificaciones(final List<Calificacion> calificaciones) {
-        CalificacionesAdapter adapter = new CalificacionesAdapter(this, R.layout.activity_ofrecido_row, calificaciones);
-        lista.setAdapter(adapter);
+        calificacionesAdapter = new CalificacionesAdapter(this, R.layout.activity_ofrecido_row, calificaciones);
+        lista.setAdapter(calificacionesAdapter);
         View header = (View) getLayoutInflater().inflate(R.layout.activity_calificaciones_list, null);
 
         OnClickEnCalificacion(calificaciones);
@@ -78,13 +101,14 @@ public class CalificacionesListActivity extends FragmentActivity {
                 Intent detalleView = new Intent(CalificacionesListActivity.this, DetalleActivity.class);
 
                 Calificacion calificacionSeleccionada = obtenerCalificacion(position, calificaciones);
+
                 Bundle extras = new Bundle();
                 extras.putString("nombreCalificacion", calificacionSeleccionada.getOfrecido());
                 extras.putString("detalle", calificacionSeleccionada.getDetalle());
-
                 extras.putInt("puntos", calificacionSeleccionada.getPuntos());
                 extras.putInt("id", calificacionSeleccionada.getId());
                 detalleView.putExtras(extras);
+
                 startActivity(detalleView);
             }
         });

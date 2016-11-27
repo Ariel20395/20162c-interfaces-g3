@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/nombre"
+            android:layout_weight="0.37"/>
+
+        <Button
+            android:text="Guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guardar"
+            android:layout_weight="0.04" />
+    </LinearLayout>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="textPersonName"
+        android:text="Ingrese el motivo:"
+        android:ems="10"
+        android:id="@+id/nuevoMotivo" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="textPersonName"
+        android:text="Ingrese el puntaje:"
+        android:ems="10"
+        android:id="@+id/nuevoPuntaje" />
+
+</LinearLayout>

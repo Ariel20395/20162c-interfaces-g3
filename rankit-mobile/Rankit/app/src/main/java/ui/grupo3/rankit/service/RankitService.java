@@ -23,7 +23,7 @@ import ui.grupo3.rankit.model.Usuario;
 
 public interface RankitService {
     @PUT("/usuarios")
-    void registrarUsuario(@Body Usuario usuario, Callback<Void> handler);
+    void registrarUsuario(@Body Usuario usuario, Callback<Void> handlerRespuesta);
 
 
     @POST("/usuarios")
@@ -33,9 +33,9 @@ public interface RankitService {
     @GET("/calificaciones")
     void getCalificaciones(@Query("usuario") String usuario, Callback<List<Calificacion>> handlerRespuesta);
 
-    @PUT("/calificaciones?id={id}&puntuacion={puntuacion}&detalle={detalle}&evaluado={evaluado}")
-    void editarCalificacion(@Path("id") String id, @Path("puntuacion") String puntuacion,
-                            @Path("detalle") String detalle, @Path("evaluado") String evaluado,
-                            Callback<Calificacion> handlerRespuesta);
+    @PUT("/calificaciones")
+    void editarCalificacion(@Query("id") String id, @Query("puntuacion") String puntuacion,
+                            @Query("detalle") String detalle, @Query("evaluado") String evaluado,
+                            Callback<Void> handlerRespuesta);
 
 }

@@ -1,4 +1,4 @@
-package ui.grupo3.rankit.model;
+package ui.grupo3.rankit.service;
 
 import retrofit.RestAdapter;
 import ui.grupo3.rankit.service.RankitService;
@@ -11,7 +11,7 @@ public class ConectionRest {
 
     public static RankitService crearService() {
 
-        String SERVER_IP = "10.12.4.142";
+        String SERVER_IP = "192.168.43.240";
         String API_URL = "http://"+ SERVER_IP +":9000";
 
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
