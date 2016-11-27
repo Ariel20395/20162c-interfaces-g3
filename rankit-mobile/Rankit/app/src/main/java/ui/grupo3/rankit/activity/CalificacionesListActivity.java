@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.List;
 import retrofit.Callback;
@@ -20,9 +22,11 @@ import ui.grupo3.rankit.service.ConectionRest;
 
 
 public class CalificacionesListActivity extends FragmentActivity {
+
     private ListView lista;
     protected String usuario;
     private CalificacionesAdapter calificacionesAdapter;
+    private int request_code = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,24 @@ public class CalificacionesListActivity extends FragmentActivity {
         
         busqueda();
 
+        nuevaCalificacion();
+    }
+
+    private void nuevaCalificacion() {
+
+        Button agregar = (Button) findViewById(R.id.nuevaCalificacion);
+
+        agregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent agregarView = new Intent(CalificacionesListActivity.this, AgregarActivity.class);
+
+                agregarView.putExtra("nombre", usuario);
+
+                startActivityForResult(agregarView, request_code);
+            }
+        });
     }
 
 
@@ -116,6 +138,13 @@ public class CalificacionesListActivity extends FragmentActivity {
 
     private Calificacion obtenerCalificacion(int ofrecidoSeleccionado, List<Calificacion> calificaciones) {
         return calificaciones.get(ofrecidoSeleccionado);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if ((requestCode == request_code) && (resultCode == RESULT_OK)){
+            obtenerCalificaciones();
+        }
     }
 
 

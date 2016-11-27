@@ -22,6 +22,7 @@
         <activity android:name=".activity.CalificacionesListActivity"></activity>
         <activity android:name=".activity.DetalleActivity"></activity>
         <activity android:name=".activity.EditarActivity"></activity>
+        <activity android:name=".activity.AgregarActivity"></activity>
     </application>
 
 </manifest>

@@ -38,4 +38,8 @@ public interface RankitService {
                             @Query("detalle") String detalle, @Query("evaluado") String evaluado,
                             Callback<Void> handlerRespuesta);
 
+    @POST("/calificaciones")
+    void agregarCalificacion(@Query("puntuacion") String id, @Query("detalle") String puntuacion,
+                            @Query("evaluado") String detalle, @Query("usuario") String evaluado,
+                            Callback<Void> handlerRespuesta);
 }
