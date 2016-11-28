@@ -76,14 +76,14 @@ class RankitDummy {
 		cineHoyts.fechaRegistro = new DateTime(2015, 11, 12, 9, 00)
 
 		calificacion1 = new Calificacion(8, "esto anda bien", usuario1.nombre, netflix.nombre)
-		calificacion2 = new Calificacion(8, "muy caro", usuario2.nombre, cablevision.nombre)
+		calificacion2 = new Calificacion(8, "muy caro", usuario4.nombre, cablevision.nombre)
 		calificacion3 = new Calificacion(8, "buen costo, problemas con internet", usuario3.nombre, telecentro.nombre)
 		calificacion4 = new Calificacion(8, "buenos precios", usuario4.nombre, carpinteria.nombre)
-		calificacion5 = new Calificacion(8, "no llega a tiempo establecido", usuario5.nombre, correoARG.nombre)
-		calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario1.nombre, netflix.nombre)
-		calificacion7 = new Calificacion(9, "Muy buen servicio", usuario2.nombre, cineHoyts.nombre)
+		calificacion5 = new Calificacion(8, "no llega a tiempo establecido", usuario4.nombre, correoARG.nombre)
+		calificacion6 = new Calificacion(9, "Ningun problema con el servicio", usuario4.nombre, netflix.nombre)
+		calificacion7 = new Calificacion(9, "Muy buen servicio", usuario4.nombre, cineHoyts.nombre)
 		calificacion8 = new Calificacion(6, "Se corta a veces", usuario3.nombre, netflix.nombre)
-		calificacion9 = new Calificacion(9, "Atención muy buena", usuario3.nombre, cineHoyts.nombre)
+		calificacion9 = new Calificacion(9, "Atención muy buena", usuario4.nombre, cineHoyts.nombre)
 		calificacion9.esOfensiva = true
 
 		calificaciones.add(calificacion1)
@@ -102,11 +102,11 @@ class RankitDummy {
 		usuario1.calificaciones.add(calificacion6)
 		usuario2.calificaciones.add(calificacion2)
 		usuario2.calificaciones.add(calificacion7)
-		usuario3.calificaciones.add(calificacion3)
-		usuario3.calificaciones.add(calificacion8)
-		usuario3.calificaciones.add(calificacion9)
+		usuario4.calificaciones.add(calificacion3)
+		usuario4.calificaciones.add(calificacion8)
+		usuario4.calificaciones.add(calificacion9)
 		usuario4.calificaciones.add(calificacion4)
-		usuario5.calificaciones.add(calificacion5)
+		usuario4.calificaciones.add(calificacion5)
 	}
 
 	def setCalifAOfrecidos() {

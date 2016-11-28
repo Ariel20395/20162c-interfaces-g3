@@ -130,7 +130,7 @@ class RankItController {
 				
 			} else {
 				this.rankItService.editarCalificacionPorId(idCalificacion, puntos, detalle, evaluado)
-				ok('{"" : "Calificacion Editada"}')
+				ok
 			}
 			
 		} catch(NumberFormatException e) {
