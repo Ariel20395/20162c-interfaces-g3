@@ -1,0 +1,7 @@
+#Sat Nov 19 22:10:08 ART 2016
+base.0=/home/migue/Escritorio/InterfacesDeUsuario/20162c-interfaces-g3/rankit-mobile/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_ba1b861fe28322b3a05c301fd035d47fd1245334
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/home/migue/Escritorio/InterfacesDeUsuario/20162c-interfaces-g3/rankit-mobile/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_925b7993a8b3aa50cb1d0f43ebbf48be7efe972a/classes.dex
+base.1=/home/migue/Escritorio/InterfacesDeUsuario/20162c-interfaces-g3/rankit-mobile/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_925b7993a8b3aa50cb1d0f43ebbf48be7efe972a
+file.0=/home/migue/Escritorio/InterfacesDeUsuario/20162c-interfaces-g3/rankit-mobile/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_ba1b861fe28322b3a05c301fd035d47fd1245334/classes.dex
