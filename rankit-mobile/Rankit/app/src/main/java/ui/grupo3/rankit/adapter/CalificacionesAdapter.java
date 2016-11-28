@@ -71,28 +71,28 @@ public class CalificacionesAdapter extends BaseAdapter implements Filterable {
     public Filter getFilter() {
         return new Filter() {
             @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                final FilterResults oReturn = new FilterResults();
+            protected FilterResults performFiltering(CharSequence calificacionBuscada) {
+                final FilterResults filter = new FilterResults();
                 final List<Calificacion> results = new ArrayList<Calificacion>();
                 if (busquedaCalificaciones == null)
                     busquedaCalificaciones = calificaciones;
-                if (constraint != null) {
+                if (calificacionBuscada != null) {
                     if (busquedaCalificaciones != null && busquedaCalificaciones.size() > 0) {
                         for (final Calificacion g : busquedaCalificaciones) {
                             if (g.getOfrecido().toLowerCase()
-                                    .contains(constraint.toString()))
+                                    .contains(calificacionBuscada.toString()))
                                 results.add(g);
                         }
                     }
-                    oReturn.values = results;
+                    filter.values = results;
                 }
-                return oReturn;
+                return filter;
             }
 
             @SuppressWarnings("unchecked")
             @Override
-            protected void publishResults(CharSequence constraint,
-                                          FilterResults results) {
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+
                 calificaciones = (ArrayList<Calificacion>) results.values;
                 notifyDataSetChanged();
             }

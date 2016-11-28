@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit.Callback;
 import retrofit.http.Body;
+import retrofit.http.DELETE;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
@@ -42,4 +43,7 @@ public interface RankitService {
     void agregarCalificacion(@Query("puntuacion") String id, @Query("detalle") String puntuacion,
                             @Query("evaluado") String detalle, @Query("usuario") String evaluado,
                             Callback<Void> handlerRespuesta);
+
+    @DELETE("/calificaciones/{id}")
+    void eliminarCalificacion(@Path("id") String id, Callback<Void> handlerRespuesta );
 }
