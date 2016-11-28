@@ -11,7 +11,8 @@ public class ConectionRest {
 
     public static RankitService crearService() {
 
-        String SERVER_IP = "192.168.1.72";
+
+        String SERVER_IP = "192.168.0.49";
         String API_URL = "http://"+ SERVER_IP +":9000";
 
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();

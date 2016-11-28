@@ -13,6 +13,7 @@
         <TextView
             android:text="Crear calificación"
             android:layout_width="183dp"
+            android:textColor="@color/colorPrimary"
             android:layout_height="wrap_content"
             android:id="@+id/crearCalificacion"
             android:textSize="18sp"

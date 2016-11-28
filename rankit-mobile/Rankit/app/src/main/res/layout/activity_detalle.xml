@@ -12,6 +12,8 @@
 
         <TextView
             android:text="Nombre"
+            android:textSize="25sp"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
             android:layout_height="34dp"
             android:id="@+id/nombre"
@@ -40,15 +42,17 @@
         >
 
         <TextView
-            android:text="Puntaje"
+            android:text="Puntaje:"
+            android:textSize="19sp"
             android:layout_width="wrap_content"
             android:layout_height="34dp"
             android:id="@+id/puntaje"
-            android:layout_weight="0.42"
+            android:layout_weight="0.03"
             tools:ignore="HardcodedText" />
 
         <TextView
             android:text="cantidadPuntos"
+            android:textSize="19sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cantidadPuntos"
@@ -62,19 +66,21 @@
         >
 
         <TextView
-            android:text="Detalle"
+            android:text="Detalle:"
+            android:textSize="19sp"
             android:layout_width="wrap_content"
             android:layout_height="34dp"
             android:id="@+id/detalle"
-            android:layout_weight="0.42"
+            android:layout_weight="0.03"
             tools:ignore="HardcodedText" />
 
         <TextView
             android:text="detalle Calificacion"
+            android:textSize="19sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/detalleOfrecido"
-            android:layout_weight="0.11"
+            android:layout_weight="0.10"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
